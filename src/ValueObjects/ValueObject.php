@@ -12,8 +12,8 @@ abstract class ValueObject implements ValueObjectInterface
      */
     public function equals(ValueObject $object)
     {
-        $selfProperties = get_object_vars($this);
-        $objectProperties = get_object_vars($object);
+        $selfProperties   = \get_object_vars($this);
+        $objectProperties = \get_object_vars($object);
 
         foreach ($selfProperties as $name => $value) {
             // Check if the two objects have same properties with same values
