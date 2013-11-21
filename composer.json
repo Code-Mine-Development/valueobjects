@@ -1,5 +1,5 @@
 {
-    "name": "nicolopignatelli/valueobject",
+    "name": "nicolopignatelli/valueobjects",
     "description": "A PHP library implementing several immutable value objects for domain driven development projects",
     "license": "MIT",
     "authors": [
@@ -14,7 +14,10 @@
     "require-dev": {
         "phpunit/phpunit": "~3.7"
     },
+    "config": {
+        "bin-dir": "bin"
+    },
     "autoload": {
-        "psr-0": { "Hateoas": "src/" }
+        "psr-0": { "ValueObjects": "src/" }
     }
 }
