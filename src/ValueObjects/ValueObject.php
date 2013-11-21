@@ -1,6 +1,6 @@
 <?php
 
-namespace NicoloPigna\ValueObjects;
+namespace ValueObjects;
 
 abstract class ValueObject implements ValueObjectInterface
 {

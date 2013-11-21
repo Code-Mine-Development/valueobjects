@@ -12,4 +12,4 @@ EOT
     );
 }
 
-$loader->add('ValueObject\Tests', __DIR__);
+$loader->add('ValueObjects\Tests', __DIR__);
