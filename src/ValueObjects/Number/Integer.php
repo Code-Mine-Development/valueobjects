@@ -10,7 +10,7 @@ class Integer extends ValueObject
 
     public function __construct($value)
     {
-        $this->value = $value;
+        $this->value = intval($value);
     }
 
     /**
