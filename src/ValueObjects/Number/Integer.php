@@ -26,12 +26,12 @@ class Integer extends ValueObject
     /**
      * Tells whether two integer are equal by comparing their values
      *
-     * @param ValueObject $integer
+     * @param  ValueObject $integer
      * @return bool
      */
     public function equals(ValueObject $integer)
     {
-        if(false === parent::equals($integer)) {
+        if (false === parent::equals($integer)) {
             return false;
         }
 

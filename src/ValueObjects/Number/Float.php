@@ -26,12 +26,12 @@ class Float extends ValueObject
     /**
      * Tells whether two floats are equal by comparing their values
      *
-     * @param ValueObject $float
+     * @param  ValueObject $float
      * @return bool
      */
     public function equals(ValueObject $float)
     {
-        if(false === parent::equals($float)) {
+        if (false === parent::equals($float)) {
             return false;
         }
 

@@ -5,7 +5,7 @@ namespace ValueObjects;
 interface ValueObjectInterface
 {
     /**
-     * @param ValueObject $object
+     * @param  ValueObject $object
      * @return bool
      */
     public function equals(ValueObject $object);

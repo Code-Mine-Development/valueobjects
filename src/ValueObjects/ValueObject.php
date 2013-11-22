@@ -7,12 +7,12 @@ abstract class ValueObject implements ValueObjectInterface
     /**
      * Tells whether two objects are the same by comparing their classes.
      *
-     * @param ValueObject $object
+     * @param  ValueObject $object
      * @return bool
      */
     public function equals(ValueObject $object)
     {
-        if(\get_class($object) !== \get_class($this)) {
+        if (\get_class($object) !== \get_class($this)) {
             return false;
         }
 
@@ -29,4 +29,4 @@ abstract class ValueObject implements ValueObjectInterface
         return \get_class($this);
     }
 
-} 
+}
