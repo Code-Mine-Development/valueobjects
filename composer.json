@@ -1,6 +1,6 @@
 {
     "name": "nicolopignatelli/valueobjects",
-    "description": "A PHP library implementing several immutable value objects for domain driven development projects",
+    "description": "A PHP library/collection of classes aimed to help developers with domain driven development and the use of immutable objects.",
     "license": "MIT",
     "authors": [
         {
