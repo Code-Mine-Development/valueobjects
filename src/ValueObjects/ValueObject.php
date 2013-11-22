@@ -12,6 +12,10 @@ abstract class ValueObject implements ValueObjectInterface
      */
     public function equals(ValueObject $object)
     {
+        if(get_class($object) !== get_class($this)) {
+            return false;
+        }
+
         $selfProperties   = \get_object_vars($this);
         $objectProperties = \get_object_vars($object);
 
