@@ -31,6 +31,10 @@ class Integer extends ValueObject
      */
     public function equals(ValueObject $integer)
     {
+        if(false === parent::equals($integer)) {
+            return false;
+        }
+
         return $this->getValue() === $integer->getValue();
     }
 

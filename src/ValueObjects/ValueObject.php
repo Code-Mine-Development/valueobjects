@@ -5,30 +5,16 @@ namespace ValueObjects;
 abstract class ValueObject implements ValueObjectInterface
 {
     /**
-     * Tells whether two objects are the same by comparing their properties.
+     * Tells whether two objects are the same by comparing their classes.
      *
      * @param ValueObject $object
      * @return bool
      */
     public function equals(ValueObject $object)
     {
-        if(get_class($object) !== get_class($this)) {
+        if(\get_class($object) !== \get_class($this)) {
             return false;
         }
-
-        $selfProperties   = \get_object_vars($this);
-        $objectProperties = \get_object_vars($object);
-
-        foreach ($selfProperties as $name => $value) {
-            // Check if the two objects have same properties with same values
-            if (!isset($objectProperties[$name]) || $value !== $objectProperties[$name]) {
-                return false;
-            }
-        }
-
-        // Should we finally check against property count or it is not good for Parent/Child comparison?
-        // eg. Color(0,0,0) can be considered equal to AlphaColor(0,0,0,.5)?
-        // return count($selfProperties) == count($objectProperties);
 
         return true;
     }
