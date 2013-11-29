@@ -17,9 +17,11 @@ class IntegerTest extends TestCase
     {
         $integer1 = new Integer(3);
         $integer2 = new Integer(3);
+        $integer3 = new Integer(45);
 
         $this->assertTrue($integer1->equals($integer2));
         $this->assertTrue($integer2->equals($integer1));
+        $this->assertFalse($integer1->equals($integer3));
     }
 
     public function testToString()

@@ -11,6 +11,10 @@ class ValueObjectTest extends TestCase
 
         $this->assertTrue($stub1->equals($stub2));
         $this->assertTrue($stub2->equals($stub1));
+
+        eval('abstract class TestValueObject extends ValueObjects\ValueObject {}');
+        $stub3 = $this->getMockForAbstractClass('TestValueObject');
+        $this->assertFalse($stub1->equals($stub3));
     }
 
     public function testToString()

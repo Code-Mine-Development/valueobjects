@@ -17,9 +17,11 @@ class FloatTest extends TestCase
     {
         $float1 = new Float(5.64);
         $float2 = new Float(5.64);
+        $float3 = new Float(6.01);
 
         $this->assertTrue($float1->equals($float2));
         $this->assertTrue($float2->equals($float1));
+        $this->assertFalse($float1->equals($float3));
     }
 
     public function testToString()

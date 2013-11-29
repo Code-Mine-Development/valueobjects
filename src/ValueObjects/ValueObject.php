@@ -5,7 +5,7 @@ namespace ValueObjects;
 abstract class ValueObject implements ValueObjectInterface
 {
     /**
-     * Tells whether two objects are the same by comparing their classes.
+     * Tells whether two value objects are the same by comparing their classes.
      *
      * @param  ValueObject $object
      * @return bool
