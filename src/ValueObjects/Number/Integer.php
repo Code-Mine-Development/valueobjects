@@ -6,7 +6,7 @@ use ValueObjects\ValueObject;
 
 class Integer extends ValueObject
 {
-    private $value;
+    protected $value;
 
     public function __construct($value)
     {

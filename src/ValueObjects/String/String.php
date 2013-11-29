@@ -6,7 +6,7 @@ use ValueObjects\ValueObject;
 
 class String extends ValueObject
 {
-    private $value;
+    protected $value;
 
     public function __construct($value)
     {
@@ -26,12 +26,12 @@ class String extends ValueObject
     /**
      * Tells whether two strings are equal by comparing their values
      *
-     * @param ValueObject $string
+     * @param  ValueObject $string
      * @return bool
      */
     public function equals(ValueObject $string)
     {
-        if(false === parent::equals($string)) {
+        if (false === parent::equals($string)) {
             return false;
         }
 
