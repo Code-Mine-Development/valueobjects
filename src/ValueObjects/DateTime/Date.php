@@ -40,9 +40,9 @@ class Date implements ValueObjectInterface
      */
     public static function now()
     {
-        $now = new \DateTime('now');
+        $date = new self(Year::now()->getValue(), Month::now()->getValue(), MonthDay::now()->getValue());
 
-        return self::fromNativeDateTime($now);
+        return $date;
     }
 
     public function __construct($year, $month, $day)
@@ -115,9 +115,9 @@ class Date implements ValueObjectInterface
      */
     public function toNativeDateTime()
     {
-        $year  = \intval($this->getYear()->getValue());
-        $month = \intval($this->getMonth()->getValue());
-        $day   = \intval($this->getDay()->getValue());
+        $year  = $this->getYear()->getValue();
+        $month = $this->getMonth()->getValue();
+        $day   = $this->getDay()->getValue();
 
         $date = new \DateTime();
         $date->setDate($year, $month, $day);
