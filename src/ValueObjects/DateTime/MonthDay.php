@@ -12,7 +12,7 @@ class MonthDay extends Integer
 
     public function __construct($value)
     {
-        if($value < self::MIN_MONTH_DAY || $value > self::MAX_MONTH_DAY) {
+        if ($value < self::MIN_MONTH_DAY || $value > self::MAX_MONTH_DAY) {
             throw new InvalidMonthDayException($value);
         }
 

@@ -18,7 +18,7 @@ class DateTime implements ValueObjectInterface
     /**
      * Returns a new DateTime from a native PHP \DateTime
      *
-     * @param \DateTime $date_time
+     * @param  \DateTime $date_time
      * @return DateTime
      */
     public static function fromNativeDateTime(\DateTime $date_time)
@@ -58,12 +58,12 @@ class DateTime implements ValueObjectInterface
     /**
      * Tells whether two DateTime are equal by comparing their values
      *
-     * @param ValueObjectInterface $date_time
+     * @param  ValueObjectInterface $date_time
      * @return bool
      */
     public function equals(ValueObjectInterface $date_time)
     {
-        if(false === Util::classEquals($this, $date_time)) {
+        if (false === Util::classEquals($this, $date_time)) {
             return false;
         }
 

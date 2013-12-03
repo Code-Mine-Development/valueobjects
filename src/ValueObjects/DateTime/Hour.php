@@ -12,7 +12,7 @@ class Hour extends Integer
 
     public function __construct($value)
     {
-        if($value < self::MIN_HOUR || $value > self::MAX_HOUR) {
+        if ($value < self::MIN_HOUR || $value > self::MAX_HOUR) {
             throw new InvalidHourException($value);
         }
 

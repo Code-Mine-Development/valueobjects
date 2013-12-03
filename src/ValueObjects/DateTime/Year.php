@@ -3,7 +3,6 @@
 namespace ValueObjects\DateTime;
 
 use ValueObjects\Number\Integer;
-use ValueObjects\ValueObject;
 
 class Year extends Integer
 {

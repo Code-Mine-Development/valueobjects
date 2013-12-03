@@ -12,7 +12,7 @@ class Second extends Integer
 
     public function __construct($value)
     {
-        if($value < self::MIN_SECOND || $value > self::MAX_SECOND) {
+        if ($value < self::MIN_SECOND || $value > self::MAX_SECOND) {
             throw new InvalidSecondException($value);
         }
 

@@ -27,7 +27,7 @@ class Float implements ValueObjectInterface
     /**
      * Tells whether two floats are equal by comparing their values
      *
-     * @param ValueObjectInterface $float
+     * @param  ValueObjectInterface $float
      * @return bool
      */
     public function equals(ValueObjectInterface $float)

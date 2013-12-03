@@ -17,7 +17,7 @@ class WeekDay extends Integer
 
     public function __construct($value)
     {
-        if($value < self::MONDAY || $value > self::SUNDAY) {
+        if ($value < self::MONDAY || $value > self::SUNDAY) {
             throw new InvalidWeekDayException($value);
         }
 

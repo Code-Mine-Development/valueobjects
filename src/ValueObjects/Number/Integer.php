@@ -27,7 +27,7 @@ class Integer implements ValueObjectInterface
     /**
      * Tells whether two integer are equal by comparing their values
      *
-     * @param ValueObjectInterface $integer
+     * @param  ValueObjectInterface $integer
      * @return bool
      */
     public function equals(ValueObjectInterface $integer)

@@ -38,7 +38,7 @@ class Sex implements ValueObjectInterface
     /**
      * Tells whether two Sex objects are equal by comparing their values
      *
-     * @param ValueObjectInterface $sex
+     * @param  ValueObjectInterface $sex
      * @return bool
      */
     public function equals(ValueObjectInterface $sex)

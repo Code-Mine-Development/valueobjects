@@ -12,7 +12,7 @@ class Minute extends Integer
 
     public function __construct($value)
     {
-        if($value < self::MIN_MINUTE || $value > self::MAX_MINUTE) {
+        if ($value < self::MIN_MINUTE || $value > self::MAX_MINUTE) {
             throw new InvalidMinuteException($value);
         }
 

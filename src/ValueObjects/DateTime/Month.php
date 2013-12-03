@@ -22,7 +22,7 @@ class Month extends Integer
 
     public function __construct($value)
     {
-        if($value < self::JANUARY || $value > self::DECEMBER) {
+        if ($value < self::JANUARY || $value > self::DECEMBER) {
             throw new InvalidMonthException($value);
         }
 

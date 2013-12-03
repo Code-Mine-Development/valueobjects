@@ -21,7 +21,7 @@ class Time implements ValueObjectInterface
     /**
      * Returns a new Time from a native PHP \DateTime
      *
-     * @param \DateTime $time
+     * @param  \DateTime $time
      * @return Time
      */
     public static function fromNativeDateTime(\DateTime $time)
@@ -51,7 +51,7 @@ class Time implements ValueObjectInterface
             $this->hour   = new Hour($hour);
             $this->minute = new Minute($minute);
             $this->second = new Second($second);
-        } catch(DateTimeException $e) {
+        } catch (DateTimeException $e) {
             throw new InvalidTimeException($hour, $minute, $second);
         }
     }
@@ -59,12 +59,12 @@ class Time implements ValueObjectInterface
     /**
      * Tells whether two Time are equal by comparing their values
      *
-     * @param ValueObjectInterface $time
+     * @param  ValueObjectInterface $time
      * @return bool
      */
     public function equals(ValueObjectInterface $time)
     {
-        if(false === Util::classEquals($this, $time)) {
+        if (false === Util::classEquals($this, $time)) {
             return false;
         }
 

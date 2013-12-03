@@ -86,7 +86,7 @@ class Name implements ValueObjectInterface
     /**
      * Tells whether two names are equal by comparing their values
      *
-     * @param ValueObjectInterface $name
+     * @param  ValueObjectInterface $name
      * @return bool
      */
     public function equals(ValueObjectInterface $name)

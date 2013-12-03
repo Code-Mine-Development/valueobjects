@@ -21,7 +21,7 @@ class Date implements ValueObjectInterface
     /**
      * Returns a new Date from a native PHP \DateTime
      *
-     * @param \DateTime $date
+     * @param  \DateTime $date
      * @return Date
      */
     public static function fromNativeDateTime(\DateTime $date)
@@ -51,14 +51,14 @@ class Date implements ValueObjectInterface
             \DateTime::createFromFormat('Y-n-j', \sprintf('%d-%d-%d', $year, $month, $day));
             $nativeDateErrors = \DateTime::getLastErrors();
 
-            if($nativeDateErrors['warning_count'] > 0 || $nativeDateErrors['error_count'] > 0) {
+            if ($nativeDateErrors['warning_count'] > 0 || $nativeDateErrors['error_count'] > 0) {
                 throw new DateTimeException();
             }
 
             $this->year  = new Year($year);
             $this->month = new Month($month);
             $this->day   = new MonthDay($day);
-        } catch(DateTimeException $e) {
+        } catch (DateTimeException $e) {
             throw new InvalidDateException($year, $month, $day);
         }
     }
@@ -66,12 +66,12 @@ class Date implements ValueObjectInterface
     /**
      * Tells whether two Date are equal by comparing their values
      *
-     * @param ValueObjectInterface $date
+     * @param  ValueObjectInterface $date
      * @return bool
      */
     public function equals(ValueObjectInterface $date)
     {
-        if(false === Util::classEquals($this, $date)) {
+        if (false === Util::classEquals($this, $date)) {
             return false;
         }
 
