@@ -19,7 +19,7 @@ class UUID extends String
 
     public function equals(ValueObjectInterface $uuid)
     {
-        if(false === Util::classEquals($this, $uuid)) {
+        if (false === Util::classEquals($this, $uuid)) {
             return false;
         }
 
