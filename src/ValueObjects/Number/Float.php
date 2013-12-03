@@ -2,9 +2,10 @@
 
 namespace ValueObjects\Number;
 
-use ValueObjects\ValueObject;
+use ValueObjects\Util\Util;
+use ValueObjects\ValueObjectInterface;
 
-class Float extends ValueObject
+class Float implements ValueObjectInterface
 {
     protected $value;
 
@@ -26,12 +27,12 @@ class Float extends ValueObject
     /**
      * Tells whether two floats are equal by comparing their values
      *
-     * @param  ValueObject $float
+     * @param ValueObjectInterface $float
      * @return bool
      */
-    public function equals(ValueObject $float)
+    public function equals(ValueObjectInterface $float)
     {
-        if (false === parent::equals($float)) {
+        if (false === Util::classEquals($this, $float)) {
             return false;
         }
 
@@ -45,6 +46,6 @@ class Float extends ValueObject
      */
     public function __toString()
     {
-        return \strval($this->value);
+        return \strval($this->getValue());
     }
 }

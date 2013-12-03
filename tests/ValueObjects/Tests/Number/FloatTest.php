@@ -22,6 +22,9 @@ class FloatTest extends TestCase
         $this->assertTrue($float1->equals($float2));
         $this->assertTrue($float2->equals($float1));
         $this->assertFalse($float1->equals($float3));
+
+        $mock = $this->getMock('ValueObjects\ValueObjectInterface');
+        $this->assertFalse($float1->equals($mock));
     }
 
     public function testToString()

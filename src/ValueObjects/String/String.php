@@ -2,9 +2,10 @@
 
 namespace ValueObjects\String;
 
-use ValueObjects\ValueObject;
+use ValueObjects\Util\Util;
+use ValueObjects\ValueObjectInterface;
 
-class String extends ValueObject
+class String implements ValueObjectInterface
 {
     protected $value;
 
@@ -26,12 +27,12 @@ class String extends ValueObject
     /**
      * Tells whether two strings are equal by comparing their values
      *
-     * @param  ValueObject $string
+     * @param  ValueObjectInterface $string
      * @return bool
      */
-    public function equals(ValueObject $string)
+    public function equals(ValueObjectInterface $string)
     {
-        if (false === parent::equals($string)) {
+        if (false === Util::classEquals($this, $string)) {
             return false;
         }
 

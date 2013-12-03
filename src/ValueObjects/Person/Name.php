@@ -3,9 +3,10 @@
 namespace ValueObjects\Person;
 
 use ValueObjects\String\String;
-use ValueObjects\ValueObject;
+use ValueObjects\Util\Util;
+use ValueObjects\ValueObjectInterface;
 
-class Name extends ValueObject
+class Name implements ValueObjectInterface
 {
     /**
      * First name
@@ -85,12 +86,12 @@ class Name extends ValueObject
     /**
      * Tells whether two names are equal by comparing their values
      *
-     * @param  ValueObject $name
+     * @param ValueObjectInterface $name
      * @return bool
      */
-    public function equals(ValueObject $name)
+    public function equals(ValueObjectInterface $name)
     {
-        if (false === parent::equals($name)) {
+        if (false === Util::classEquals($this, $name)) {
             return false;
         }
 

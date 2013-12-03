@@ -22,6 +22,9 @@ class SexTest extends TestCase
         $this->assertTrue($male1->equals($male2));
         $this->assertTrue($male2->equals($male1));
         $this->assertFalse($male1->equals($other));
+
+        $mock = $this->getMock('ValueObjects\ValueObjectInterface');
+        $this->assertFalse($male1->equals($mock));
     }
 
     public function testToString()

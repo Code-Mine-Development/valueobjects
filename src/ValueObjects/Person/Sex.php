@@ -3,9 +3,10 @@
 namespace ValueObjects\Person;
 
 use ValueObjects\Person\Exception\InvalidSexException;
-use ValueObjects\ValueObject;
+use ValueObjects\Util\Util;
+use ValueObjects\ValueObjectInterface;
 
-class Sex extends ValueObject
+class Sex implements ValueObjectInterface
 {
     const MALE   = 'male';
     const FEMALE = 'female';
@@ -37,12 +38,12 @@ class Sex extends ValueObject
     /**
      * Tells whether two Sex objects are equal by comparing their values
      *
-     * @param  ValueObject $sex
+     * @param ValueObjectInterface $sex
      * @return bool
      */
-    public function equals(ValueObject $sex)
+    public function equals(ValueObjectInterface $sex)
     {
-        if (false === parent::equals($sex)) {
+        if (false === Util::classEquals($this, $sex)) {
             return false;
         }
 

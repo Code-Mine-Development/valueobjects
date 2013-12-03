@@ -22,6 +22,9 @@ class StringTest extends TestCase
         $this->assertTrue($foo1->equals($foo2));
         $this->assertTrue($foo2->equals($foo1));
         $this->assertFalse($foo1->equals($bar));
+
+        $mock = $this->getMock('ValueObjects\ValueObjectInterface');
+        $this->assertFalse($foo1->equals($mock));
     }
 
     public function testToString()

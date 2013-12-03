@@ -41,6 +41,9 @@ class PersonTest extends TestCase
         $this->assertTrue($name1->equals($name2));
         $this->assertTrue($name2->equals($name1));
         $this->assertFalse($name1->equals($name3));
+
+        $mock = $this->getMock('ValueObjects\ValueObjectInterface');
+        $this->assertFalse($name1->equals($mock));
     }
 
     public function testToString()

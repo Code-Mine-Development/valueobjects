@@ -2,9 +2,10 @@
 
 namespace ValueObjects\Number;
 
-use ValueObjects\ValueObject;
+use ValueObjects\Util\Util;
+use ValueObjects\ValueObjectInterface;
 
-class Integer extends ValueObject
+class Integer implements ValueObjectInterface
 {
     protected $value;
 
@@ -26,12 +27,12 @@ class Integer extends ValueObject
     /**
      * Tells whether two integer are equal by comparing their values
      *
-     * @param  ValueObject $integer
+     * @param ValueObjectInterface $integer
      * @return bool
      */
-    public function equals(ValueObject $integer)
+    public function equals(ValueObjectInterface $integer)
     {
-        if (false === parent::equals($integer)) {
+        if (false === Util::classEquals($this, $integer)) {
             return false;
         }
 
@@ -45,6 +46,6 @@ class Integer extends ValueObject
      */
     public function __toString()
     {
-        return \strval($this->value);
+        return \strval($this->getValue());
     }
 }

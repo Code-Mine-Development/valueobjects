@@ -5,10 +5,12 @@ namespace ValueObjects;
 interface ValueObjectInterface
 {
     /**
-     * @param  ValueObject $object
+     * Compare two ValueObjectInterface and tells whether they can be considered equal
+     *
+     * @param  ValueObjectInterface $object
      * @return bool
      */
-    public function equals(ValueObject $object);
+    public function equals(ValueObjectInterface $object);
 
     /**
      * @return string

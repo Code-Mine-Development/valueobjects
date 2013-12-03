@@ -22,6 +22,9 @@ class IntegerTest extends TestCase
         $this->assertTrue($integer1->equals($integer2));
         $this->assertTrue($integer2->equals($integer1));
         $this->assertFalse($integer1->equals($integer3));
+
+        $mock = $this->getMock('ValueObjects\ValueObjectInterface');
+        $this->assertFalse($integer1->equals($mock));
     }
 
     public function testToString()
