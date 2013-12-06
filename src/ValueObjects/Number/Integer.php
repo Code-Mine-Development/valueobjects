@@ -5,27 +5,20 @@ namespace ValueObjects\Number;
 use ValueObjects\Util\Util;
 use ValueObjects\ValueObjectInterface;
 
-class Integer implements ValueObjectInterface
+class Integer extends Real
 {
-    protected $value;
-
-    public function __construct($value)
+    public function __construct($value, RoundingMode $rounding_mode = null)
     {
-        $this->value = intval($value);
+        if (null === $rounding_mode) {
+            $rounding_mode = RoundingMode::HALF_UP();
+        }
+
+        $value = round($value, 0, $rounding_mode->getValue());
+        parent::__construct($value);
     }
 
     /**
-     * Returns the value of the integer
-     *
-     * @return int
-     */
-    public function getValue()
-    {
-        return $this->value;
-    }
-
-    /**
-     * Tells whether two integer are equal by comparing their values
+     * Tells whether two Integer are equal by comparing their values
      *
      * @param  ValueObjectInterface $integer
      * @return bool
@@ -40,12 +33,14 @@ class Integer implements ValueObjectInterface
     }
 
     /**
-     * Returns the string representation of the integer value
+     * Returns the value of the integer number
      *
-     * @return string
+     * @return int
      */
-    public function __toString()
+    public function getValue()
     {
-        return \strval($this->getValue());
+        $value = parent::getValue();
+
+        return \intval($value);
     }
 }

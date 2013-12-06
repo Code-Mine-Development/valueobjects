@@ -10,7 +10,7 @@ class IntegerTest extends TestCase
     public function testGetValue()
     {
         $integer = new Integer(5);
-        $this->assertEquals($integer->getValue(), 5);
+        $this->assertSame(5, $integer->getValue());
     }
 
     public function testEquals()
@@ -30,12 +30,12 @@ class IntegerTest extends TestCase
     public function testToString()
     {
         $integer = new Integer(87);
-        $this->assertEquals($integer->__toString(), '87');
+        $this->assertSame('87', $integer->__toString());
     }
 
     public function testZeroToString()
     {
         $zero = new Integer(0);
-        $this->assertEquals($zero->__toString(), '0');
+        $this->assertSame('0', $zero->__toString());
     }
 }

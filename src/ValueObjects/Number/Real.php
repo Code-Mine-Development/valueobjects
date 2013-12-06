@@ -5,17 +5,17 @@ namespace ValueObjects\Number;
 use ValueObjects\Util\Util;
 use ValueObjects\ValueObjectInterface;
 
-class Float implements ValueObjectInterface
+class Real implements ValueObjectInterface, NumberInterface
 {
     protected $value;
 
     public function __construct($value)
     {
-        $this->value = floatval($value);
+        $this->value = \floatval($value);
     }
 
     /**
-     * Returns the value of the floating point number
+     * Returns the value of the real number
      *
      * @return float
      */
@@ -25,22 +25,22 @@ class Float implements ValueObjectInterface
     }
 
     /**
-     * Tells whether two floats are equal by comparing their values
+     * Tells whether two Real are equal by comparing their values
      *
-     * @param  ValueObjectInterface $float
+     * @param  ValueObjectInterface $real
      * @return bool
      */
-    public function equals(ValueObjectInterface $float)
+    public function equals(ValueObjectInterface $real)
     {
-        if (false === Util::classEquals($this, $float)) {
+        if (false === Util::classEquals($this, $real)) {
             return false;
         }
 
-        return $this->getValue() === $float->getValue();
+        return $this->getValue() === $real->getValue();
     }
 
     /**
-     * Returns the string representation of the float value
+     * Returns the string representation of the real value
      *
      * @return string
      */

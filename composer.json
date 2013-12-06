@@ -10,7 +10,9 @@
     ],
     "require": {
         "php": ">=5.3.3",
-        "rhumsaa/uuid": "2.5"
+        "rhumsaa/uuid": "2.5",
+        "mathiasverraes/money": "dev-master",
+        "marc-mabe/php-enum": "dev-master"
     },
     "require-dev": {
         "phpunit/phpunit": "~3.7"
