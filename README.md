@@ -1,4 +1,4 @@
-valueobjects
+ValueObjects
 ============
 
 [![Build Status](https://travis-ci.org/nicolopignatelli/valueobjects.png?branch=master)](https://travis-ci.org/nicolopignatelli/valueobjects)
@@ -22,6 +22,24 @@ package:
 ```
 
 Otherwise, install the library and setup the autoloader yourself.
+
+
+Covered types
+-------------
+
+_ValueObjects_ should cover every common type a developer could need in a DDD project. With this goal in mind, the object library should stay as generalistic as possible in order to be easily extendable and customizable in every single project.
+
+Types list (mostly implemented as namespaces):
+
+- [x] [Dates and time](/src/ValueObjects/DateTime)
+- [x] [Numbers](/src/ValueObjects/Number)
+- [x] [Strings](/src/ValueObjects/String)
+- [x] [UUID](/src/ValueObjects/Identity)
+- [x] [Person data (age, sex, etc...)](/src/ValueObjects/Person)
+- [ ] Money (coming soon)
+- [ ] TODO: Geographic data (coordinates, addresses, etc...)
+- [ ] TODO: Internet related (URLs, email addresses, IPs, etc...)
+- [ ] _Submit yours!_
 
 
 Contributing
