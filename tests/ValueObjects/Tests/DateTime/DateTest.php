@@ -12,9 +12,10 @@ class DateTest extends TestCase
 {
     public function testFromNativeDateTime()
     {
-        $nativeDate = new \DateTime('today');
+        $nativeDate = new \DateTime();
+        $nativeDate->setDate(2013, 12, 3);
         $dateFromNative = Date::fromNativeDateTime($nativeDate);
-        $constructedDate = new Date($nativeDate->format('Y'), $nativeDate->format('m'), $nativeDate->format('d'));
+        $constructedDate = new Date(new Year(2013), Month::DECEMBER(), new MonthDay(3));
 
         $this->assertTrue($dateFromNative->equals($constructedDate));
     }
@@ -26,22 +27,16 @@ class DateTest extends TestCase
     }
 
     /** @expectedException ValueObjects\DateTime\Exception\InvalidDateException */
-    public function testInvalidDateException()
-    {
-        new Date(2013, 13, 41);
-    }
-
-    /** @expectedException ValueObjects\DateTime\Exception\InvalidDateException */
     public function testAlmostValidDateException()
     {
-        new Date(2013, 2, 31);
+        new Date(new Year(2013), Month::FEBRUARY(), new MonthDay(31));
     }
 
     public function testEquals()
     {
-        $date1 = new Date(2013, 12, 3);
-        $date2 = new Date(2013, 12, 3);
-        $date3 = new Date(2013, 12, 5);
+        $date1 = new Date(new Year(2013), Month::DECEMBER(), new MonthDay(3));
+        $date2 = new Date(new Year(2013), Month::DECEMBER(), new MonthDay(3));
+        $date3 = new Date(new Year(2013), Month::DECEMBER(), new MonthDay(5));
 
         $this->assertTrue($date1->equals($date2));
         $this->assertTrue($date2->equals($date1));
@@ -53,7 +48,7 @@ class DateTest extends TestCase
 
     public function testGetYear()
     {
-        $date = new Date(2013, 12, 3);
+        $date = new Date(new Year(2013), Month::DECEMBER(), new MonthDay(3));
         $year = new Year(2013);
 
         $this->assertTrue($year->equals($date->getYear()));
@@ -61,15 +56,15 @@ class DateTest extends TestCase
 
     public function testGetMonth()
     {
-        $date  = new Date(2013, 12, 3);
-        $month = new Month(12);
+        $date = new Date(new Year(2013), Month::DECEMBER(), new MonthDay(3));
+        $month = Month::DECEMBER();
 
         $this->assertTrue($month->equals($date->getMonth()));
     }
 
     public function testGetDay()
     {
-        $date = new Date(2013, 12, 3);
+        $date = new Date(new Year(2013), Month::DECEMBER(), new MonthDay(3));
         $day  = new MonthDay(3);
 
         $this->assertTrue($day->equals($date->getDay()));
@@ -77,7 +72,7 @@ class DateTest extends TestCase
 
     public function testToNativeDateTime()
     {
-        $date = new Date(2013, 12, 3);
+        $date = new Date(new Year(2013), Month::DECEMBER(), new MonthDay(3));
         $nativeDate = \DateTime::createFromFormat('Y-n-j H:i:s', '2013-12-3 00:00:00');
 
         $this->assertEquals($nativeDate, $date->toNativeDateTime());
@@ -85,7 +80,7 @@ class DateTest extends TestCase
 
     public function testToString()
     {
-        $date = new Date(2013, 12, 3);
+        $date = new Date(new Year(2013), Month::DECEMBER(), new MonthDay(3));
         $this->assertEquals('2013-12-3', $date->__toString());
     }
 

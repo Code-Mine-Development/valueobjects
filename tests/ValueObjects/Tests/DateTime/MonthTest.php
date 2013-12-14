@@ -10,13 +10,24 @@ class MonthTest extends TestCase
     public function testNow()
     {
         $month = Month::now();
-        $this->assertEquals(date('n'), $month->getValue());
+        $this->assertEquals(date('F'), $month->getValue());
     }
 
-    /** @expectedException ValueObjects\DateTime\Exception\InvalidMonthException */
-    public function testInvalidMonth()
+    public function testFromNativeDateTime()
     {
-        new Month(13);
+        $nativeDateTime = new \DateTime();
+        $nativeDateTime->setDate(2013, 12, 1);
+
+        $month = Month::fromNativeDateTime($nativeDateTime);
+
+        $this->assertEquals('December', $month->getValue());
+    }
+
+    public function testGetNumericValue()
+    {
+        $month = Month::APRIL();
+
+        $this->assertEquals(4, $month->getNumericValue());
     }
 
 }

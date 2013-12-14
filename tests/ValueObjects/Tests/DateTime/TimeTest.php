@@ -12,9 +12,10 @@ class TimeTest extends TestCase
 {
     public function testFromNativeDateTime()
     {
-        $nativeTime = new \DateTime('today');
+        $nativeTime = new \DateTime();
+        $nativeTime->setTime(20, 10, 34);
         $timeFromNative = Time::fromNativeDateTime($nativeTime);
-        $constructedTime = new Time($nativeTime->format('G'), $nativeTime->format('i'), $nativeTime->format('s'));
+        $constructedTime = new Time(new Hour(20), new Minute(10), new Second(34));
 
         $this->assertTrue($timeFromNative->equals($constructedTime));
     }
@@ -25,17 +26,17 @@ class TimeTest extends TestCase
         $this->assertEquals(date('G:i:s'), \strval($time));
     }
 
-    /** @expectedException ValueObjects\DateTime\Exception\InvalidTimeException */
-    public function testInvalidTimeException()
+    public function testZero()
     {
-        new Time(10, 20, 76);
+        $time = Time::zero();
+        $this->assertEquals('0:00:00', \strval($time));
     }
 
     public function testEquals()
     {
-        $time1 = new Time(10, 20, 0);
-        $time2 = new Time(10, 20, 0);
-        $time3 = new Time(10, 1, 10);
+        $time1 = new Time(new Hour(20), new Minute(10), new Second(34));
+        $time2 = new Time(new Hour(20), new Minute(10), new Second(34));
+        $time3 = new Time(new Hour(20), new Minute(1), new Second(10));
 
         $this->assertTrue($time1->equals($time2));
         $this->assertTrue($time2->equals($time1));
@@ -47,40 +48,40 @@ class TimeTest extends TestCase
 
     public function testGetHour()
     {
-        $time = new Time(10, 20, 0);
-        $hour = new Hour(10);
+        $time = new Time(new Hour(20), new Minute(10), new Second(34));
+        $hour = new Hour(20);
 
         $this->assertTrue($hour->equals($time->getHour()));
     }
 
     public function testGetMinute()
     {
-        $time  = new Time(10, 20, 0);
-        $minute = new Minute(20);
+        $time  = new Time(new Hour(20), new Minute(10), new Second(34));
+        $minute = new Minute(10);
 
         $this->assertTrue($minute->equals($time->getMinute()));
     }
 
-    public function testGetDay()
+    public function testGetSecond()
     {
-        $time = new Time(10, 20, 0);
-        $day  = new Second(0);
+        $time = new Time(new Hour(20), new Minute(10), new Second(34));
+        $day  = new Second(34);
 
         $this->assertTrue($day->equals($time->getSecond()));
     }
 
     public function testToNativeDateTime()
     {
-        $time = new Time(10, 20, 0);
-        $nativeTime = \DateTime::createFromFormat('H:i:s', '10:20:00');
+        $time = new Time(new Hour(20), new Minute(10), new Second(34));
+        $nativeTime = \DateTime::createFromFormat('H:i:s', '20:10:34');
 
         $this->assertEquals($nativeTime, $time->toNativeDateTime());
     }
 
     public function testToString()
     {
-        $time = new Time(10, 20, 0);;
-        $this->assertEquals('10:20:00', $time->__toString());
+        $time = new Time(new Hour(20), new Minute(10), new Second(34));
+        $this->assertEquals('20:10:34', $time->__toString());
     }
 
 }

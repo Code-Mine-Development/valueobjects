@@ -2,7 +2,7 @@
 
 namespace ValueObjects\Money;
 
-use MabeEnum\Enum;
+use ValueObjects\Enum\Enum;
 
 class CurrencyCode extends Enum
 {

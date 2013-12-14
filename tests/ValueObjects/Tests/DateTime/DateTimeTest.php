@@ -3,8 +3,11 @@
 namespace ValueObjects\Tests\DateTime;
 
 use ValueObjects\DateTime\Date;
+use ValueObjects\DateTime\Hour;
+use ValueObjects\DateTime\Minute;
 use ValueObjects\DateTime\Month;
 use ValueObjects\DateTime\MonthDay;
+use ValueObjects\DateTime\Second;
 use ValueObjects\DateTime\Time;
 use ValueObjects\DateTime\Year;
 use ValueObjects\Tests\TestCase;
@@ -14,9 +17,13 @@ class DateTimeTest extends TestCase
 {
     public function testFromNativeDateTime()
     {
-        $nativeDateTime      = new \DateTime('now');
-        $dateTimeFromNative  = DateTime::fromNativeDateTime($nativeDateTime);
-        $constructedDateTime = new DateTime($nativeDateTime->format('Y'), $nativeDateTime->format('m'), $nativeDateTime->format('d'), $nativeDateTime->format('G'), $nativeDateTime->format('i'), $nativeDateTime->format('s'));
+        $nativeDateTime = new \DateTime();
+        $nativeDateTime->setDate(2013, 12, 6)->setTime(20, 50, 10);
+        $dateTimeFromNative = DateTime::fromNativeDateTime($nativeDateTime);
+
+        $date = new Date(new Year(2013), Month::DECEMBER(), new MonthDay(6));
+        $time = new Time(new Hour(20), new Minute(50), new Second(10));
+        $constructedDateTime = new DateTime($date, $time);
 
         $this->assertTrue($dateTimeFromNative->equals($constructedDateTime));
     }
@@ -27,23 +34,24 @@ class DateTimeTest extends TestCase
         $this->assertEquals(date('Y-n-j G:i:s'), \strval($dateTime));
     }
 
-    /** @expectedException ValueObjects\DateTime\Exception\InvalidDateTimeException */
-    public function testInvalidDateException()
+    public function testNullTime()
     {
-        new DateTime(2013, 13, 2, 24, 30, 1);
-    }
-
-    /** @expectedException ValueObjects\DateTime\Exception\InvalidDateTimeException */
-    public function testAlmostValidDateTimeException()
-    {
-        new DateTime(2013, 2, 28, 64, 20, 20);
+        $date = new Date(new Year(2013), Month::DECEMBER(), new MonthDay(21));
+        $dateTime = new DateTime($date);
+        $this->assertTrue(Time::zero()->equals($dateTime->getTime()));
     }
 
     public function testEquals()
     {
-        $dateTime1 = new DateTime(2013, 12, 3, 20, 20, 30);
-        $dateTime2 = new DateTime(2013, 12, 3, 20, 20, 30);
-        $dateTime3 = new DateTime(2013, 12, 4, 20, 21, 30);
+        $date = new Date(new Year(2013), Month::DECEMBER(), new MonthDay(3));
+        $time = new Time(new Hour(20), new Minute(50), new Second(10));
+
+        $date3 = new Date(new Year(2014), Month::MARCH(), new MonthDay(5));
+        $time3 = new Time(new Hour(10), new Minute(52), new Second(40));
+
+        $dateTime1 = new DateTime($date, $time);
+        $dateTime2 = new DateTime($date, $time);
+        $dateTime3 = new DateTime($date3, $time3);
 
         $this->assertTrue($dateTime1->equals($dateTime2));
         $this->assertTrue($dateTime2->equals($dateTime1));
@@ -55,32 +63,39 @@ class DateTimeTest extends TestCase
 
     public function testGetDate()
     {
-        $dateTime = new DateTime(2013, 12, 3);
-        $date     = new Date(2013, 12, 3);
+        $date = new Date(new Year(2013), Month::DECEMBER(), new MonthDay(3));
+        $time = new Time(new Hour(20), new Minute(50), new Second(10));
+        $dateTime = new DateTime($date, $time);
 
         $this->assertTrue($date->equals($dateTime->getDate()));
     }
 
     public function testGetTime()
     {
-        $dateTime = new DateTime(2013, 12, 3, 20, 40, 10);
-        $time     = new Time(20, 40, 10);
+        $date = new Date(new Year(2013), Month::DECEMBER(), new MonthDay(3));
+        $time = new Time(new Hour(20), new Minute(50), new Second(10));
+        $dateTime = new DateTime($date, $time);
 
         $this->assertTrue($time->equals($dateTime->getTime()));
     }
 
     public function testToNativeDateTime()
     {
-        $dateTime       = new DateTime(2013, 12, 3, 20, 40, 10);
-        $nativeDateTime = \DateTime::createFromFormat('Y-n-j H:i:s', '2013-12-3 20:40:10');
+        $date           = new Date(new Year(2013), Month::DECEMBER(), new MonthDay(3));
+        $time           = new Time(new Hour(20), new Minute(50), new Second(10));
+        $dateTime       = new DateTime($date, $time);
+        $nativeDateTime = \DateTime::createFromFormat('Y-n-j H:i:s', '2013-12-3 20:50:10');
 
         $this->assertEquals($nativeDateTime, $dateTime->toNativeDateTime());
     }
 
     public function testToString()
     {
-        $date = new DateTime(2013, 12, 3, 20, 40, 10);
-        $this->assertEquals('2013-12-3 20:40:10', $date->__toString());
+        $date           = new Date(new Year(2013), Month::DECEMBER(), new MonthDay(3));
+        $time           = new Time(new Hour(20), new Minute(50), new Second(10));
+        $dateTime       = new DateTime($date, $time);
+
+        $this->assertEquals('2013-12-3 20:50:10', $dateTime->__toString());
     }
 
 }

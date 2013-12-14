@@ -7,17 +7,17 @@ use ValueObjects\Tests\TestCase;
 
 class SexTest extends TestCase
 {
-    public function testSexValue()
+    public function testGetValue()
     {
-        $sex = new Sex(Sex::FEMALE);
+        $sex = Sex::FEMALE();
         $this->assertEquals(Sex::FEMALE, $sex->getValue());
     }
 
     public function testEquals()
     {
-        $male1 = new Sex(Sex::MALE);
-        $male2 = new Sex(Sex::MALE);
-        $other = new Sex(Sex::OTHER);
+        $male1 = Sex::MALE();
+        $male2 = Sex::MALE();
+        $other = Sex::OTHER();
 
         $this->assertTrue($male1->equals($male2));
         $this->assertTrue($male2->equals($male1));
@@ -29,15 +29,7 @@ class SexTest extends TestCase
 
     public function testToString()
     {
-        $sex = new Sex(Sex::FEMALE);
+        $sex = Sex::FEMALE();
         $this->assertEquals('female', $sex->__toString());
-    }
-
-    /**
-     * @expectedException ValueObjects\Person\Exception\InvalidSexException
-     */
-    public function testInvalidSex()
-    {
-        new Sex('foo');
     }
 }

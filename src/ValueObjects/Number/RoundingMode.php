@@ -2,7 +2,7 @@
 
 namespace ValueObjects\Number;
 
-use MabeEnum\Enum;
+use ValueObjects\Enum\Enum;
 
 class RoundingMode extends Enum
 {

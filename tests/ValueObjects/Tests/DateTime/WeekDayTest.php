@@ -10,13 +10,24 @@ class WeekdayTest extends TestCase
     public function testNow()
     {
         $weekDay = WeekDay::now();
-        $this->assertEquals(date('N'), $weekDay->getValue());
+        $this->assertEquals(date('l'), $weekDay->getValue());
     }
 
-    /** @expectedException ValueObjects\DateTime\Exception\InvalidWeekDayException */
-    public function testInvalidWeekDay()
+    public function testFromNativeDateTime()
     {
-        new WeekDay(8);
+        $nativeDateTime = new \DateTime();
+        $nativeDateTime->setDate(2013, 12, 14);
+
+        $weekDay = WeekDay::fromNativeDateTime($nativeDateTime);
+
+        $this->assertEquals('Saturday', $weekDay->getValue());
+    }
+
+    public function testGetNumericValue()
+    {
+        $weekDay = WeekDay::SATURDAY();
+
+        $this->assertEquals(6, $weekDay->getNumericValue());
     }
 
 }

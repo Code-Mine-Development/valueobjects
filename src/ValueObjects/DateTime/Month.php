@@ -2,43 +2,56 @@
 
 namespace ValueObjects\DateTime;
 
-use ValueObjects\DateTime\Exception\InvalidMonthException;
-use ValueObjects\Number\Integer;
+use ValueObjects\Enum\Enum;
 
-class Month extends Integer
+class Month extends Enum
 {
-    const JANUARY   = 1;
-    const FEBRUARY  = 2;
-    const MARCH     = 3;
-    const APRIL     = 4;
-    const MAY       = 5;
-    const JUNE      = 6;
-    const JULY      = 7;
-    const AUGUST    = 8;
-    const SEPTEMBER = 9;
-    const OCTOBER   = 10;
-    const NOVEMBER  = 11;
-    const DECEMBER  = 12;
-
-    public function __construct($value)
-    {
-        if ($value < self::JANUARY || $value > self::DECEMBER) {
-            throw new InvalidMonthException($value);
-        }
-
-        parent::__construct($value);
-    }
+    const JANUARY   = 'January';
+    const FEBRUARY  = 'February';
+    const MARCH     = 'March';
+    const APRIL     = 'April';
+    const MAY       = 'May';
+    const JUNE      = 'June';
+    const JULY      = 'July';
+    const AUGUST    = 'August';
+    const SEPTEMBER = 'September';
+    const OCTOBER   = 'October';
+    const NOVEMBER  = 'November';
+    const DECEMBER  = 'December';
 
     /**
-     * Returns the current month.
+     * Get current Month
      *
      * @return Month
      */
     public static function now()
     {
-        $now   = new \DateTime('now');
-        $month = $now->format('n');
+        $now = new \DateTime('now');
 
-        return new self($month);
+        return static::fromNativeDateTime($now);
+    }
+
+    /**
+     * Creates Month from a native PHP \DateTime
+     *
+     * @param  \DateTime $date
+     * @return Month
+     */
+    public static function fromNativeDateTime(\DateTime $date)
+    {
+        $month = \strtoupper($date->format('F'));
+
+        return static::getByName($month);
+    }
+
+    /**
+     * Returns a numeric representation of the Month.
+     * 1 for January to 12 for December.
+     *
+     * @return int
+     */
+    public function getNumericValue()
+    {
+        return $this->getOrdinal() + 1;
     }
 }

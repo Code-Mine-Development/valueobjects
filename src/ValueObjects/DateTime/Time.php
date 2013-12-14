@@ -2,8 +2,6 @@
 
 namespace ValueObjects\DateTime;
 
-use ValueObjects\DateTime\Exception\DateTimeException;
-use ValueObjects\DateTime\Exception\InvalidTimeException;
 use ValueObjects\Util\Util;
 use ValueObjects\ValueObjectInterface;
 
@@ -26,9 +24,9 @@ class Time implements ValueObjectInterface
      */
     public static function fromNativeDateTime(\DateTime $time)
     {
-        $hour   = $time->format('G');
-        $minute = $time->format('i');
-        $second = $time->format('s');
+        $hour   = new Hour($time->format('G'));
+        $minute = new Minute($time->format('i'));
+        $second = new Second($time->format('s'));
 
         return new self($hour, $minute, $second);
     }
@@ -40,20 +38,28 @@ class Time implements ValueObjectInterface
      */
     public static function now()
     {
-        $time = new self(Hour::now()->getValue(), Minute::now()->getValue(), Second::now()->getValue());
+        $time = new self(Hour::now(), Minute::now(), Second::now());
 
         return $time;
     }
 
-    public function __construct($hour, $minute, $second)
+    /**
+     * Return zero time
+     *
+     * @return Time
+     */
+    public static function zero()
     {
-        try {
-            $this->hour   = new Hour($hour);
-            $this->minute = new Minute($minute);
-            $this->second = new Second($second);
-        } catch (DateTimeException $e) {
-            throw new InvalidTimeException($hour, $minute, $second);
-        }
+        $time = new self(new Hour(0), new Minute(0), new Second(0));
+
+        return $time;
+    }
+
+    public function __construct(Hour $hour, Minute $minute, Second $second)
+    {
+        $this->hour   = $hour;
+        $this->minute = $minute;
+        $this->second = $second;
     }
 
     /**

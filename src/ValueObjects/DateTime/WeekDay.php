@@ -2,27 +2,17 @@
 
 namespace ValueObjects\DateTime;
 
-use ValueObjects\DateTime\Exception\InvalidWeekDayException;
-use ValueObjects\Number\Integer;
+use ValueObjects\Enum\Enum;
 
-class WeekDay extends Integer
+class WeekDay extends Enum
 {
-    const MONDAY    = 1;
-    const TUESDAY   = 2;
-    const WEDNESDAY = 3;
-    const THURSDAY  = 4;
-    const FRIDAY    = 5;
-    const SATURDAY  = 6;
-    const SUNDAY    = 7;
-
-    public function __construct($value)
-    {
-        if ($value < self::MONDAY || $value > self::SUNDAY) {
-            throw new InvalidWeekDayException($value);
-        }
-
-        parent::__construct($value);
-    }
+    const MONDAY    = 'Monday';
+    const TUESDAY   = 'Tuesday';
+    const WEDNESDAY = 'Wednesday';
+    const THURSDAY  = 'Thursday';
+    const FRIDAY    = 'Friday';
+    const SATURDAY  = 'Saturday';
+    const SUNDAY    = 'Sunday';
 
     /**
      * Returns the current week day.
@@ -31,9 +21,32 @@ class WeekDay extends Integer
      */
     public static function now()
     {
-        $now     = new \DateTime('now');
-        $weekDay = $now->format('N');
+        $now = new \DateTime('now');
 
-        return new self($weekDay);
+        return static::fromNativeDateTime($now);
+    }
+
+    /**
+     * Creates a WeekDay from a PHP native \DateTime
+     *
+     * @param  \DateTime $date
+     * @return WeekDay
+     */
+    public static function fromNativeDateTime(\DateTime $date)
+    {
+        $weekDay = \strtoupper($date->format('l'));
+
+        return static::getByName($weekDay);
+    }
+
+    /**
+     * Returns a numeric representation of the WeekDay.
+     * 1 for Monday to 7 for Sunday.
+     *
+     * @return int
+     */
+    public function getNumericValue()
+    {
+        return $this->getOrdinal() + 1;
     }
 }
