@@ -32,12 +32,4 @@ class AgeTest extends TestCase
         $age = new Age(54);
         $this->assertEquals('54', $age->__toString());
     }
-
-    /**
-     * @expectedException ValueObjects\Person\Exception\InvalidAgeException
-     */
-    public function testInvalidAge()
-    {
-        new Age(-3);
-    }
 }

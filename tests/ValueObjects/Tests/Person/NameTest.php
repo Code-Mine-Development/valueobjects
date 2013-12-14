@@ -8,47 +8,55 @@ use ValueObjects\String\String;
 
 class PersonTest extends TestCase
 {
+    private $name;
+
+    public function setup()
+    {
+        $this->name = new Name(new String('foo'), new String('bar'), new String('baz'));
+    }
+
+    public function testFromNative()
+    {
+        $fromNativeName  = Name::fromNative('foo', 'bar', 'baz');
+
+        $this->assertTrue($fromNativeName->equals($this->name));
+    }
+
     public function testGetFirstName()
     {
-        $name = new Name('foo', 'bar', 'baz');
-        $this->assertEquals('foo', $name->getFirstName());
+        $this->assertEquals('foo', $this->name->getFirstName());
     }
 
     public function testGetMiddleName()
     {
-        $name = new Name('foo', 'bar', 'baz');
-        $this->assertEquals('bar', $name->getMiddleName());
+        $this->assertEquals('bar', $this->name->getMiddleName());
     }
 
     public function testGetLastName()
     {
-        $name = new Name('foo', 'bar', 'baz');
-        $this->assertEquals('baz', $name->getLastName());
+        $this->assertEquals('baz', $this->name->getLastName());
     }
 
     public function testGetFullName()
     {
-        $name = new Name('foo', 'bar', 'baz');
-        $this->assertEquals('foo bar baz', $name->getFullName());
+        $this->assertEquals('foo bar baz', $this->name->getFullName());
     }
 
     public function testEquals()
     {
-        $name1 = new Name('foo', 'bar', 'baz');
-        $name2 = new Name('foo', 'bar', 'baz');
-        $name3 = new Name('foo', '', 'baz');
+        $name2 = new Name(new String('foo'), new String('bar'), new String('baz'));
+        $name3 = new Name(new String('foo'), new String(''), new String('baz'));
 
-        $this->assertTrue($name1->equals($name2));
-        $this->assertTrue($name2->equals($name1));
-        $this->assertFalse($name1->equals($name3));
+        $this->assertTrue($this->name->equals($name2));
+        $this->assertTrue($name2->equals($this->name));
+        $this->assertFalse($this->name->equals($name3));
 
         $mock = $this->getMock('ValueObjects\ValueObjectInterface');
-        $this->assertFalse($name1->equals($mock));
+        $this->assertFalse($this->name->equals($mock));
     }
 
     public function testToString()
     {
-        $foo = new Name('foo', 'bar', 'baz');
-        $this->assertEquals('foo bar baz', $foo->__toString());
+        $this->assertEquals('foo bar baz', $this->name->__toString());
     }
 }

@@ -7,6 +7,14 @@ use ValueObjects\Number\Real;
 
 class RealTest extends TestCase
 {
+    public function testFromNative()
+    {
+        $fromNativeReal  = Real::fromNative(.056);
+        $constructedReal = new Real(.056);
+
+        $this->assertTrue($fromNativeReal->equals($constructedReal));
+    }
+
     public function testGetValue()
     {
         $real = new Real(3.4);
@@ -25,6 +33,12 @@ class RealTest extends TestCase
 
         $mock = $this->getMock('ValueObjects\ValueObjectInterface');
         $this->assertFalse($real1->equals($mock));
+    }
+
+    /** @expectedException ValueObjects\Exception\InvalidNativeArgumentException */
+    public function testInvalidNativeArgument()
+    {
+        new Real('invalid');
     }
 
     public function testToString()

@@ -2,18 +2,29 @@
 
 namespace ValueObjects\DateTime;
 
-use ValueObjects\DateTime\Exception\InvalidSecondException;
-use ValueObjects\Number\Integer;
+use ValueObjects\Exception\InvalidNativeArgumentException;
+use ValueObjects\Number\Natural;
 
-class Second extends Integer
+class Second extends Natural
 {
     const MIN_SECOND = 0;
     const MAX_SECOND = 59;
 
+    /**
+     * Returns a new Second object
+     *
+     * @param int $value
+     */
     public function __construct($value)
     {
-        if ($value < self::MIN_SECOND || $value > self::MAX_SECOND) {
-            throw new InvalidSecondException($value);
+        $options = array(
+            'options' => array('min_range' => self::MIN_SECOND, 'max_range' => self::MAX_SECOND)
+        );
+
+        $value = filter_var($value, FILTER_VALIDATE_INT, $options);
+
+        if(false === $value) {
+            throw new InvalidNativeArgumentException($value, array('int (>=0, <=59)'));
         }
 
         parent::__construct($value);
@@ -27,7 +38,7 @@ class Second extends Integer
     public static function now()
     {
         $now    = new \DateTime('now');
-        $second = $now->format('s');
+        $second = \intval($now->format('s'));
 
         return new self($second);
     }

@@ -8,6 +8,14 @@ use ValueObjects\Money\Currency;
 
 class CurrencyTest extends TestCase
 {
+    public function testFromNative()
+    {
+        $fromNativeCurrency = Currency::fromNative('EUR');
+        $constructedCurrency = new Currency(CurrencyCode::EUR());
+
+        $this->assertTrue($fromNativeCurrency->equals($constructedCurrency));
+    }
+
     public function testEquals()
     {
         $eur1 = new Currency(CurrencyCode::EUR());

@@ -2,18 +2,25 @@
 
 namespace ValueObjects\Number;
 
+use ValueObjects\Exception\InvalidNativeArgumentException;
 use ValueObjects\Util\Util;
 use ValueObjects\ValueObjectInterface;
 
 class Integer extends Real
 {
-    public function __construct($value, RoundingMode $rounding_mode = null)
+    /**
+     * Returns a Integer object given a PHP native int as parameter.
+     *
+     * @param int $value
+     */
+    public function __construct($value)
     {
-        if (null === $rounding_mode) {
-            $rounding_mode = RoundingMode::HALF_UP();
+        $value = filter_var($value, FILTER_VALIDATE_INT);
+
+        if(false === $value) {
+            throw new InvalidNativeArgumentException($value, array('int'));
         }
 
-        $value = round($value, 0, $rounding_mode->getValue());
         parent::__construct($value);
     }
 

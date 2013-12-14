@@ -2,19 +2,8 @@
 
 namespace ValueObjects\Person;
 
-use ValueObjects\Number\Integer;
-use ValueObjects\Person\Exception\InvalidAgeException;
+use ValueObjects\Number\Natural;
 
-class Age extends Integer
+class Age extends Natural
 {
-    protected $value;
-
-    public function __construct($value)
-    {
-        if ($value < 0) {
-            throw new InvalidAgeException($value);
-        }
-
-        $this->value = intval($value);
-    }
 }

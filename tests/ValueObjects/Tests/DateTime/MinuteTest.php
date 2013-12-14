@@ -7,13 +7,21 @@ use ValueObjects\DateTime\Minute;
 
 class MinuteTest extends TestCase
 {
+    public function testFromNative()
+    {
+        $fromNativeMinute  = Minute::fromNative(11);
+        $constructedMinute = new Minute(11);
+
+        $this->assertTrue($fromNativeMinute->equals($constructedMinute));
+    }
+
     public function testNow()
     {
         $minute = Minute::now();
         $this->assertEquals(\intval(date('i')), $minute->getValue());
     }
 
-    /** @expectedException ValueObjects\DateTime\Exception\InvalidMinuteException */
+    /** @expectedException ValueObjects\Exception\InvalidNativeArgumentException */
     public function testInvalidMinute()
     {
         new Minute(60);

@@ -33,6 +33,12 @@ class IntegerTest extends TestCase
         $this->assertSame('87', $integer->__toString());
     }
 
+    /** @expectedException ValueObjects\Exception\InvalidNativeArgumentException */
+    public function testInvalidNativeArgument()
+    {
+        new Integer(23.4);
+    }
+
     public function testZeroToString()
     {
         $zero = new Integer(0);

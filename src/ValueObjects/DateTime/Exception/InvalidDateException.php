@@ -2,7 +2,7 @@
 
 namespace ValueObjects\DateTime\Exception;
 
-class InvalidDateException extends DateTimeException
+class InvalidDateException extends \Exception
 {
     public function __construct($year, $month, $day)
     {

@@ -10,11 +10,23 @@ use ValueObjects\DateTime\MonthDay;
 use ValueObjects\DateTime\Second;
 use ValueObjects\DateTime\Time;
 use ValueObjects\DateTime\Year;
+use ValueObjects\Number\Integer;
 use ValueObjects\Tests\TestCase;
 use ValueObjects\DateTime\DateTime;
 
 class DateTimeTest extends TestCase
 {
+    public function testFromNative()
+    {
+        $fromNativeDateTime  = DateTime::fromNative(2013, 'December', 21, 10, 20, 34);
+        $constructedDateTime = new DateTime(
+                                    new Date(new Year(2013), Month::DECEMBER(), new MonthDay(21)),
+                                    new Time(new Hour(10), new Minute(20), new Second(34))
+                               );
+
+        $this->assertTrue($fromNativeDateTime->equals($constructedDateTime));
+    }
+
     public function testFromNativeDateTime()
     {
         $nativeDateTime = new \DateTime();

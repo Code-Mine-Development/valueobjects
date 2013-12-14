@@ -7,6 +7,14 @@ use ValueObjects\String\String;
 
 class StringTest extends TestCase
 {
+    public function testFromNative()
+    {
+        $string = String::fromNative('foo');
+        $constructedString = new String('foo');
+
+        $this->assertTrue($string->equals($constructedString));
+    }
+
     public function testGetValue()
     {
         $string = new String('foo');
@@ -25,6 +33,12 @@ class StringTest extends TestCase
 
         $mock = $this->getMock('ValueObjects\ValueObjectInterface');
         $this->assertFalse($foo1->equals($mock));
+    }
+
+    /** @expectedException ValueObjects\Exception\InvalidNativeArgumentException */
+    public function testInvalidNativeArgument()
+    {
+        new String(12);
     }
 
     public function testToString()

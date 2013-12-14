@@ -2,6 +2,7 @@
 
 namespace ValueObjects\String;
 
+use ValueObjects\Exception\InvalidNativeArgumentException;
 use ValueObjects\Util\Util;
 use ValueObjects\ValueObjectInterface;
 
@@ -9,9 +10,31 @@ class String implements ValueObjectInterface
 {
     protected $value;
 
+    /**
+     * Returns a String object given a PHP native string as parameter.
+     *
+     * @param string $value
+     * @return String
+     */
+    public static function fromNative()
+    {
+        $value = func_get_arg(0);
+
+        return new static($value);
+    }
+
+    /**
+     * Returns a String object given a PHP native string as parameter.
+     *
+     * @param string $value
+     */
     public function __construct($value)
     {
-        $this->value = strval($value);
+        if(false === \is_string($value)) {
+            throw new InvalidNativeArgumentException($value, array('string'));
+        }
+
+        $this->value = $value;
     }
 
     /**

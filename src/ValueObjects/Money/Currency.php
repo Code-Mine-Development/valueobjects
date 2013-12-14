@@ -14,6 +14,19 @@ class Currency implements ValueObjectInterface
     /** @var CurrencyCode  */
     protected $code;
 
+    /**
+     * Returns a new Currency object from native string currency code
+     *
+     * @param string $code Currency code
+     * @return static
+     */
+    public static function fromNative()
+    {
+        $code = CurrencyCode::get(func_get_arg(0));
+
+        return new static($code);
+    }
+
     public function __construct(CurrencyCode $code)
     {
         $this->code     = $code;

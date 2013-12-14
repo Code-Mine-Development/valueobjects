@@ -2,6 +2,7 @@
 
 namespace ValueObjects\Number;
 
+use ValueObjects\Exception\InvalidNativeArgumentException;
 use ValueObjects\Util\Util;
 use ValueObjects\ValueObjectInterface;
 
@@ -9,13 +10,37 @@ class Real implements ValueObjectInterface, NumberInterface
 {
     protected $value;
 
-    public function __construct($value)
+    /**
+     * Returns a Real object given a PHP native float as parameter.
+     *
+     * @param float $number
+     * @return static
+     */
+    public static function fromNative()
     {
-        $this->value = \floatval($value);
+        $value = func_get_arg(0);
+
+        return new static($value);
     }
 
     /**
-     * Returns the value of the real number
+     * Returns a Real object given a PHP native float as parameter.
+     *
+     * @param float $number
+     */
+    public function __construct($value)
+    {
+        $value = \filter_var($value, FILTER_VALIDATE_FLOAT);
+
+        if(false === $value) {
+            throw new InvalidNativeArgumentException($value, array('float'));
+        }
+
+        $this->value = $value;
+    }
+
+    /**
+     * Returns the native value of the real number
      *
      * @return float
      */

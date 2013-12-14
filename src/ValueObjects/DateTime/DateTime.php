@@ -14,6 +14,27 @@ class DateTime implements ValueObjectInterface
     protected $time;
 
     /**
+     * Returns a new DateTime object from native values
+     *
+     * @param int $year
+     * @param string $month
+     * @param int $day
+     * @param int $hour
+     * @param int $minute
+     * @param int @second
+     * @return DateTime
+     */
+    public static function fromNative()
+    {
+        $args = func_get_args();
+
+        $date = Date::fromNative($args[0], $args[1], $args[2]);
+        $time = Time::fromNative($args[3], $args[4], $args[5]);
+
+        return new self($date, $time);
+    }
+
+    /**
      * Returns a new DateTime from a native PHP \DateTime
      *
      * @param  \DateTime $date_time
@@ -39,6 +60,12 @@ class DateTime implements ValueObjectInterface
         return $dateTime;
     }
 
+    /**
+     * Rerturns a new DateTime object
+     *
+     * @param Date $date
+     * @param Time $time
+     */
     public function __construct(Date $date, Time $time = null)
     {
         $this->date = $date;

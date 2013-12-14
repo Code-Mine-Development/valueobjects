@@ -10,6 +10,14 @@ use ValueObjects\DateTime\Time;
 
 class TimeTest extends TestCase
 {
+    public function testFromNative()
+    {
+        $fromNativeTime  = Time::fromNative(10, 4, 50);
+        $constructedTime = new Time(new Hour(10), new Minute(4), new Second(50));
+
+        $this->assertTrue($fromNativeTime->equals($constructedTime));
+    }
+
     public function testFromNativeDateTime()
     {
         $nativeTime = new \DateTime();

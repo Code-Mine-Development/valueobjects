@@ -32,7 +32,7 @@ class Month extends Enum
     }
 
     /**
-     * Creates Month from a native PHP \DateTime
+     * Returns Month from a native PHP \DateTime
      *
      * @param  \DateTime $date
      * @return Month

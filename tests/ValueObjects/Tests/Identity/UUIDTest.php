@@ -7,6 +7,12 @@ use ValueObjects\Tests\TestCase;
 
 class UUIDTest extends TestCase
 {
+    /** @expectedException \LogicException */
+    public function testFromNativeException()
+    {
+        UUID::fromNative();
+    }
+
     public function testEquals()
     {
         $uuid1 = new UUID();

@@ -27,7 +27,7 @@ class WeekDay extends Enum
     }
 
     /**
-     * Creates a WeekDay from a PHP native \DateTime
+     * Returns a WeekDay from a PHP native \DateTime
      *
      * @param  \DateTime $date
      * @return WeekDay

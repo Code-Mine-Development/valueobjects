@@ -30,15 +30,36 @@ class Name implements ValueObjectInterface
     private $lastName;
 
     /**
+     * Returns a Name objects form PHP native values
+     *
      * @param string $first_name
      * @param string $middle_name
      * @param string $last_name
+     * @return Name
      */
-    public function __construct($first_name, $middle_name, $last_name)
+    public static function fromNative()
     {
-        $this->firstName  = new String($first_name);
-        $this->middleName = new String($middle_name);
-        $this->lastName   = new String($last_name);
+        $args = func_get_args();
+
+        $firstName  = new String($args[0]);
+        $middleName = new String($args[1]);
+        $lastName   = new String($args[2]);
+
+        return new self($firstName, $middleName, $lastName);
+    }
+
+    /**
+     * Returns a Name object
+     *
+     * @param String $first_name
+     * @param String $middle_name
+     * @param String $last_name
+     */
+    public function __construct(String $first_name, String $middle_name, String $last_name)
+    {
+        $this->firstName  = $first_name;
+        $this->middleName = $middle_name;
+        $this->lastName   = $last_name;
     }
 
     /**

@@ -19,7 +19,24 @@ class Money implements ValueObjectInterface
     protected $currency;
 
     /**
-     * Creates a Money object
+     * Returns a Money object from native int amount and string currency code
+     *
+     * @param int $amount Amount expressed in the smallest units of $currency (e.g. cents)
+     * @param string $currency Currency code of the money object
+     * @returns static
+     */
+    public static function fromNative()
+    {
+        $args = func_get_args();
+
+        $amount   = new Integer($args[0]);
+        $currency = Currency::fromNative($args[1]);
+
+        return new static($amount, $currency);
+    }
+
+    /**
+     * Returns a Money object
      *
      * @param Integer  $amount   Amount expressed in the smallest units of $currency (e.g. cents)
      * @param Currency $currency Currency of the money object
@@ -27,7 +44,7 @@ class Money implements ValueObjectInterface
     public function __construct(Integer $amount, Currency $currency)
     {
         $baseCurrency   = new BaseCurrency($currency->getCode()->getValue());
-        $this->money    = new BaseMoney(\intval($amount->getValue()), $baseCurrency);
+        $this->money    = new BaseMoney($amount->getValue(), $baseCurrency);
         $this->currency = $currency;
     }
 

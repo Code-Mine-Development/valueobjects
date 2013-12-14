@@ -17,24 +17,43 @@ class Time implements ValueObjectInterface
     protected $second;
 
     /**
-     * Returns a new Time from a native PHP \DateTime
+     * Returns a nee Time object from native int hour, minute and second
      *
-     * @param  \DateTime $time
-     * @return Time
+     * @param int $hour
+     * @param int $minute
+     * @param int $second
+     * @return self
      */
-    public static function fromNativeDateTime(\DateTime $time)
+    public static function fromNative()
     {
-        $hour   = new Hour($time->format('G'));
-        $minute = new Minute($time->format('i'));
-        $second = new Second($time->format('s'));
+        $args = func_get_args();
+
+        $hour   = new Hour($args[0]);
+        $minute = new Minute($args[1]);
+        $second = new Second($args[2]);
 
         return new self($hour, $minute, $second);
     }
 
     /**
+     * Returns a new Time from a native PHP \DateTime
+     *
+     * @param  \DateTime $time
+     * @return self
+     */
+    public static function fromNativeDateTime(\DateTime $time)
+    {
+        $hour   = \intval($time->format('G'));
+        $minute = \intval($time->format('i'));
+        $second = \intval($time->format('s'));
+
+        return self::fromNative($hour, $minute, $second);
+    }
+
+    /**
      * Returns current Time
      *
-     * @return Time
+     * @return self
      */
     public static function now()
     {
@@ -46,7 +65,7 @@ class Time implements ValueObjectInterface
     /**
      * Return zero time
      *
-     * @return Time
+     * @return static
      */
     public static function zero()
     {
@@ -55,6 +74,13 @@ class Time implements ValueObjectInterface
         return $time;
     }
 
+    /**
+     * Returns a new Time objects
+     *
+     * @param Hour $hour
+     * @param Minute $minute
+     * @param Second $second
+     */
     public function __construct(Hour $hour, Minute $minute, Second $second)
     {
         $this->hour   = $hour;

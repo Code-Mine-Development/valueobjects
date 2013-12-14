@@ -18,6 +18,25 @@ class Date implements ValueObjectInterface
     protected $day;
 
     /**
+     * Returns a new Date from native year, month and day values
+     *
+     * @param int $year
+     * @param string $month
+     * @param int $day
+     * @return Date
+     */
+    public static function fromNative()
+    {
+        $args = func_get_args();
+
+        $year  = new Year($args[0]);
+        $month = Month::fromNative($args[1]);
+        $day   = new MonthDay($args[2]);
+
+        return new self($year, $month, $day);
+    }
+
+    /**
      * Returns a new Date from a native PHP \DateTime
      *
      * @param  \DateTime $date
@@ -25,9 +44,9 @@ class Date implements ValueObjectInterface
      */
     public static function fromNativeDateTime(\DateTime $date)
     {
-        $year  = $date->format('Y');
+        $year  = \intval($date->format('Y'));
         $month = Month::fromNativeDateTime($date);
-        $day   = $date->format('d');
+        $day   = \intval($date->format('d'));
 
         return new self(new Year($year), $month, new MonthDay($day));
     }

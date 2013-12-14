@@ -11,6 +11,14 @@ use ValueObjects\Number\Integer;
 
 class MoneyTest extends TestCase
 {
+    public function testFromNative()
+    {
+        $fromNativeMoney  = Money::fromNative(2100, 'EUR');
+        $constructedMoney = new Money(new Integer(2100), new Currency(CurrencyCode::EUR()));
+
+        $this->assertTrue($fromNativeMoney->equals($constructedMoney));
+    }
+
     public function testEquals()
     {
         $eur = new Currency(CurrencyCode::EUR());

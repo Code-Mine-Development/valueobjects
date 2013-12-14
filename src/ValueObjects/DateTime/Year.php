@@ -14,7 +14,7 @@ class Year extends Integer
     public static function now()
     {
         $now  = new \DateTime('now');
-        $year = $now->format('Y');
+        $year = \intval($now->format('Y'));
 
         return new self($year);
     }

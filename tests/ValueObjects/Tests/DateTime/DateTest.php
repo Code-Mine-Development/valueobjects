@@ -10,6 +10,14 @@ use ValueObjects\DateTime\Date;
 
 class DateTest extends TestCase
 {
+    public function testFromNative()
+    {
+        $fromNativeDate  = Date::fromNative(2013, 'December', 21);
+        $constructedDate = new Date(new Year(2013), Month::DECEMBER(), new MonthDay(21));
+
+        $this->assertTrue($fromNativeDate->equals($constructedDate));
+    }
+
     public function testFromNativeDateTime()
     {
         $nativeDate = new \DateTime();

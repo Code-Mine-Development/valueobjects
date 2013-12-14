@@ -3,17 +3,29 @@
 namespace ValueObjects\DateTime;
 
 use ValueObjects\DateTime\Exception\InvalidMonthDayException;
-use ValueObjects\Number\Integer;
+use ValueObjects\Exception\InvalidNativeArgumentException;
+use ValueObjects\Number\Natural;
 
-class MonthDay extends Integer
+class MonthDay extends Natural
 {
     const MIN_MONTH_DAY = 1;
     const MAX_MONTH_DAY = 31;
 
+    /**
+     * Returns a new MonthDay
+     *
+     * @param int $value
+     */
     public function __construct($value)
     {
-        if ($value < self::MIN_MONTH_DAY || $value > self::MAX_MONTH_DAY) {
-            throw new InvalidMonthDayException($value);
+        $options = array(
+            'options' => array('min_range' => self::MIN_MONTH_DAY, 'max_range' => self::MAX_MONTH_DAY)
+        );
+
+        $value = filter_var($value, FILTER_VALIDATE_INT, $options);
+
+        if(false === $value) {
+            throw new InvalidNativeArgumentException($value, array('int (>=0, <=31)'));
         }
 
         parent::__construct($value);
@@ -27,7 +39,7 @@ class MonthDay extends Integer
     public static function now()
     {
         $now      = new \DateTime('now');
-        $monthDay = $now->format('j');
+        $monthDay = \intval($now->format('j'));
 
         return new self($monthDay);
     }

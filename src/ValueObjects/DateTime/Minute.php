@@ -2,18 +2,43 @@
 
 namespace ValueObjects\DateTime;
 
-use ValueObjects\DateTime\Exception\InvalidMinuteException;
-use ValueObjects\Number\Integer;
+use ValueObjects\Exception\InvalidNativeArgumentException;
+use ValueObjects\Number\Natural;
 
-class Minute extends Integer
+class Minute extends Natural
 {
     const MIN_MINUTE = 0;
+
     const MAX_MINUTE = 59;
 
+    /**
+     * Returns a new Minute from native int value
+     *
+     * @param int $value
+     * @return Minute
+     */
+    public static function fromNative()
+    {
+        $value = func_get_arg(0);
+
+        return new self($value);
+    }
+
+    /**
+     * Returns a new Minute object
+     *
+     * @param int $value
+     */
     public function __construct($value)
     {
-        if ($value < self::MIN_MINUTE || $value > self::MAX_MINUTE) {
-            throw new InvalidMinuteException($value);
+        $options = array(
+            'options' => array('min_range' => self::MIN_MINUTE, 'max_range' => self::MAX_MINUTE)
+        );
+
+        $value = filter_var($value, FILTER_VALIDATE_INT, $options);
+
+        if(false === $value) {
+            throw new InvalidNativeArgumentException($value, array('int (>=0, <=59)'));
         }
 
         parent::__construct($value);
@@ -27,7 +52,7 @@ class Minute extends Integer
     public static function now()
     {
         $now    = new \DateTime('now');
-        $minute = $now->format('i');
+        $minute = \intval($now->format('i'));
 
         return new self($minute);
     }
