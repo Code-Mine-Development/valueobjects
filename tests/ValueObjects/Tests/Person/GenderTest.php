@@ -2,22 +2,22 @@
 
 namespace ValueObjects\Tests\Number;
 
-use ValueObjects\Person\Sex;
+use ValueObjects\Person\Gender;
 use ValueObjects\Tests\TestCase;
 
-class SexTest extends TestCase
+class GenderTest extends TestCase
 {
     public function testGetValue()
     {
-        $sex = Sex::FEMALE();
-        $this->assertEquals(Sex::FEMALE, $sex->getValue());
+        $gender = Gender::FEMALE();
+        $this->assertEquals(Gender::FEMALE, $gender->getValue());
     }
 
     public function testEquals()
     {
-        $male1 = Sex::MALE();
-        $male2 = Sex::MALE();
-        $other = Sex::OTHER();
+        $male1 = Gender::MALE();
+        $male2 = Gender::MALE();
+        $other = Gender::OTHER();
 
         $this->assertTrue($male1->equals($male2));
         $this->assertTrue($male2->equals($male1));
@@ -29,7 +29,7 @@ class SexTest extends TestCase
 
     public function testToString()
     {
-        $sex = Sex::FEMALE();
+        $sex = Gender::FEMALE();
         $this->assertEquals('female', $sex->__toString());
     }
 }
