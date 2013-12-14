@@ -10,9 +10,9 @@
     ],
     "require": {
         "php": ">=5.3.3",
-        "rhumsaa/uuid": "2.5",
-        "mathiasverraes/money": "dev-master",
-        "marc-mabe/php-enum": "dev-master"
+        "rhumsaa/uuid": "~2.5",
+        "mathiasverraes/money": "~1.2",
+        "marc-mabe/php-enum": "~1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "~3.7"
@@ -22,5 +22,10 @@
     },
     "autoload": {
         "psr-0": { "ValueObjects": "src/" }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.1.x-dev"
+        }
     }
 }
