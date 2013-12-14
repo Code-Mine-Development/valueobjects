@@ -13,7 +13,7 @@ class Hour extends Natural
     /**
      * Returns a new Hour from native int value
      *
-     * @param int $value
+     * @param  int  $value
      * @return Hour
      */
     public static function fromNative()
@@ -36,7 +36,7 @@ class Hour extends Natural
 
         $value = filter_var($value, FILTER_VALIDATE_INT, $options);
 
-        if(false === $value) {
+        if (false === $value) {
             throw new InvalidNativeArgumentException($value, array('int (>=0, <=23)'));
         }
 

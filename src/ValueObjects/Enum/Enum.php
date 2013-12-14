@@ -11,7 +11,7 @@ abstract class Enum extends BaseEnum implements ValueObjectInterface
     /**
      * Returns a new Enum object from passed value matching argument
      *
-     * @param string $value
+     * @param  string $value
      * @return static
      */
     public static function fromNative()
@@ -22,7 +22,7 @@ abstract class Enum extends BaseEnum implements ValueObjectInterface
     /**
      * Tells whether two Enum objects are equals by comparing their values
      *
-     * @param Enum $enum
+     * @param  Enum $enum
      * @return bool
      */
     public function equals(ValueObjectInterface $enum)

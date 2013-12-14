@@ -23,7 +23,7 @@ class Second extends Natural
 
         $value = filter_var($value, FILTER_VALIDATE_INT, $options);
 
-        if(false === $value) {
+        if (false === $value) {
             throw new InvalidNativeArgumentException($value, array('int (>=0, <=59)'));
         }
 

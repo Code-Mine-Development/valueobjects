@@ -17,7 +17,7 @@ class Currency implements ValueObjectInterface
     /**
      * Returns a new Currency object from native string currency code
      *
-     * @param string $code Currency code
+     * @param  string $code Currency code
      * @return static
      */
     public static function fromNative()

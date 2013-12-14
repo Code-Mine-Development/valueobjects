@@ -13,7 +13,7 @@ class String implements ValueObjectInterface
     /**
      * Returns a String object given a PHP native string as parameter.
      *
-     * @param string $value
+     * @param  string $value
      * @return String
      */
     public static function fromNative()
@@ -30,7 +30,7 @@ class String implements ValueObjectInterface
      */
     public function __construct($value)
     {
-        if(false === \is_string($value)) {
+        if (false === \is_string($value)) {
             throw new InvalidNativeArgumentException($value, array('string'));
         }
 

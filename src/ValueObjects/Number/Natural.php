@@ -21,7 +21,7 @@ class Natural extends Integer
 
         $value = filter_var($value, FILTER_VALIDATE_INT, $options);
 
-        if(false === $value) {
+        if (false === $value) {
             throw new InvalidNativeArgumentException($value, array('int (>=0)'));
         }
 

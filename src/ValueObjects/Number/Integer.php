@@ -17,7 +17,7 @@ class Integer extends Real
     {
         $value = filter_var($value, FILTER_VALIDATE_INT);
 
-        if(false === $value) {
+        if (false === $value) {
             throw new InvalidNativeArgumentException($value, array('int'));
         }
 

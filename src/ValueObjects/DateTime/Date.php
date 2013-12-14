@@ -20,9 +20,9 @@ class Date implements ValueObjectInterface
     /**
      * Returns a new Date from native year, month and day values
      *
-     * @param int $year
-     * @param string $month
-     * @param int $day
+     * @param  int    $year
+     * @param  string $month
+     * @param  int    $day
      * @return Date
      */
     public static function fromNative()

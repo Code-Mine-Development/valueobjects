@@ -14,7 +14,7 @@ class Minute extends Natural
     /**
      * Returns a new Minute from native int value
      *
-     * @param int $value
+     * @param  int    $value
      * @return Minute
      */
     public static function fromNative()
@@ -37,7 +37,7 @@ class Minute extends Natural
 
         $value = filter_var($value, FILTER_VALIDATE_INT, $options);
 
-        if(false === $value) {
+        if (false === $value) {
             throw new InvalidNativeArgumentException($value, array('int (>=0, <=59)'));
         }
 

@@ -32,9 +32,9 @@ class Name implements ValueObjectInterface
     /**
      * Returns a Name objects form PHP native values
      *
-     * @param string $first_name
-     * @param string $middle_name
-     * @param string $last_name
+     * @param  string $first_name
+     * @param  string $middle_name
+     * @param  string $last_name
      * @return Name
      */
     public static function fromNative()

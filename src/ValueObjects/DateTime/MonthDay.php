@@ -2,7 +2,6 @@
 
 namespace ValueObjects\DateTime;
 
-use ValueObjects\DateTime\Exception\InvalidMonthDayException;
 use ValueObjects\Exception\InvalidNativeArgumentException;
 use ValueObjects\Number\Natural;
 
@@ -24,7 +23,7 @@ class MonthDay extends Natural
 
         $value = filter_var($value, FILTER_VALIDATE_INT, $options);
 
-        if(false === $value) {
+        if (false === $value) {
             throw new InvalidNativeArgumentException($value, array('int (>=0, <=31)'));
         }
 

@@ -19,9 +19,9 @@ class Time implements ValueObjectInterface
     /**
      * Returns a nee Time object from native int hour, minute and second
      *
-     * @param int $hour
-     * @param int $minute
-     * @param int $second
+     * @param  int  $hour
+     * @param  int  $minute
+     * @param  int  $second
      * @return self
      */
     public static function fromNative()
@@ -77,7 +77,7 @@ class Time implements ValueObjectInterface
     /**
      * Returns a new Time objects
      *
-     * @param Hour $hour
+     * @param Hour   $hour
      * @param Minute $minute
      * @param Second $second
      */

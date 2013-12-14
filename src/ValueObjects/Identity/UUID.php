@@ -28,7 +28,7 @@ class UUID extends String
     /**
      * Tells whether two UUID are equal by comapring their values
      *
-     * @param UUID $uuid
+     * @param  UUID $uuid
      * @return bool
      */
     public function equals(ValueObjectInterface $uuid)

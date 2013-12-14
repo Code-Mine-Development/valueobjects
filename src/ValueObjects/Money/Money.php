@@ -21,7 +21,7 @@ class Money implements ValueObjectInterface
     /**
      * Returns a Money object from native int amount and string currency code
      *
-     * @param int $amount Amount expressed in the smallest units of $currency (e.g. cents)
+     * @param int    $amount   Amount expressed in the smallest units of $currency (e.g. cents)
      * @param string $currency Currency code of the money object
      * @returns static
      */

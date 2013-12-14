@@ -13,7 +13,7 @@ class Real implements ValueObjectInterface, NumberInterface
     /**
      * Returns a Real object given a PHP native float as parameter.
      *
-     * @param float $number
+     * @param  float  $number
      * @return static
      */
     public static function fromNative()
@@ -32,7 +32,7 @@ class Real implements ValueObjectInterface, NumberInterface
     {
         $value = \filter_var($value, FILTER_VALIDATE_FLOAT);
 
-        if(false === $value) {
+        if (false === $value) {
             throw new InvalidNativeArgumentException($value, array('float'));
         }
 
