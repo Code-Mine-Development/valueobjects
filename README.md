@@ -66,3 +66,7 @@ License
 
 Valueobjects is released under the MIT License. See the bundled LICENSE file for
 details.
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/nicolopignatelli/valueobjects/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
