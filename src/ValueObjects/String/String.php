@@ -63,6 +63,16 @@ class String implements ValueObjectInterface
     }
 
     /**
+     * Tells whether the String is empty
+     *
+     * @return bool
+     */
+    public function isEmpty()
+    {
+        return \strlen($this->getValue()) == 0;
+    }
+
+    /**
      * Returns the string value itself
      *
      * @return string

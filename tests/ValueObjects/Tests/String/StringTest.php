@@ -41,6 +41,13 @@ class StringTest extends TestCase
         new String(12);
     }
 
+    public function testIsEmpty()
+    {
+        $string = new String('');
+
+        $this->assertTrue($string->isEmpty());
+    }
+
     public function testToString()
     {
         $foo = new String('foo');

@@ -33,13 +33,13 @@ _ValueObjects_ should cover every common type a developer could need in a DDD pr
 Types list (mostly implemented as namespaces):
 
 - [x] [Dates and time](/src/ValueObjects/DateTime)
-- [x] [Numbers](/src/ValueObjects/Number)
-- [x] [Strings](/src/ValueObjects/String)
+- [x] [Null](/src/ValueObjects/Null), [Numbers](/src/ValueObjects/Number) and [Strings](/src/ValueObjects/String)
+- [x] [Data structures](/src/ValueObjects/Structure)
 - [x] [UUID](/src/ValueObjects/Identity)
 - [x] [Person data (age, sex, etc...)](/src/ValueObjects/Person)
 - [x] [Money and currencies](/src/ValueObjects/Money)
-- [ ] TODO: Geographic data (coordinates, addresses, etc...)
-- [ ] TODO: Internet related (URLs, email addresses, IPs, etc...)
+- [x] [Geographic data (coordinates, addresses, etc...)](/src/ValueObjects/Geography)
+- [x] [Internet related (URLs, email addresses, IPs, etc...)](/src/ValueObjects/Web)
 - [ ] _Submit yours!_
 
 
