@@ -8,63 +8,25 @@ ValueObjects
 
 A PHP 5.3+ library/collection of classes aimed to help developers with domain driven development and the use of immutable objects.
 
-Installation
-------------
-
-Using [Composer](http://getcomposer.org/), require the `nicolopignatelli/valueobjects`
-package:
-
-``` javascript
-{
-    "require": {
-        "nicolopignatelli/valueobjects": "dev-master"
-    }
-}
-```
-
-Otherwise, install the library and setup the autoloader yourself.
-
-
-Covered types
+Documentation
 -------------
 
-_ValueObjects_ should cover every common type a developer could need in a DDD project. With this goal in mind, the object library should stay as generalistic as possible in order to be easily extendable and customizable in every single project.
-
-Types list (mostly implemented as namespaces):
-
-- [x] [Dates and time](/src/ValueObjects/DateTime)
-- [x] [Null](/src/ValueObjects/Null), [Numbers](/src/ValueObjects/Number) and [Strings](/src/ValueObjects/String)
-- [x] [Data structures](/src/ValueObjects/Structure)
-- [x] [UUID](/src/ValueObjects/Identity)
-- [x] [Person data (age, sex, etc...)](/src/ValueObjects/Person)
-- [x] [Money and currencies](/src/ValueObjects/Money)
-- [x] [Geographic data (coordinates, addresses, etc...)](/src/ValueObjects/Geography)
-- [x] [Internet related (URLs, email addresses, IPs, etc...)](/src/ValueObjects/Web)
-- [ ] _Submit yours!_
+- [Introduction](http://nicolopignatelli.github.io/valueobjects/index.html)
+- [Installation](http://nicolopignatelli.github.io/valueobjects/installation.html)
+- [API reference](http://nicolopignatelli.github.io/valueobjects/api/)
+- [About](http://nicolopignatelli.github.io/valueobjects/about.html)
 
 
 Contributing
 ------------
 
-See CONTRIBUTING file.
-
-
-Running the Tests
------------------
-
-Install the [Composer](http://getcomposer.org/) `dev` dependencies:
-
-    php composer.phar install --dev
-
-Then, run the test suite:
-
-    bin/phpunit
+See [CONTRIBUTING](/CONTRIBUTING.md) file.
 
 
 License
 -------
 
-Valueobjects is released under the MIT License. See the bundled LICENSE file for
+Valueobjects is released under the MIT License. See the bundled [LICENSE](/LICENSE) file for
 details.
 
 
