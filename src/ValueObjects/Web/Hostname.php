@@ -3,7 +3,6 @@
 namespace ValueObjects\Web;
 
 use ValueObjects\Exception\InvalidNativeArgumentException;
-use ValueObjects\String\String;
 use Zend\Validator\Hostname as Validator;
 
 class Hostname extends Domain
