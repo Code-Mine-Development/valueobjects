@@ -11,7 +11,6 @@ class Path extends String
     {
         $filteredValue = parse_url($value, PHP_URL_PATH);
 
-        // TODO: provide a better validation test
         if (null === $filteredValue || strlen($filteredValue) != strlen($value)) {
             throw new InvalidNativeArgumentException($value, array('string (valid url path)'));
         }
