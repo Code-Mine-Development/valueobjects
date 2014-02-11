@@ -23,7 +23,7 @@ class Money implements ValueObjectInterface
      *
      * @param int    $amount   Amount expressed in the smallest units of $currency (e.g. cents)
      * @param string $currency Currency code of the money object
-     * @returns static
+     * @return static
      */
     public static function fromNative()
     {
