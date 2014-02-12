@@ -47,15 +47,6 @@ class IntegerTest extends TestCase
         $this->assertSame('0', $zero->__toString());
     }
 
-    public function testToNumber()
-    {
-        $integer       = new Integer(5);
-        $nativeNatural = new Natural(5);
-        $natural       = $integer->toNatural();
-
-        $this->assertTrue($natural->equals($nativeNatural));
-    }
-
     public function testToReal()
     {
         $integer    = new Integer(5);

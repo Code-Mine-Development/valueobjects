@@ -14,22 +14,4 @@ class NaturalTest extends TestCase
     {
         new Natural(-2);
     }
-
-    public function testToInteger()
-    {
-        $natural       = new Natural(12);
-        $nativeInteger = new Integer(12);
-        $integer       = $natural->toInteger();
-
-        $this->assertTrue($integer->equals($nativeInteger));
-    }
-
-    public function testToReal()
-    {
-        $natural    = new Natural(12);
-        $nativeReal = new Real(12);
-        $real       = $natural->toReal();
-
-        $this->assertTrue($real->equals($nativeReal));
-    }
 }

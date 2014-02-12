@@ -52,20 +52,6 @@ class Integer extends Real
     }
 
     /**
-     * Returns a Natural with the absolute value of the Integer
-     *
-     * @return Natural
-     */
-    public function toNatural()
-    {
-        $value         = $this->getValue();
-        $absoluteValue = \abs($value);
-        $natural       = new Natural($absoluteValue);
-
-        return $natural;
-    }
-
-    /**
      * Returns a Real with the value of the Integer
      *
      * @return Real

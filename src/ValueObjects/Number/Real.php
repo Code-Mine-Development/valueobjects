@@ -91,7 +91,11 @@ class Real implements ValueObjectInterface, NumberInterface
      */
     public function toNatural(RoundingMode $rounding_mode = null)
     {
-        return $this->toInteger($rounding_mode)->toNatural();
+        $integerValue = $this->toInteger($rounding_mode)->getValue();
+        $naturalValue = \abs($integerValue);
+        $natural      = new Natural($naturalValue);
+
+        return $natural;
     }
 
     /**
