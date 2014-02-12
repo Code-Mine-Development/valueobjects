@@ -4,6 +4,8 @@ namespace ValueObjects\Tests\Number;
 
 use ValueObjects\Tests\TestCase;
 use ValueObjects\Number\Integer;
+use ValueObjects\Number\Natural;
+use ValueObjects\Number\Real;
 
 class IntegerTest extends TestCase
 {
@@ -43,5 +45,23 @@ class IntegerTest extends TestCase
     {
         $zero = new Integer(0);
         $this->assertSame('0', $zero->__toString());
+    }
+
+    public function testToNumber()
+    {
+        $integer       = new Integer(5);
+        $nativeNatural = new Natural(5);
+        $natural       = $integer->toNatural();
+
+        $this->assertTrue($natural->equals($nativeNatural));
+    }
+
+    public function testToReal()
+    {
+        $integer    = new Integer(5);
+        $nativeReal = new Real(5);
+        $real       = $integer->toReal();
+
+        $this->assertTrue($real->equals($nativeReal));
     }
 }

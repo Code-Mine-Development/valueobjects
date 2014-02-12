@@ -27,4 +27,30 @@ class Natural extends Integer
 
         parent::__construct($value);
     }
+
+    /**
+     * Returns a Integer with the value of the Natural
+     *
+     * @return Integer
+     */
+    public function toInteger()
+    {
+        $value   = $this->getValue();
+        $integer = new Integer($value);
+
+        return $integer;
+    }
+
+    /**
+     * Returns a Real with the value of the Natural
+     *
+     * @return Real
+     */
+    public function toReal()
+    {
+        $value = $this->getValue();
+        $real  = new Real($value);
+
+        return $real;
+    }
 }
