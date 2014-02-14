@@ -50,4 +50,17 @@ class Integer extends Real
 
         return \intval($value);
     }
+
+    /**
+     * Returns a Real with the value of the Integer
+     *
+     * @return Real
+     */
+    public function toReal()
+    {
+        $value = $this->getValue();
+        $real  = new Real($value);
+
+        return $real;
+    }
 }

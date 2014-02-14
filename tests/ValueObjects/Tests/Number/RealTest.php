@@ -4,6 +4,8 @@ namespace ValueObjects\Tests\Number;
 
 use ValueObjects\Tests\TestCase;
 use ValueObjects\Number\Real;
+use ValueObjects\Number\Integer;
+use ValueObjects\Number\Natural;
 
 class RealTest extends TestCase
 {
@@ -39,6 +41,24 @@ class RealTest extends TestCase
     public function testInvalidNativeArgument()
     {
         new Real('invalid');
+    }
+
+    public function testToInteger()
+    {
+        $real          = new Real(3.14);
+        $nativeInteger = new Integer(3);
+        $integer       = $real->toInteger();
+
+        $this->assertTrue($integer->equals($nativeInteger));
+    }
+
+    public function testToNatural()
+    {
+        $real          = new Real(3.14);
+        $nativeNatural = new Natural(3);
+        $natural       = $real->toNatural();
+
+        $this->assertTrue($natural->equals($nativeNatural));
     }
 
     public function testToString()
