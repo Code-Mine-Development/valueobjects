@@ -16,11 +16,11 @@ class DateTime implements ValueObjectInterface
     /**
      * Returns a new DateTime object from native values
      *
-     * @param int    $year
-     * @param string $month
-     * @param int    $day
-     * @param int    $hour
-     * @param int    $minute
+     * @param  int      $year
+     * @param  string   $month
+     * @param  int      $day
+     * @param  int      $hour
+     * @param  int      $minute
      * @param int @second
      * @return DateTime
      */

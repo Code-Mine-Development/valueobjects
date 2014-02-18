@@ -16,8 +16,8 @@ class Complex implements ValueObjectInterface, NumberInterface
     /**
      * Returns a new Complex object from native PHP arguments
      *
-     * @param float $real Real part of the complex number
-     * @param float $im Imaginary part of the complex number
+     * @param  float                        $real Real part of the complex number
+     * @param  float                        $im   Imaginary part of the complex number
      * @return Complex|ValueObjectInterface
      * @throws \BadMethodCallException
      */
@@ -39,8 +39,8 @@ class Complex implements ValueObjectInterface, NumberInterface
     /**
      * Returns a Complex given polar coordinates
      *
-     * @param Real $modulus
-     * @param Real $argument
+     * @param  Real    $modulus
+     * @param  Real    $argument
      * @return Complex
      */
     public static function fromPolar(Real $modulus, Real $argument)

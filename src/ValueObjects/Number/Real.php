@@ -67,12 +67,12 @@ class Real implements ValueObjectInterface, NumberInterface
     /**
      * Returns the integer part of the Real number as a Integer
      *
-     * @param RoundingMode $rounding_mode Rounding mode of the conversion. Defaults to RoundingMode::HALF_UP.
+     * @param  RoundingMode $rounding_mode Rounding mode of the conversion. Defaults to RoundingMode::HALF_UP.
      * @return Integer
      */
     public function toInteger(RoundingMode $rounding_mode = null)
     {
-        if(null == $rounding_mode) {
+        if (null == $rounding_mode) {
             $rounding_mode = RoundingMode::HALF_UP();
         }
 
@@ -86,7 +86,7 @@ class Real implements ValueObjectInterface, NumberInterface
     /**
      * Returns the absolute integer part of the Real number as a Natural
      *
-     * @param RoundingMode $rounding_mode Rounding mode of the conversion. Defaults to RoundingMode::HALF_UP.
+     * @param  RoundingMode $rounding_mode Rounding mode of the conversion. Defaults to RoundingMode::HALF_UP.
      * @return Natural
      */
     public function toNatural(RoundingMode $rounding_mode = null)
