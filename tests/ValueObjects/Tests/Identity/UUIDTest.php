@@ -7,10 +7,13 @@ use ValueObjects\Tests\TestCase;
 
 class UUIDTest extends TestCase
 {
-    /** @expectedException \LogicException */
-    public function testFromNativeException()
+
+    public function testFromNative()
     {
-        UUID::fromNative();
+        $uuid1 = new UUID();
+        $uuid2 = UUID::fromNative($uuid1->getValue());
+
+        $this->assertTrue($uuid1->equals($uuid2));
     }
 
     public function testEquals()

@@ -2,6 +2,7 @@
 
 namespace ValueObjects\Identity;
 
+use ValueObjects\Exception\InvalidNativeArgumentException;
 use ValueObjects\String\String;
 use ValueObjects\Util\Util;
 use ValueObjects\ValueObjectInterface;
@@ -13,11 +14,27 @@ class UUID extends String
     protected $value;
 
     /**
-     * @throws \LogicException
+     * @param string $uuid
+     * @return UUID
+     * @throws \ValueObjects\Exception\InvalidNativeArgumentException
      */
     public static function fromNative()
     {
-        throw new \LogicException('UUID objects must be directly created via constructor.');
+        $uuid = func_get_arg(0);
+
+        try {
+
+            $uuid = BaseUuid::fromString($uuid);
+
+            $self = new static();
+
+            $self->value = \strval($uuid);
+
+            return $self;
+
+        } catch (\InvalidArgumentException $ex) {
+            throw new InvalidNativeArgumentException($uuid, array('UUID'));
+        }
     }
 
     public function __construct()
@@ -26,7 +43,7 @@ class UUID extends String
     }
 
     /**
-     * Tells whether two UUID are equal by comapring their values
+     * Tells whether two UUID are equal by comparing their values
      *
      * @param  UUID $uuid
      * @return bool
