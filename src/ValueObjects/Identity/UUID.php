@@ -14,7 +14,7 @@ class UUID extends String
     protected $value;
 
     /**
-     * @param string $uuid
+     * @param  string                                                 $uuid
      * @return UUID
      * @throws \ValueObjects\Exception\InvalidNativeArgumentException
      */
@@ -30,10 +30,10 @@ class UUID extends String
     {
         $uuid_str = BaseUuid::uuid4();
 
-        if(null != $value) {
+        if (null != $value) {
             $pattern = '/'.BaseUuid::VALID_PATTERN.'/';
 
-            if(false == \preg_match($pattern, $value)) {
+            if (false == \preg_match($pattern, $value)) {
                 throw new InvalidNativeArgumentException($value, array('UUID string'));
             }
 
