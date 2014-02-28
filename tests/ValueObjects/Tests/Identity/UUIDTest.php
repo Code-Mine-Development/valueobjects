@@ -7,7 +7,6 @@ use ValueObjects\Tests\TestCase;
 
 class UUIDTest extends TestCase
 {
-
     public function testFromNative()
     {
         $uuid1 = new UUID();
@@ -30,9 +29,9 @@ class UUIDTest extends TestCase
         $this->assertFalse($uuid1->equals($mock));
     }
 
-    public function testValueFormat()
+    /** @expectedException ValueObjects\Exception\InvalidNativeArgumentException */
+    public function testInvalid()
     {
-        $uuid = new UUID();
-        $this->assertRegExp('/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/', $uuid->getValue());
+        new UUID('invalid');
     }
 }

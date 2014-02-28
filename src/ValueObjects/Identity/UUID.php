@@ -20,26 +20,27 @@ class UUID extends String
      */
     public static function fromNative()
     {
-        $uuid = func_get_arg(0);
+        $uuid_str = \func_get_arg(0);
+        $uuid     = new static($uuid_str);
 
-        try {
-
-            $uuid = BaseUuid::fromString($uuid);
-
-            $self = new static();
-
-            $self->value = \strval($uuid);
-
-            return $self;
-
-        } catch (\InvalidArgumentException $ex) {
-            throw new InvalidNativeArgumentException($uuid, array('UUID'));
-        }
+        return $uuid;
     }
 
-    public function __construct()
+    public function __construct($value = null)
     {
-        $this->value = \strval(BaseUuid::uuid4());
+        $uuid_str = BaseUuid::uuid4();
+
+        if(null != $value) {
+            $pattern = '/'.BaseUuid::VALID_PATTERN.'/';
+
+            if(false == \preg_match($pattern, $value)) {
+                throw new InvalidNativeArgumentException($value, array('UUID string'));
+            }
+
+            $uuid_str = $value;
+        }
+
+        $this->value = \strval($uuid_str);
     }
 
     /**
