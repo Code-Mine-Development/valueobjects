@@ -56,7 +56,7 @@ class Money implements ValueObjectInterface
      */
     public function sameValueAs(ValueObjectInterface $money)
     {
-        if (false === Util::classsameValueAs($this, $money)) {
+        if (false === Util::classEquals($this, $money)) {
             return false;
         }
 

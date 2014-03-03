@@ -72,7 +72,7 @@ class Coordinate implements ValueObjectInterface
      */
     public function sameValueAs(ValueObjectInterface $coordinate)
     {
-        if (false === Util::classsameValueAs($this, $coordinate)) {
+        if (false === Util::classEquals($this, $coordinate)) {
             return false;
         }
 

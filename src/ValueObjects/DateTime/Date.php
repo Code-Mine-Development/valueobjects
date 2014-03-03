@@ -93,7 +93,7 @@ class Date implements ValueObjectInterface
      */
     public function sameValueAs(ValueObjectInterface $date)
     {
-        if (false === Util::classsameValueAs($this, $date)) {
+        if (false === Util::classEquals($this, $date)) {
             return false;
         }
 

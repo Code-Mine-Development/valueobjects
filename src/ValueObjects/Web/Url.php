@@ -91,7 +91,7 @@ class Url implements ValueObjectInterface
      */
     public function sameValueAs(ValueObjectInterface $url)
     {
-        if (false === Util::classsameValueAs($this, $url)) {
+        if (false === Util::classEquals($this, $url)) {
             return false;
         }
 

@@ -68,7 +68,7 @@ class Complex implements ValueObjectInterface, NumberInterface
 
     public function sameValueAs(ValueObjectInterface $complex)
     {
-        if (false === Util::classsameValueAs($this, $complex)) {
+        if (false === Util::classEquals($this, $complex)) {
             return false;
         }
 

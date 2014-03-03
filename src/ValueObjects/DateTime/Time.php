@@ -96,7 +96,7 @@ class Time implements ValueObjectInterface
      */
     public function sameValueAs(ValueObjectInterface $time)
     {
-        if (false === Util::classsameValueAs($this, $time)) {
+        if (false === Util::classEquals($this, $time)) {
             return false;
         }
 

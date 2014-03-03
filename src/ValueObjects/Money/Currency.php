@@ -41,7 +41,7 @@ class Currency implements ValueObjectInterface
      */
     public function sameValueAs(ValueObjectInterface $currency)
     {
-        if (false === Util::classsameValueAs($this, $currency)) {
+        if (false === Util::classEquals($this, $currency)) {
             return false;
         }
 

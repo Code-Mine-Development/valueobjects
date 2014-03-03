@@ -2,7 +2,6 @@
 
 namespace ValueObjects\Tests\Web;
 
-use ValueObjects\Null\Null;
 use ValueObjects\String\String;
 use ValueObjects\Tests\TestCase;
 use ValueObjects\Web\FragmentIdentifier;

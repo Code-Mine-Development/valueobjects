@@ -43,7 +43,7 @@ class Country implements ValueObjectInterface
      */
     public function sameValueAs(ValueObjectInterface $country)
     {
-        if (false === Util::classsameValueAs($this, $country)) {
+        if (false === Util::classEquals($this, $country)) {
             return false;
         }
 

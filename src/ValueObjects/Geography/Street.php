@@ -58,7 +58,7 @@ class Street implements ValueObjectInterface
      */
     public function sameValueAs(ValueObjectInterface $street)
     {
-        if (false === Util::classsameValueAs($this, $street)) {
+        if (false === Util::classEquals($this, $street)) {
             return false;
         }
 

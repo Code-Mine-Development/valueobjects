@@ -6,7 +6,7 @@ use ValueObjects\Person\Name;
 use ValueObjects\Tests\TestCase;
 use ValueObjects\String\String;
 
-class PersonTest extends TestCase
+class NameTest extends TestCase
 {
     private $name;
 

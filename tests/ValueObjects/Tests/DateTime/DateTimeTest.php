@@ -10,7 +10,6 @@ use ValueObjects\DateTime\MonthDay;
 use ValueObjects\DateTime\Second;
 use ValueObjects\DateTime\Time;
 use ValueObjects\DateTime\Year;
-use ValueObjects\Number\Integer;
 use ValueObjects\Tests\TestCase;
 use ValueObjects\DateTime\DateTime;
 

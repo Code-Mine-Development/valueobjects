@@ -51,7 +51,7 @@ class UUID extends String
      */
     public function sameValueAs(ValueObjectInterface $uuid)
     {
-        if (false === Util::classsameValueAs($this, $uuid)) {
+        if (false === Util::classEquals($this, $uuid)) {
             return false;
         }
 

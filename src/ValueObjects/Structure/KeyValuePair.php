@@ -58,7 +58,7 @@ class KeyValuePair implements ValueObjectInterface
      */
     public function sameValueAs(ValueObjectInterface $keyValuePair)
     {
-        if (false === Util::classsameValueAs($this, $keyValuePair)) {
+        if (false === Util::classEquals($this, $keyValuePair)) {
             return false;
         }
 

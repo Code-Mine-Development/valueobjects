@@ -3,8 +3,6 @@
 namespace ValueObjects\Tests\Number;
 
 use ValueObjects\Number\Natural;
-use ValueObjects\Number\Integer;
-use ValueObjects\Number\Real;
 use ValueObjects\Tests\TestCase;
 
 class NaturalTest extends TestCase

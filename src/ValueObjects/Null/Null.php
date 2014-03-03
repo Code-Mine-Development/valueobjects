@@ -32,7 +32,7 @@ class Null implements ValueObjectInterface
      */
     public function sameValueAs(ValueObjectInterface $null)
     {
-        return Util::classsameValueAs($this, $null);
+        return Util::classEquals($this, $null);
     }
 
     /**

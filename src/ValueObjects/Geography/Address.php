@@ -107,7 +107,7 @@ class Address implements ValueObjectInterface
      */
     public function sameValueAs(ValueObjectInterface $address)
     {
-        if (false === Util::classsameValueAs($this, $address)) {
+        if (false === Util::classEquals($this, $address)) {
             return false;
         }
 

@@ -112,7 +112,7 @@ class Name implements ValueObjectInterface
      */
     public function sameValueAs(ValueObjectInterface $name)
     {
-        if (false === Util::classsameValueAs($this, $name)) {
+        if (false === Util::classEquals($this, $name)) {
             return false;
         }
 

@@ -55,7 +55,7 @@ class String implements ValueObjectInterface
      */
     public function sameValueAs(ValueObjectInterface $string)
     {
-        if (false === Util::classsameValueAs($this, $string)) {
+        if (false === Util::classEquals($this, $string)) {
             return false;
         }
 

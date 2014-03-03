@@ -85,7 +85,7 @@ class DateTime implements ValueObjectInterface
      */
     public function sameValueAs(ValueObjectInterface $date_time)
     {
-        if (false === Util::classsameValueAs($this, $date_time)) {
+        if (false === Util::classEquals($this, $date_time)) {
             return false;
         }
 

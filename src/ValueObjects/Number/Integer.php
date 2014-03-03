@@ -32,7 +32,7 @@ class Integer extends Real
      */
     public function sameValueAs(ValueObjectInterface $integer)
     {
-        if (false === Util::classsameValueAs($this, $integer)) {
+        if (false === Util::classEquals($this, $integer)) {
             return false;
         }
 

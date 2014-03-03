@@ -5,7 +5,7 @@ namespace ValueObjects\Tests\DateTime;
 use ValueObjects\Tests\TestCase;
 use ValueObjects\DateTime\WeekDay;
 
-class WeekdayTest extends TestCase
+class WeekDayTest extends TestCase
 {
     public function testNow()
     {
