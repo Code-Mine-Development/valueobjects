@@ -20,6 +20,16 @@ abstract class Enum extends BaseEnum implements ValueObjectInterface
     }
 
     /**
+     * Returns the PHP native value of the enum
+     *
+     * @return mixed
+     */
+    public function toNative()
+    {
+        return parent::getValue();
+    }
+
+    /**
      * Tells whether two Enum objects are equals by comparing their values
      *
      * @param  Enum $enum
@@ -31,7 +41,7 @@ abstract class Enum extends BaseEnum implements ValueObjectInterface
             return false;
         }
 
-        return $this->getValue() === $enum->getValue();
+        return $this->toNative() === $enum->toNative();
     }
 
     /**
@@ -41,6 +51,6 @@ abstract class Enum extends BaseEnum implements ValueObjectInterface
      */
     public function __toString()
     {
-        return \strval($this->getValue());
+        return \strval($this->toNative());
     }
 }

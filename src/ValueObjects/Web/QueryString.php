@@ -29,7 +29,7 @@ class QueryString extends String
      */
     public function toDictionary()
     {
-        $value = \ltrim($this->getValue(), '?');
+        $value = \ltrim($this->toNative(), '?');
         \parse_str($value, $data);
 
         return Dictionary::fromNative($data);

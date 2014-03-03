@@ -15,10 +15,10 @@ class StringTest extends TestCase
         $this->assertTrue($string->equals($constructedString));
     }
 
-    public function testGetValue()
+    public function testToNative()
     {
         $string = new String('foo');
-        $this->assertEquals('foo', $string->getValue());
+        $this->assertEquals('foo', $string->toNative());
     }
 
     public function testEquals()

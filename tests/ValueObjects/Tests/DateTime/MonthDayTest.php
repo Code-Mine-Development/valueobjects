@@ -18,7 +18,7 @@ class MonthDayTest extends TestCase
     public function testNow()
     {
         $monthDay = MonthDay::now();
-        $this->assertEquals(date('j'), $monthDay->getValue());
+        $this->assertEquals(date('j'), $monthDay->toNative());
     }
 
     /** @expectedException ValueObjects\Exception\InvalidNativeArgumentException */

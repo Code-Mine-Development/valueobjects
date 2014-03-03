@@ -30,7 +30,7 @@ class Currency implements ValueObjectInterface
     public function __construct(CurrencyCode $code)
     {
         $this->code     = $code;
-        $this->currency = new BaseCurrency($code->getValue());
+        $this->currency = new BaseCurrency($code->toNative());
     }
 
     /**
@@ -45,7 +45,7 @@ class Currency implements ValueObjectInterface
             return false;
         }
 
-        return $this->getCode()->getValue() == $currency->getCode()->getValue();
+        return $this->getCode()->toNative() == $currency->getCode()->toNative();
     }
 
     /**
@@ -65,6 +65,6 @@ class Currency implements ValueObjectInterface
      */
     public function __toString()
     {
-        return $this->getCode()->getValue();
+        return $this->getCode()->toNative();
     }
 }

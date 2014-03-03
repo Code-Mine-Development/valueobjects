@@ -103,7 +103,7 @@ class CoordinateTest extends TestCase
         );
 
         $distance = $this->coordinate->distanceFrom($newYork);
-        $this->assertSame(7609068.4225575, $distance->getValue());
+        $this->assertSame(7609068.4225575, $distance->toNative());
     }
 
     public function testToString()

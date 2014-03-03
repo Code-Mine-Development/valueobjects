@@ -18,7 +18,7 @@ class HourTest extends TestCase
     public function testNow()
     {
         $hour = Hour::now();
-        $this->assertEquals(date('G'), $hour->getValue());
+        $this->assertEquals(date('G'), $hour->toNative());
     }
 
     /** @expectedException ValueObjects\Exception\InvalidNativeArgumentException */

@@ -30,7 +30,7 @@ class EmailAddress extends String
      */
     public function getLocalPart()
     {
-        $parts = explode('@', $this->getValue());
+        $parts = explode('@', $this->toNative());
         $localPart = new String($parts[0]);
 
         return $localPart;
@@ -43,7 +43,7 @@ class EmailAddress extends String
      */
     public function getDomainPart()
     {
-        $parts = \explode('@', $this->getValue());
+        $parts = \explode('@', $this->toNative());
         $domain = \trim($parts[1], '[]');
 
         return Domain::specifyType($domain);

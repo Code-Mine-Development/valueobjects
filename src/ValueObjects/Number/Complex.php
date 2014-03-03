@@ -45,8 +45,8 @@ class Complex implements ValueObjectInterface, NumberInterface
      */
     public static function fromPolar(Real $modulus, Real $argument)
     {
-        $realValue = $modulus->getValue() * \cos($argument->getValue());
-        $imValue   = $modulus->getValue() * \sin($argument->getValue());
+        $realValue = $modulus->toNative() * \cos($argument->toNative());
+        $imValue   = $modulus->toNative() * \sin($argument->toNative());
         $real      = new Real($realValue);
         $im        = new Real($imValue);
         $complex   = new self($real, $im);
@@ -81,11 +81,11 @@ class Complex implements ValueObjectInterface, NumberInterface
      *
      * @return array
      */
-    public function getValue()
+    public function toNative()
     {
         return array(
-            $this->getReal()->getValue(),
-            $this->getIm()->getValue()
+            $this->getReal()->toNative(),
+            $this->getIm()->toNative()
         );
     }
 
@@ -116,8 +116,8 @@ class Complex implements ValueObjectInterface, NumberInterface
      */
     public function getModulus()
     {
-        $real = $this->getReal()->getValue();
-        $im   = $this->getIm()->getValue();
+        $real = $this->getReal()->toNative();
+        $im   = $this->getIm()->toNative();
         $mod  = \sqrt(\pow($real, 2) + \pow($im, 2));
 
         return new Real($mod);
@@ -130,8 +130,8 @@ class Complex implements ValueObjectInterface, NumberInterface
      */
     public function getArgument()
     {
-        $real = $this->getReal()->getValue();
-        $im   = $this->getIm()->getValue();
+        $real = $this->getReal()->toNative();
+        $im   = $this->getIm()->toNative();
         $arg  = \atan2($im, $real);
 
         return new Real($arg);
@@ -145,8 +145,8 @@ class Complex implements ValueObjectInterface, NumberInterface
     public function __toString()
     {
         $format = '%g %+gi';
-        $real   = $this->getReal()->getValue();
-        $im     = $this->getIm()->getValue();
+        $real   = $this->getReal()->toNative();
+        $im     = $this->getIm()->toNative();
         $string = \sprintf($format, $real, $im);
 
         return \preg_replace('/(\+|-)/', '$1 ', $string);

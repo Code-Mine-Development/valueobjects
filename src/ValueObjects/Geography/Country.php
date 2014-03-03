@@ -80,6 +80,6 @@ class Country implements ValueObjectInterface
      */
     public function __toString()
     {
-        return $this->getName()->getValue();
+        return $this->getName()->toNative();
     }
 }

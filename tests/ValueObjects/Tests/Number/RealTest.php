@@ -17,10 +17,10 @@ class RealTest extends TestCase
         $this->assertTrue($fromNativeReal->equals($constructedReal));
     }
 
-    public function testGetValue()
+    public function testToNative()
     {
         $real = new Real(3.4);
-        $this->assertEquals(3.4, $real->getValue());
+        $this->assertEquals(3.4, $real->toNative());
     }
 
     public function testEquals()

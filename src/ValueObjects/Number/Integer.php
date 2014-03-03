@@ -36,7 +36,7 @@ class Integer extends Real
             return false;
         }
 
-        return $this->getValue() === $integer->getValue();
+        return $this->toNative() === $integer->toNative();
     }
 
     /**
@@ -44,9 +44,9 @@ class Integer extends Real
      *
      * @return int
      */
-    public function getValue()
+    public function toNative()
     {
-        $value = parent::getValue();
+        $value = parent::toNative();
 
         return \intval($value);
     }
@@ -58,7 +58,7 @@ class Integer extends Real
      */
     public function toReal()
     {
-        $value = $this->getValue();
+        $value = $this->toNative();
         $real  = new Real($value);
 
         return $real;

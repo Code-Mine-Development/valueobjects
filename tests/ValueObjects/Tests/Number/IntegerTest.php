@@ -4,15 +4,14 @@ namespace ValueObjects\Tests\Number;
 
 use ValueObjects\Tests\TestCase;
 use ValueObjects\Number\Integer;
-use ValueObjects\Number\Natural;
 use ValueObjects\Number\Real;
 
 class IntegerTest extends TestCase
 {
-    public function testGetValue()
+    public function testToNative()
     {
         $integer = new Integer(5);
-        $this->assertSame(5, $integer->getValue());
+        $this->assertSame(5, $integer->toNative());
     }
 
     public function testEquals()

@@ -27,7 +27,7 @@ class EmailAddressTest extends TestCase
         $email = new EmailAddress('foo@bar.baz');
         $localPart = $email->getLocalPart();
 
-        $this->assertEquals('foo', $localPart->getValue());
+        $this->assertEquals('foo', $localPart->toNative());
     }
 
     public function testGetDomainPart()
@@ -35,7 +35,7 @@ class EmailAddressTest extends TestCase
         $email = new EmailAddress('foo@bar.com');
         $domainPart = $email->getDomainPart();
 
-        $this->assertEquals('bar.com', $domainPart->getValue());
+        $this->assertEquals('bar.com', $domainPart->toNative());
         $this->assertInstanceOf('ValueObjects\Web\Domain', $domainPart);
     }
 }

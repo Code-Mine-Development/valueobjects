@@ -18,7 +18,7 @@ class SecondTest extends TestCase
     public function testNow()
     {
         $second = Second::now();
-        $this->assertEquals(\intval(date('s')), $second->getValue());
+        $this->assertEquals(\intval(date('s')), $second->toNative());
     }
 
     /** @expectedException ValueObjects\Exception\InvalidNativeArgumentException */

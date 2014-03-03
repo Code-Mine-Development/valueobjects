@@ -55,6 +55,6 @@ class UUID extends String
             return false;
         }
 
-        return $this->getValue() === $uuid->getValue();
+        return $this->toNative() === $uuid->toNative();
     }
 }

@@ -29,7 +29,7 @@ class IPAddress extends Domain
      */
     public function getVersion()
     {
-        $isIPv4 = filter_var($this->getValue(), FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
+        $isIPv4 = filter_var($this->toNative(), FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
 
         if (false !== $isIPv4) {
             return IPAddressVersion::IPV4();

@@ -43,8 +43,8 @@ class Money implements ValueObjectInterface
      */
     public function __construct(Integer $amount, Currency $currency)
     {
-        $baseCurrency   = new BaseCurrency($currency->getCode()->getValue());
-        $this->money    = new BaseMoney($amount->getValue(), $baseCurrency);
+        $baseCurrency   = new BaseCurrency($currency->getCode()->toNative());
+        $this->money    = new BaseMoney($amount->toNative(), $baseCurrency);
         $this->currency = $currency;
     }
 
@@ -94,7 +94,7 @@ class Money implements ValueObjectInterface
      */
     public function add(Integer $quantity)
     {
-        $amount = new Integer($this->getAmount()->getValue() + $quantity->getValue());
+        $amount = new Integer($this->getAmount()->toNative() + $quantity->toNative());
         $result = new self($amount, $this->getCurrency());
 
         return $result;
@@ -114,8 +114,8 @@ class Money implements ValueObjectInterface
             $rounding_mode = RoundingMode::HALF_UP();
         }
 
-        $amount        = $this->getAmount()->getValue() * $multiplier->getValue();
-        $roundedAmount = new Integer(round($amount, 0, $rounding_mode->getValue()));
+        $amount        = $this->getAmount()->toNative() * $multiplier->toNative();
+        $roundedAmount = new Integer(round($amount, 0, $rounding_mode->toNative()));
         $result        = new self($roundedAmount, $this->getCurrency());
 
         return $result;
@@ -128,6 +128,6 @@ class Money implements ValueObjectInterface
      */
     public function __toString()
     {
-        return \sprintf('%s %d', $this->getCurrency()->getCode(), $this->getAmount()->getValue());
+        return \sprintf('%s %d', $this->getCurrency()->getCode(), $this->getAmount()->toNative());
     }
 }

@@ -10,7 +10,7 @@ class MonthTest extends TestCase
     public function testNow()
     {
         $month = Month::now();
-        $this->assertEquals(date('F'), $month->getValue());
+        $this->assertEquals(date('F'), $month->toNative());
     }
 
     public function testFromNativeDateTime()
@@ -20,7 +20,7 @@ class MonthTest extends TestCase
 
         $month = Month::fromNativeDateTime($nativeDateTime);
 
-        $this->assertEquals('December', $month->getValue());
+        $this->assertEquals('December', $month->toNative());
     }
 
     public function testGetNumericValue()

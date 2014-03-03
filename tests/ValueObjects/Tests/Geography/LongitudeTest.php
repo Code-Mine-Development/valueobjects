@@ -15,7 +15,7 @@ class LongitudeTest extends TestCase
     public function testNormalization()
     {
         $longitude = new Longitude(181);
-        $this->assertEquals(-179, $longitude->getValue());
+        $this->assertEquals(-179, $longitude->toNative());
     }
 
     /** @expectedException ValueObjects\Exception\InvalidNativeArgumentException */

@@ -261,7 +261,7 @@ class CountryCodeName
      */
     public static function getName(CountryCode $code)
     {
-        $codeValue = $code->getValue();
+        $codeValue = $code->toNative();
         $name      = self::$names[$codeValue];
 
         return new String($name);

@@ -59,7 +59,7 @@ class Dictionary extends Collection
      */
     public function keys()
     {
-        $count     = $this->count()->getValue();
+        $count     = $this->count()->toNative();
         $keysArray = new \SplFixedArray($count);
 
         foreach ($this->items as $key => $item) {
@@ -76,7 +76,7 @@ class Dictionary extends Collection
      */
     public function values()
     {
-        $count       = $this->count()->getValue();
+        $count       = $this->count()->toNative();
         $valuesArray = new \SplFixedArray($count);
 
         foreach ($this->items as $key => $item) {

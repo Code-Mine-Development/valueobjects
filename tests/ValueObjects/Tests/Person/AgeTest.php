@@ -7,10 +7,10 @@ use ValueObjects\Tests\TestCase;
 
 class AgeTest extends TestCase
 {
-    public function testGetValue()
+    public function testToNative()
     {
         $age = new Age(25);
-        $this->assertEquals(25, $age->getValue());
+        $this->assertEquals(25, $age->toNative());
     }
 
     public function testEquals()

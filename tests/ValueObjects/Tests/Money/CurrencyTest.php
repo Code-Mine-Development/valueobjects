@@ -35,7 +35,7 @@ class CurrencyTest extends TestCase
         $cad = new Currency(CurrencyCode::CAD());
 
         $this->assertInstanceOf('\ValueObjects\Money\CurrencyCode', $cad->getCode());
-        $this->assertSame('CAD', $cad->getCode()->getValue());
+        $this->assertSame('CAD', $cad->getCode()->toNative());
     }
 
     public function testToString()

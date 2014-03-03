@@ -7,10 +7,10 @@ use ValueObjects\Tests\TestCase;
 
 class GenderTest extends TestCase
 {
-    public function testGetValue()
+    public function testToNative()
     {
         $gender = Gender::FEMALE();
-        $this->assertEquals(Gender::FEMALE, $gender->getValue());
+        $this->assertEquals(Gender::FEMALE, $gender->toNative());
     }
 
     public function testEquals()

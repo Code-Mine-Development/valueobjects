@@ -43,7 +43,7 @@ class MoneyTest extends TestCase
         $amount = $money->getAmount();
 
         $this->assertInstanceOf('\ValueObjects\Number\Integer', $amount);
-        $this->assertSame(1200, $amount->getValue());
+        $this->assertSame(1200, $amount->toNative());
     }
 
     public function testGetCurrency()
@@ -53,7 +53,7 @@ class MoneyTest extends TestCase
         $currency = $money->getCurrency();
 
         $this->assertInstanceOf('\ValueObjects\Money\Currency', $currency);
-        $this->assertSame('EUR', $currency->getCode()->getValue());
+        $this->assertSame('EUR', $currency->getCode()->toNative());
     }
 
     public function testAdd()
@@ -64,7 +64,7 @@ class MoneyTest extends TestCase
 
         $addedMoney = $money->add($addendum);
 
-        $this->assertEquals(1356, $addedMoney->getAmount()->getValue());
+        $this->assertEquals(1356, $addedMoney->getAmount()->toNative());
     }
 
     public function testAddNegative()
@@ -75,7 +75,7 @@ class MoneyTest extends TestCase
 
         $addedMoney = $money->add($addendum);
 
-        $this->assertEquals(1080, $addedMoney->getAmount()->getValue());
+        $this->assertEquals(1080, $addedMoney->getAmount()->toNative());
     }
 
     public function testMultiply()
@@ -86,7 +86,7 @@ class MoneyTest extends TestCase
 
         $addedMoney = $money->multiply($multiplier);
 
-        $this->assertEquals(1440, $addedMoney->getAmount()->getValue());
+        $this->assertEquals(1440, $addedMoney->getAmount()->toNative());
     }
 
     public function testMultiplyInverse()
@@ -97,7 +97,7 @@ class MoneyTest extends TestCase
 
         $addedMoney = $money->multiply($multiplier);
 
-        $this->assertEquals(360, $addedMoney->getAmount()->getValue());
+        $this->assertEquals(360, $addedMoney->getAmount()->toNative());
     }
 
     public function testToString()

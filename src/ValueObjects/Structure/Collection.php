@@ -120,7 +120,7 @@ class Collection implements ValueObjectInterface
      */
     public function __toString()
     {
-        $string = \sprintf('%s(%d)', \get_class($this), $this->count()->getValue());
+        $string = \sprintf('%s(%d)', \get_class($this), $this->count()->toNative());
 
         return $string;
     }

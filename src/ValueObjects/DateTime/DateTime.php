@@ -119,12 +119,12 @@ class DateTime implements ValueObjectInterface
      */
     public function toNativeDateTime()
     {
-        $year   = $this->getDate()->getYear()->getValue();
+        $year   = $this->getDate()->getYear()->toNative();
         $month  = $this->getDate()->getMonth()->getNumericValue();
-        $day    = $this->getDate()->getDay()->getValue();
-        $hour   = $this->getTime()->getHour()->getValue();
-        $minute = $this->getTime()->getMinute()->getValue();
-        $second = $this->getTime()->getSecond()->getValue();
+        $day    = $this->getDate()->getDay()->toNative();
+        $hour   = $this->getTime()->getHour()->toNative();
+        $minute = $this->getTime()->getMinute()->toNative();
+        $second = $this->getTime()->getSecond()->toNative();
 
         $dateTime = new \DateTime();
         $dateTime->setDate($year, $month, $day);

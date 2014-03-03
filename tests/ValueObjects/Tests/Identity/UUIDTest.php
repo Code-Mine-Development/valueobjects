@@ -10,7 +10,7 @@ class UUIDTest extends TestCase
     public function testFromNative()
     {
         $uuid1 = new UUID();
-        $uuid2 = UUID::fromNative($uuid1->getValue());
+        $uuid2 = UUID::fromNative($uuid1->toNative());
 
         $this->assertTrue($uuid1->equals($uuid2));
     }

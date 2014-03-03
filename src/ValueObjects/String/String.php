@@ -42,7 +42,7 @@ class String implements ValueObjectInterface
      *
      * @return string
      */
-    public function getValue()
+    public function toNative()
     {
         return $this->value;
     }
@@ -59,7 +59,7 @@ class String implements ValueObjectInterface
             return false;
         }
 
-        return $this->getValue() === $string->getValue();
+        return $this->toNative() === $string->toNative();
     }
 
     /**
@@ -69,7 +69,7 @@ class String implements ValueObjectInterface
      */
     public function isEmpty()
     {
-        return \strlen($this->getValue()) == 0;
+        return \strlen($this->toNative()) == 0;
     }
 
     /**
@@ -79,6 +79,6 @@ class String implements ValueObjectInterface
      */
     public function __toString()
     {
-        return $this->getValue();
+        return $this->toNative();
     }
 }

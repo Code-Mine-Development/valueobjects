@@ -141,9 +141,9 @@ class Time implements ValueObjectInterface
      */
     public function toNativeDateTime()
     {
-        $hour   = $this->getHour()->getValue();
-        $minute = $this->getMinute()->getValue();
-        $second = $this->getSecond()->getValue();
+        $hour   = $this->getHour()->toNative();
+        $minute = $this->getMinute()->toNative();
+        $second = $this->getSecond()->toNative();
 
         $time = new \DateTime('now');
         $time->setTime($hour, $minute, $second);

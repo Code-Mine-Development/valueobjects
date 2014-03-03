@@ -11,7 +11,7 @@ class PathTest extends TestCase
     {
         $pathString = '/path/to/resource.ext';
         $path = new Path($pathString);
-        $this->assertEquals($pathString, $path->getValue());
+        $this->assertEquals($pathString, $path->toNative());
     }
 
     /** @expectedException ValueObjects\Exception\InvalidNativeArgumentException */

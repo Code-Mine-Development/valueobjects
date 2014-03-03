@@ -73,11 +73,11 @@ class Date implements ValueObjectInterface
      */
     public function __construct(Year $year, Month $month, MonthDay $day)
     {
-        \DateTime::createFromFormat('Y-F-j', \sprintf('%d-%s-%d', $year->getValue(), $month, $day->getValue()));
+        \DateTime::createFromFormat('Y-F-j', \sprintf('%d-%s-%d', $year->toNative(), $month, $day->toNative()));
         $nativeDateErrors = \DateTime::getLastErrors();
 
         if ($nativeDateErrors['warning_count'] > 0 || $nativeDateErrors['error_count'] > 0) {
-            throw new InvalidDateException($year->getValue(), $month->getValue(), $day->getValue());
+            throw new InvalidDateException($year->toNative(), $month->toNative(), $day->toNative());
         }
 
         $this->year  = $year;
@@ -137,9 +137,9 @@ class Date implements ValueObjectInterface
      */
     public function toNativeDateTime()
     {
-        $year  = $this->getYear()->getValue();
+        $year  = $this->getYear()->toNative();
         $month = $this->getMonth()->getNumericValue();
-        $day   = $this->getDay()->getValue();
+        $day   = $this->getDay()->toNative();
 
         $date = new \DateTime();
         $date->setDate($year, $month, $day);

@@ -179,10 +179,10 @@ class Coordinate implements ValueObjectInterface
         $distance
             ->setFrom($baseThis)
             ->setTo($baseCoordinate)
-            ->in($unit->getValue())
+            ->in($unit->toNative())
         ;
 
-        $value = \call_user_func(array($distance, $formula->getValue()));
+        $value = \call_user_func(array($distance, $formula->toNative()));
 
         return new Real($value);
     }
@@ -194,7 +194,7 @@ class Coordinate implements ValueObjectInterface
      */
     public function __toString()
     {
-        return \sprintf('%F,%F', $this->getLatitude()->getValue(), $this->getLongitude()->getValue());
+        return \sprintf('%F,%F', $this->getLatitude()->toNative(), $this->getLongitude()->toNative());
     }
 
     /**
@@ -205,9 +205,9 @@ class Coordinate implements ValueObjectInterface
      */
     protected static function getBaseCoordinate(self $coordinate)
     {
-        $latitude   = $coordinate->getLatitude()->getValue();
-        $longitude  = $coordinate->getLongitude()->getValue();
-        $ellipsoid  = BaseEllipsoid::createFromName($coordinate->getEllipsoid()->getValue());
+        $latitude   = $coordinate->getLatitude()->toNative();
+        $longitude  = $coordinate->getLongitude()->toNative();
+        $ellipsoid  = BaseEllipsoid::createFromName($coordinate->getEllipsoid()->toNative());
         $coordinate = new BaseCoordinate(array($latitude, $longitude), $ellipsoid);
 
         return $coordinate;

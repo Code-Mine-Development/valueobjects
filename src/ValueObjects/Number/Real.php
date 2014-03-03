@@ -44,7 +44,7 @@ class Real implements ValueObjectInterface, NumberInterface
      *
      * @return float
      */
-    public function getValue()
+    public function toNative()
     {
         return $this->value;
     }
@@ -61,7 +61,7 @@ class Real implements ValueObjectInterface, NumberInterface
             return false;
         }
 
-        return $this->getValue() === $real->getValue();
+        return $this->toNative() === $real->toNative();
     }
 
     /**
@@ -76,8 +76,8 @@ class Real implements ValueObjectInterface, NumberInterface
             $rounding_mode = RoundingMode::HALF_UP();
         }
 
-        $value        = $this->getValue();
-        $integerValue = \round($value, 0, $rounding_mode->getValue());
+        $value        = $this->toNative();
+        $integerValue = \round($value, 0, $rounding_mode->toNative());
         $integer      = new Integer($integerValue);
 
         return $integer;
@@ -91,7 +91,7 @@ class Real implements ValueObjectInterface, NumberInterface
      */
     public function toNatural(RoundingMode $rounding_mode = null)
     {
-        $integerValue = $this->toInteger($rounding_mode)->getValue();
+        $integerValue = $this->toInteger($rounding_mode)->toNative();
         $naturalValue = \abs($integerValue);
         $natural      = new Natural($naturalValue);
 
@@ -105,6 +105,6 @@ class Real implements ValueObjectInterface, NumberInterface
      */
     public function __toString()
     {
-        return \strval($this->getValue());
+        return \strval($this->toNative());
     }
 }

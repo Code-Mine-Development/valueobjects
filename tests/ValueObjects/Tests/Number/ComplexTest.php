@@ -36,9 +36,9 @@ class ComplexTest extends TestCase
         $this->assertTrue($nativeArgument->equals($fromPolar->getArgument()));
     }
 
-    public function testGetValue()
+    public function testToNative()
     {
-        $this->assertEquals(array(2.05, 3.2), $this->complex->getValue());
+        $this->assertEquals(array(2.05, 3.2), $this->complex->toNative());
     }
 
     public function testGetReal()

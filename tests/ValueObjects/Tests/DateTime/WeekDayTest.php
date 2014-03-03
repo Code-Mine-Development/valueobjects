@@ -10,7 +10,7 @@ class WeekdayTest extends TestCase
     public function testNow()
     {
         $weekDay = WeekDay::now();
-        $this->assertEquals(date('l'), $weekDay->getValue());
+        $this->assertEquals(date('l'), $weekDay->toNative());
     }
 
     public function testFromNativeDateTime()
@@ -20,7 +20,7 @@ class WeekdayTest extends TestCase
 
         $weekDay = WeekDay::fromNativeDateTime($nativeDateTime);
 
-        $this->assertEquals('Saturday', $weekDay->getValue());
+        $this->assertEquals('Saturday', $weekDay->toNative());
     }
 
     public function testGetNumericValue()

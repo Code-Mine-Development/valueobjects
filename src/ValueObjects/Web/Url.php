@@ -204,7 +204,7 @@ class Url implements ValueObjectInterface
 
         $port = '';
         if (false == NullPortNumber::create()->equals($this->getPort())) {
-            $port = \sprintf(':%d', $this->getPort()->getValue());
+            $port = \sprintf(':%d', $this->getPort()->toNative());
         }
 
         $urlString = \sprintf('%s://%s%s%s%s%s%s', $this->getScheme(), $userPass, $this->getDomain(), $port, $this->getPath(), $this->getQueryString(), $this->getFragmentIdentifier());

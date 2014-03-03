@@ -18,7 +18,7 @@ class MinuteTest extends TestCase
     public function testNow()
     {
         $minute = Minute::now();
-        $this->assertEquals(\intval(date('i')), $minute->getValue());
+        $this->assertEquals(\intval(date('i')), $minute->toNative());
     }
 
     /** @expectedException ValueObjects\Exception\InvalidNativeArgumentException */
