@@ -12,7 +12,7 @@ class HourTest extends TestCase
         $fromNativeHour  = Hour::fromNative(21);
         $constructedHour = new Hour(21);
 
-        $this->assertTrue($fromNativeHour->equals($constructedHour));
+        $this->assertTrue($fromNativeHour->sameValueAs($constructedHour));
     }
 
     public function testNow()

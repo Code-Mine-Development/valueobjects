@@ -15,7 +15,7 @@ class Util
      * @param  object $object_b
      * @return bool
      */
-    public static function classEquals($object_a, $object_b)
+    public static function classsameValueAs($object_a, $object_b)
     {
         return \get_class($object_a) === \get_class($object_b);
     }

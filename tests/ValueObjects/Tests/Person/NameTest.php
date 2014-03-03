@@ -19,7 +19,7 @@ class PersonTest extends TestCase
     {
         $fromNativeName  = Name::fromNative('foo', 'bar', 'baz');
 
-        $this->assertTrue($fromNativeName->equals($this->name));
+        $this->assertTrue($fromNativeName->sameValueAs($this->name));
     }
 
     public function testGetFirstName()
@@ -42,17 +42,17 @@ class PersonTest extends TestCase
         $this->assertEquals('foo bar baz', $this->name->getFullName());
     }
 
-    public function testEquals()
+    public function testSameValueAs()
     {
         $name2 = new Name(new String('foo'), new String('bar'), new String('baz'));
         $name3 = new Name(new String('foo'), new String(''), new String('baz'));
 
-        $this->assertTrue($this->name->equals($name2));
-        $this->assertTrue($name2->equals($this->name));
-        $this->assertFalse($this->name->equals($name3));
+        $this->assertTrue($this->name->sameValueAs($name2));
+        $this->assertTrue($name2->sameValueAs($this->name));
+        $this->assertFalse($this->name->sameValueAs($name3));
 
         $mock = $this->getMock('ValueObjects\ValueObjectInterface');
-        $this->assertFalse($this->name->equals($mock));
+        $this->assertFalse($this->name->sameValueAs($mock));
     }
 
     public function testToString()

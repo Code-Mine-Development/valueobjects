@@ -30,9 +30,9 @@ class Integer extends Real
      * @param  ValueObjectInterface $integer
      * @return bool
      */
-    public function equals(ValueObjectInterface $integer)
+    public function sameValueAs(ValueObjectInterface $integer)
     {
-        if (false === Util::classEquals($this, $integer)) {
+        if (false === Util::classsameValueAs($this, $integer)) {
             return false;
         }
 

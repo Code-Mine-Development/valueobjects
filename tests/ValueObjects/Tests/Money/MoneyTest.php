@@ -16,10 +16,10 @@ class MoneyTest extends TestCase
         $fromNativeMoney  = Money::fromNative(2100, 'EUR');
         $constructedMoney = new Money(new Integer(2100), new Currency(CurrencyCode::EUR()));
 
-        $this->assertTrue($fromNativeMoney->equals($constructedMoney));
+        $this->assertTrue($fromNativeMoney->sameValueAs($constructedMoney));
     }
 
-    public function testEquals()
+    public function testSameValueAs()
     {
         $eur = new Currency(CurrencyCode::EUR());
         $usd = new Currency(CurrencyCode::USD());
@@ -28,12 +28,12 @@ class MoneyTest extends TestCase
         $money2 = new Money(new Integer(1200), $eur);
         $money3 = new Money(new Integer(34607), $usd);
 
-        $this->assertTrue($money1->equals($money2));
-        $this->assertTrue($money2->equals($money1));
-        $this->assertFalse($money1->equals($money3));
+        $this->assertTrue($money1->sameValueAs($money2));
+        $this->assertTrue($money2->sameValueAs($money1));
+        $this->assertFalse($money1->sameValueAs($money3));
 
         $mock = $this->getMock('ValueObjects\ValueObjectInterface');
-        $this->assertFalse($money1->equals($mock));
+        $this->assertFalse($money1->sameValueAs($mock));
     }
 
     public function testGetAmount()

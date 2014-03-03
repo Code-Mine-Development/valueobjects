@@ -49,9 +49,9 @@ class UUID extends String
      * @param  UUID $uuid
      * @return bool
      */
-    public function equals(ValueObjectInterface $uuid)
+    public function sameValueAs(ValueObjectInterface $uuid)
     {
-        if (false === Util::classEquals($this, $uuid)) {
+        if (false === Util::classsameValueAs($this, $uuid)) {
             return false;
         }
 

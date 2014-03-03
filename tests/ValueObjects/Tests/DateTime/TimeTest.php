@@ -15,7 +15,7 @@ class TimeTest extends TestCase
         $fromNativeTime  = Time::fromNative(10, 4, 50);
         $constructedTime = new Time(new Hour(10), new Minute(4), new Second(50));
 
-        $this->assertTrue($fromNativeTime->equals($constructedTime));
+        $this->assertTrue($fromNativeTime->sameValueAs($constructedTime));
     }
 
     public function testFromNativeDateTime()
@@ -25,7 +25,7 @@ class TimeTest extends TestCase
         $timeFromNative = Time::fromNativeDateTime($nativeTime);
         $constructedTime = new Time(new Hour(20), new Minute(10), new Second(34));
 
-        $this->assertTrue($timeFromNative->equals($constructedTime));
+        $this->assertTrue($timeFromNative->sameValueAs($constructedTime));
     }
 
     public function testNow()
@@ -40,18 +40,18 @@ class TimeTest extends TestCase
         $this->assertEquals('0:00:00', \strval($time));
     }
 
-    public function testEquals()
+    public function testSameValueAs()
     {
         $time1 = new Time(new Hour(20), new Minute(10), new Second(34));
         $time2 = new Time(new Hour(20), new Minute(10), new Second(34));
         $time3 = new Time(new Hour(20), new Minute(1), new Second(10));
 
-        $this->assertTrue($time1->equals($time2));
-        $this->assertTrue($time2->equals($time1));
-        $this->assertFalse($time1->equals($time3));
+        $this->assertTrue($time1->sameValueAs($time2));
+        $this->assertTrue($time2->sameValueAs($time1));
+        $this->assertFalse($time1->sameValueAs($time3));
 
         $mock = $this->getMock('ValueObjects\ValueObjectInterface');
-        $this->assertFalse($time1->equals($mock));
+        $this->assertFalse($time1->sameValueAs($mock));
     }
 
     public function testGetHour()
@@ -59,7 +59,7 @@ class TimeTest extends TestCase
         $time = new Time(new Hour(20), new Minute(10), new Second(34));
         $hour = new Hour(20);
 
-        $this->assertTrue($hour->equals($time->getHour()));
+        $this->assertTrue($hour->sameValueAs($time->getHour()));
     }
 
     public function testGetMinute()
@@ -67,7 +67,7 @@ class TimeTest extends TestCase
         $time  = new Time(new Hour(20), new Minute(10), new Second(34));
         $minute = new Minute(10);
 
-        $this->assertTrue($minute->equals($time->getMinute()));
+        $this->assertTrue($minute->sameValueAs($time->getMinute()));
     }
 
     public function testGetSecond()
@@ -75,7 +75,7 @@ class TimeTest extends TestCase
         $time = new Time(new Hour(20), new Minute(10), new Second(34));
         $day  = new Second(34);
 
-        $this->assertTrue($day->equals($time->getSecond()));
+        $this->assertTrue($day->sameValueAs($time->getSecond()));
     }
 
     public function testToNativeDateTime()

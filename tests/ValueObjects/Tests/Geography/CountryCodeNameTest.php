@@ -15,6 +15,6 @@ class CountryCodeNameTest extends TestCase
         $name = CountryCodeName::getName($code);
         $expectedString = new String('Italy');
 
-        $this->assertTrue($name->equals($expectedString));
+        $this->assertTrue($name->sameValueAs($expectedString));
     }
 }

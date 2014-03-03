@@ -7,16 +7,16 @@ use ValueObjects\Enum\Enum;
 
 class EnumTest extends TestCase
 {
-    public function testEquals()
+    public function testSameValueAs()
     {
         $stub1 = $this->getMock('ValueObjects\Enum\Enum', array(), array(), '', false);
         $stub2 = $this->getMock('ValueObjects\Enum\Enum', array(), array(), '', false);
 
         $stub1->expects($this->any())
-              ->method('equals')
+              ->method('sameValueAs')
               ->will($this->returnValue(true));
 
-        $this->assertTrue($stub1->equals($stub2));
+        $this->assertTrue($stub1->sameValueAs($stub2));
     }
 
     public function testToString()

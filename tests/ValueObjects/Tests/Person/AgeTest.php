@@ -13,18 +13,18 @@ class AgeTest extends TestCase
         $this->assertEquals(25, $age->toNative());
     }
 
-    public function testEquals()
+    public function testSameValueAs()
     {
         $age1 = new Age(33);
         $age2 = new Age(33);
         $age3 = new Age(66);
 
-        $this->assertTrue($age1->equals($age2));
-        $this->assertTrue($age2->equals($age1));
-        $this->assertFalse($age1->equals($age3));
+        $this->assertTrue($age1->sameValueAs($age2));
+        $this->assertTrue($age2->sameValueAs($age1));
+        $this->assertFalse($age1->sameValueAs($age3));
 
         $mock = $this->getMock('ValueObjects\ValueObjectInterface');
-        $this->assertFalse($age1->equals($mock));
+        $this->assertFalse($age1->sameValueAs($mock));
     }
 
     public function testToString()

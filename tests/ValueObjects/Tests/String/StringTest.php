@@ -12,7 +12,7 @@ class StringTest extends TestCase
         $string = String::fromNative('foo');
         $constructedString = new String('foo');
 
-        $this->assertTrue($string->equals($constructedString));
+        $this->assertTrue($string->sameValueAs($constructedString));
     }
 
     public function testToNative()
@@ -21,18 +21,18 @@ class StringTest extends TestCase
         $this->assertEquals('foo', $string->toNative());
     }
 
-    public function testEquals()
+    public function testSameValueAs()
     {
         $foo1 = new String('foo');
         $foo2 = new String('foo');
         $bar = new String('bar');
 
-        $this->assertTrue($foo1->equals($foo2));
-        $this->assertTrue($foo2->equals($foo1));
-        $this->assertFalse($foo1->equals($bar));
+        $this->assertTrue($foo1->sameValueAs($foo2));
+        $this->assertTrue($foo2->sameValueAs($foo1));
+        $this->assertFalse($foo1->sameValueAs($bar));
 
         $mock = $this->getMock('ValueObjects\ValueObjectInterface');
-        $this->assertFalse($foo1->equals($mock));
+        $this->assertFalse($foo1->sameValueAs($mock));
     }
 
     /** @expectedException ValueObjects\Exception\InvalidNativeArgumentException */

@@ -18,7 +18,7 @@ class StreetTest extends TestCase
     public function testFromNative()
     {
         $fromNativeStreet  = Street::fromNative('Abbey Rd', '3');
-        $this->assertTrue($this->street->equals($fromNativeStreet));
+        $this->assertTrue($this->street->sameValueAs($fromNativeStreet));
     }
 
     /** @expectedException \BadMethodCallException */
@@ -27,29 +27,29 @@ class StreetTest extends TestCase
         Street::fromNative('Abbey Rd');
     }
 
-    public function testEquals()
+    public function testSameValueAs()
     {
         $street2 = new Street(new String('Abbey Rd'), new String('3'));
         $street3 = new Street(new String('Orchard Road'), new String(''));
 
-        $this->assertTrue($this->street->equals($street2));
-        $this->assertTrue($street2->equals($this->street));
-        $this->assertFalse($this->street->equals($street3));
+        $this->assertTrue($this->street->sameValueAs($street2));
+        $this->assertTrue($street2->sameValueAs($this->street));
+        $this->assertFalse($this->street->sameValueAs($street3));
 
         $mock = $this->getMock('ValueObjects\ValueObjectInterface');
-        $this->assertFalse($this->street->equals($mock));
+        $this->assertFalse($this->street->sameValueAs($mock));
     }
 
     public function testGetName()
     {
         $name = new String('Abbey Rd');
-        $this->assertTrue($this->street->getName()->equals($name));
+        $this->assertTrue($this->street->getName()->sameValueAs($name));
     }
 
     public function testGetNumber()
     {
         $number = new String('3');
-        $this->assertTrue($this->street->getNumber()->equals($number));
+        $this->assertTrue($this->street->getNumber()->sameValueAs($number));
     }
 
     public function testToString()

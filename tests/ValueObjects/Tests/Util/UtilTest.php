@@ -7,13 +7,13 @@ use ValueObjects\Util\Util;
 
 class UtilTest extends TestCase
 {
-    public function testClassEquals()
+    public function testClasssameValueAs()
     {
         $util1 = new Util();
         $util2 = new Util();
 
-        $this->assertTrue(Util::classEquals($util1, $util2));
-        $this->assertFalse(Util::classEquals($util1, $this));
+        $this->assertTrue(Util::classsameValueAs($util1, $util2));
+        $this->assertFalse(Util::classsameValueAs($util1, $this));
     }
 
     public function testGetClassAsString()

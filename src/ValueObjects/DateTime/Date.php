@@ -91,13 +91,15 @@ class Date implements ValueObjectInterface
      * @param  ValueObjectInterface $date
      * @return bool
      */
-    public function equals(ValueObjectInterface $date)
+    public function sameValueAs(ValueObjectInterface $date)
     {
-        if (false === Util::classEquals($this, $date)) {
+        if (false === Util::classsameValueAs($this, $date)) {
             return false;
         }
 
-        return $this->getYear()->equals($date->getYear()) && $this->getMonth()->equals($date->getMonth()) && $this->getDay()->equals($date->getDay());
+        return $this->getYear()->sameValueAs($date->getYear()) &&
+               $this->getMonth()->sameValueAs($date->getMonth()) &&
+               $this->getDay()->sameValueAs($date->getDay());
     }
 
     /**

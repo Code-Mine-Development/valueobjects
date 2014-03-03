@@ -13,21 +13,21 @@ class CurrencyTest extends TestCase
         $fromNativeCurrency = Currency::fromNative('EUR');
         $constructedCurrency = new Currency(CurrencyCode::EUR());
 
-        $this->assertTrue($fromNativeCurrency->equals($constructedCurrency));
+        $this->assertTrue($fromNativeCurrency->sameValueAs($constructedCurrency));
     }
 
-    public function testEquals()
+    public function testSameValueAs()
     {
         $eur1 = new Currency(CurrencyCode::EUR());
         $eur2 = new Currency(CurrencyCode::EUR());
         $usd  = new Currency(CurrencyCode::USD());
 
-        $this->assertTrue($eur1->equals($eur2));
-        $this->assertTrue($eur2->equals($eur1));
-        $this->assertFalse($eur1->equals($usd));
+        $this->assertTrue($eur1->sameValueAs($eur2));
+        $this->assertTrue($eur2->sameValueAs($eur1));
+        $this->assertFalse($eur1->sameValueAs($usd));
 
         $mock = $this->getMock('ValueObjects\ValueObjectInterface');
-        $this->assertFalse($eur1->equals($mock));
+        $this->assertFalse($eur1->sameValueAs($mock));
     }
 
     public function testGetCode()

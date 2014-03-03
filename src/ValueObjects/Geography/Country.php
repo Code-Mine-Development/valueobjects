@@ -41,13 +41,13 @@ class Country implements ValueObjectInterface
      * @param  ValueObjectInterface $country
      * @return bool
      */
-    public function equals(ValueObjectInterface $country)
+    public function sameValueAs(ValueObjectInterface $country)
     {
-        if (false === Util::classEquals($this, $country)) {
+        if (false === Util::classsameValueAs($this, $country)) {
             return false;
         }
 
-        return $this->getCode()->equals($country->getCode());
+        return $this->getCode()->sameValueAs($country->getCode());
     }
 
     /**

@@ -12,7 +12,7 @@ class SecondTest extends TestCase
         $fromNativeSecond  = Second::fromNative(13);
         $constructedSecond = new Second(13);
 
-        $this->assertTrue($fromNativeSecond->equals($constructedSecond));
+        $this->assertTrue($fromNativeSecond->sameValueAs($constructedSecond));
     }
 
     public function testNow()

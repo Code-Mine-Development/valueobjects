@@ -30,9 +30,9 @@ class Null implements ValueObjectInterface
      * @param  ValueObjectInterface $null
      * @return bool
      */
-    public function equals(ValueObjectInterface $null)
+    public function sameValueAs(ValueObjectInterface $null)
     {
-        return Util::classEquals($this, $null);
+        return Util::classsameValueAs($this, $null);
     }
 
     /**

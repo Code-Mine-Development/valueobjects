@@ -42,7 +42,7 @@ class DictionaryTest extends TestCase
         $constructedDictionary = new Dictionary($constructedArray);
         $fromNativeDictionary  = Dictionary::fromNative($fromNativeArray);
 
-        $this->assertTrue($constructedDictionary->equals($fromNativeDictionary));
+        $this->assertTrue($constructedDictionary->sameValueAs($fromNativeDictionary));
     }
 
     /** @expectedException \InvalidArgumentException */
@@ -62,7 +62,7 @@ class DictionaryTest extends TestCase
         ));
         $keys = new Collection($array);
 
-        $this->assertTrue($this->dictionary->keys()->equals($keys));
+        $this->assertTrue($this->dictionary->keys()->sameValueAs($keys));
     }
 
     public function testValues()
@@ -74,7 +74,7 @@ class DictionaryTest extends TestCase
         ));
         $values = new Collection($array);
 
-        $this->assertTrue($this->dictionary->values()->equals($values));
+        $this->assertTrue($this->dictionary->values()->sameValueAs($values));
     }
 
     public function testContainsKey()

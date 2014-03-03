@@ -110,9 +110,9 @@ class Name implements ValueObjectInterface
      * @param  ValueObjectInterface $name
      * @return bool
      */
-    public function equals(ValueObjectInterface $name)
+    public function sameValueAs(ValueObjectInterface $name)
     {
-        if (false === Util::classEquals($this, $name)) {
+        if (false === Util::classsameValueAs($this, $name)) {
             return false;
         }
 

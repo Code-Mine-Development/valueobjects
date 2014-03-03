@@ -14,34 +14,34 @@ class CountryTest extends TestCase
         $fromNativeCountry  = Country::fromNative('IT');
         $constructedCountry = new Country(CountryCode::IT());
 
-        $this->assertTrue($constructedCountry->equals($fromNativeCountry));
+        $this->assertTrue($constructedCountry->sameValueAs($fromNativeCountry));
     }
 
-    public function testEquals()
+    public function testSameValueAs()
     {
         $country1 = new Country(CountryCode::IT());
         $country2 = new Country(CountryCode::IT());
         $country3 = new Country(CountryCode::US());
 
-        $this->assertTrue($country1->equals($country2));
-        $this->assertTrue($country2->equals($country1));
-        $this->assertFalse($country1->equals($country3));
+        $this->assertTrue($country1->sameValueAs($country2));
+        $this->assertTrue($country2->sameValueAs($country1));
+        $this->assertFalse($country1->sameValueAs($country3));
 
         $mock = $this->getMock('ValueObjects\ValueObjectInterface');
-        $this->assertFalse($country1->equals($mock));
+        $this->assertFalse($country1->sameValueAs($mock));
     }
 
     public function testGetCode()
     {
         $italy = new Country(CountryCode::IT());
-        $this->assertTrue($italy->getCode()->equals(CountryCode::IT()));
+        $this->assertTrue($italy->getCode()->sameValueAs(CountryCode::IT()));
     }
 
     public function testGetName()
     {
         $italy = new Country(CountryCode::IT());
         $name  = new String('Italy');
-        $this->assertTrue($italy->getName()->equals($name));
+        $this->assertTrue($italy->getName()->sameValueAs($name));
     }
 
     public function testToString()

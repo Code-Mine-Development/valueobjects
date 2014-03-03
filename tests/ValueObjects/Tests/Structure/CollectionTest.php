@@ -53,10 +53,10 @@ class CollectionTest extends TestCase
         ));
         $constructedCollection = new Collection($array);
 
-        $this->assertTrue($fromNativeCollection->equals($constructedCollection));
+        $this->assertTrue($fromNativeCollection->sameValueAs($constructedCollection));
     }
 
-    public function testEquals()
+    public function testSameValueAs()
     {
         $array = \SplFixedArray::fromArray(array(
             new String('one'),
@@ -72,19 +72,19 @@ class CollectionTest extends TestCase
         ));
         $collection3 = Collection::fromNative($array);
 
-        $this->assertTrue($this->collection->equals($collection2));
-        $this->assertTrue($collection2->equals($this->collection));
-        $this->assertFalse($this->collection->equals($collection3));
+        $this->assertTrue($this->collection->sameValueAs($collection2));
+        $this->assertTrue($collection2->sameValueAs($this->collection));
+        $this->assertFalse($this->collection->sameValueAs($collection3));
 
         $mock = $this->getMock('ValueObjects\ValueObjectInterface');
-        $this->assertFalse($this->collection->equals($mock));
+        $this->assertFalse($this->collection->sameValueAs($mock));
     }
 
     public function testCount()
     {
         $three = new Natural(3);
 
-        $this->assertTrue($this->collection->count()->equals($three));
+        $this->assertTrue($this->collection->count()->sameValueAs($three));
     }
 
     public function testContains()

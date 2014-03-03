@@ -56,13 +56,13 @@ class KeyValuePair implements ValueObjectInterface
      * @param  ValueObjectInterface $keyValuePair
      * @return bool
      */
-    public function equals(ValueObjectInterface $keyValuePair)
+    public function sameValueAs(ValueObjectInterface $keyValuePair)
     {
-        if (false === Util::classEquals($this, $keyValuePair)) {
+        if (false === Util::classsameValueAs($this, $keyValuePair)) {
             return false;
         }
 
-        return $this->getKey()->equals($keyValuePair->getKey()) && $this->getValue()->equals($keyValuePair->getValue());
+        return $this->getKey()->sameValueAs($keyValuePair->getKey()) && $this->getValue()->sameValueAs($keyValuePair->getValue());
     }
 
     /**

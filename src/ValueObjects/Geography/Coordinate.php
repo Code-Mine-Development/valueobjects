@@ -70,15 +70,15 @@ class Coordinate implements ValueObjectInterface
      * @param  ValueObjectInterface $coordinate
      * @return bool
      */
-    public function equals(ValueObjectInterface $coordinate)
+    public function sameValueAs(ValueObjectInterface $coordinate)
     {
-        if (false === Util::classEquals($this, $coordinate)) {
+        if (false === Util::classsameValueAs($this, $coordinate)) {
             return false;
         }
 
-        return $this->getLatitude()->equals($coordinate->getLatitude())   &&
-               $this->getLongitude()->equals($coordinate->getLongitude()) &&
-               $this->getEllipsoid()->equals($coordinate->getEllipsoid())
+        return $this->getLatitude()->sameValueAs($coordinate->getLatitude())   &&
+               $this->getLongitude()->sameValueAs($coordinate->getLongitude()) &&
+               $this->getEllipsoid()->sameValueAs($coordinate->getEllipsoid())
         ;
     }
 

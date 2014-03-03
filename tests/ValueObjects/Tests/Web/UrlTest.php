@@ -38,10 +38,10 @@ class UrlTest extends TestCase
         $nativeUrlString = 'http://user:pass@foo.com:80/bar?querystring#fragmentidentifier';
         $fromNativeUrl   = Url::fromNative($nativeUrlString);
 
-        $this->assertTrue($this->url->equals($fromNativeUrl));
+        $this->assertTrue($this->url->sameValueAs($fromNativeUrl));
     }
 
-    public function testEquals()
+    public function testSameValueAs()
     {
         $url2 = new Url(
             new SchemeName('http'),
@@ -65,60 +65,60 @@ class UrlTest extends TestCase
             new FragmentIdentifier('#fragmentidentifier')
         );
 
-        $this->assertTrue($this->url->equals($url2));
-        $this->assertTrue($url2->equals($this->url));
-        $this->assertFalse($this->url->equals($url3));
+        $this->assertTrue($this->url->sameValueAs($url2));
+        $this->assertTrue($url2->sameValueAs($this->url));
+        $this->assertFalse($this->url->sameValueAs($url3));
 
         $mock = $this->getMock('ValueObjects\ValueObjectInterface');
-        $this->assertFalse($this->url->equals($mock));
+        $this->assertFalse($this->url->sameValueAs($mock));
     }
 
     public function testGetDomain()
     {
         $domain = new Hostname('foo.com');
-        $this->assertTrue($this->url->getDomain()->equals($domain));
+        $this->assertTrue($this->url->getDomain()->sameValueAs($domain));
     }
 
     public function testGetFragmentIdentifier()
     {
         $fragment = new FragmentIdentifier('#fragmentidentifier');
-        $this->assertTrue($this->url->getFragmentIdentifier()->equals($fragment));
+        $this->assertTrue($this->url->getFragmentIdentifier()->sameValueAs($fragment));
     }
 
     public function testGetPassword()
     {
         $password = new String('pass');
-        $this->assertTrue($this->url->getPassword()->equals($password));
+        $this->assertTrue($this->url->getPassword()->sameValueAs($password));
     }
 
     public function testGetPath()
     {
         $path = new Path('/bar');
-        $this->assertTrue($this->url->getPath()->equals($path));
+        $this->assertTrue($this->url->getPath()->sameValueAs($path));
     }
 
     public function testGetPort()
     {
         $port = new PortNumber(80);
-        $this->assertTrue($this->url->getPort()->equals($port));
+        $this->assertTrue($this->url->getPort()->sameValueAs($port));
     }
 
     public function testGetQueryString()
     {
         $queryString = new QueryString('?querystring');
-        $this->assertTrue($this->url->getQueryString()->equals($queryString));
+        $this->assertTrue($this->url->getQueryString()->sameValueAs($queryString));
     }
 
     public function testGetScheme()
     {
         $scheme = new SchemeName('http');
-        $this->assertTrue($this->url->getScheme()->equals($scheme));
+        $this->assertTrue($this->url->getScheme()->sameValueAs($scheme));
     }
 
     public function testGetUser()
     {
         $user = new String('user');
-        $this->assertTrue($this->url->getUser()->equals($user));
+        $this->assertTrue($this->url->getUser()->sameValueAs($user));
     }
 
     public function testToString()

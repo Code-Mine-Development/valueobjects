@@ -17,7 +17,7 @@ interface ValueObjectInterface
      * @param  ValueObjectInterface $object
      * @return bool
      */
-    public function equals(ValueObjectInterface $object);
+    public function sameValueAs(ValueObjectInterface $object);
 
     /**
      * Returns a string representation of the object

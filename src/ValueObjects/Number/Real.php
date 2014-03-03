@@ -55,9 +55,9 @@ class Real implements ValueObjectInterface, NumberInterface
      * @param  ValueObjectInterface $real
      * @return bool
      */
-    public function equals(ValueObjectInterface $real)
+    public function sameValueAs(ValueObjectInterface $real)
     {
-        if (false === Util::classEquals($this, $real)) {
+        if (false === Util::classsameValueAs($this, $real)) {
             return false;
         }
 

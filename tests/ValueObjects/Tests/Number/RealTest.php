@@ -14,7 +14,7 @@ class RealTest extends TestCase
         $fromNativeReal  = Real::fromNative(.056);
         $constructedReal = new Real(.056);
 
-        $this->assertTrue($fromNativeReal->equals($constructedReal));
+        $this->assertTrue($fromNativeReal->sameValueAs($constructedReal));
     }
 
     public function testToNative()
@@ -23,18 +23,18 @@ class RealTest extends TestCase
         $this->assertEquals(3.4, $real->toNative());
     }
 
-    public function testEquals()
+    public function testSameValueAs()
     {
         $real1 = new Real(5.64);
         $real2 = new Real(5.64);
         $real3 = new Real(6.01);
 
-        $this->assertTrue($real1->equals($real2));
-        $this->assertTrue($real2->equals($real1));
-        $this->assertFalse($real1->equals($real3));
+        $this->assertTrue($real1->sameValueAs($real2));
+        $this->assertTrue($real2->sameValueAs($real1));
+        $this->assertFalse($real1->sameValueAs($real3));
 
         $mock = $this->getMock('ValueObjects\ValueObjectInterface');
-        $this->assertFalse($real1->equals($mock));
+        $this->assertFalse($real1->sameValueAs($mock));
     }
 
     /** @expectedException ValueObjects\Exception\InvalidNativeArgumentException */
@@ -49,7 +49,7 @@ class RealTest extends TestCase
         $nativeInteger = new Integer(3);
         $integer       = $real->toInteger();
 
-        $this->assertTrue($integer->equals($nativeInteger));
+        $this->assertTrue($integer->sameValueAs($nativeInteger));
     }
 
     public function testToNatural()
@@ -58,7 +58,7 @@ class RealTest extends TestCase
         $nativeNatural = new Natural(3);
         $natural       = $real->toNatural();
 
-        $this->assertTrue($natural->equals($nativeNatural));
+        $this->assertTrue($natural->sameValueAs($nativeNatural));
     }
 
     public function testToString()

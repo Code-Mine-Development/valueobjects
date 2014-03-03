@@ -83,13 +83,13 @@ class DateTime implements ValueObjectInterface
      * @param  ValueObjectInterface $date_time
      * @return bool
      */
-    public function equals(ValueObjectInterface $date_time)
+    public function sameValueAs(ValueObjectInterface $date_time)
     {
-        if (false === Util::classEquals($this, $date_time)) {
+        if (false === Util::classsameValueAs($this, $date_time)) {
             return false;
         }
 
-        return $this->getDate()->equals($date_time->getDate()) && $this->getTime()->equals($date_time->getTime());
+        return $this->getDate()->sameValueAs($date_time->getDate()) && $this->getTime()->sameValueAs($date_time->getTime());
     }
 
     /**

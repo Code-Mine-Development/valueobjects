@@ -56,13 +56,13 @@ class Street implements ValueObjectInterface
      * @param  ValueObjectInterface $street
      * @return bool
      */
-    public function equals(ValueObjectInterface $street)
+    public function sameValueAs(ValueObjectInterface $street)
     {
-        if (false === Util::classEquals($this, $street)) {
+        if (false === Util::classsameValueAs($this, $street)) {
             return false;
         }
 
-        return $this->getName()->equals($street->getName()) && $this->getNumber()->equals($street->getNumber());
+        return $this->getName()->sameValueAs($street->getName()) && $this->getNumber()->sameValueAs($street->getNumber());
     }
 
     /**

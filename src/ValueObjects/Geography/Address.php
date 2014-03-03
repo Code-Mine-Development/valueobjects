@@ -105,19 +105,19 @@ class Address implements ValueObjectInterface
      * @param  ValueObjectInterface $address
      * @return bool
      */
-    public function equals(ValueObjectInterface $address)
+    public function sameValueAs(ValueObjectInterface $address)
     {
-        if (false === Util::classEquals($this, $address)) {
+        if (false === Util::classsameValueAs($this, $address)) {
             return false;
         }
 
-        return $this->getName()->equals($address->getName())             &&
-               $this->getStreet()->equals($address->getStreet())         &&
-               $this->getDistrict()->equals($address->getDistrict())     &&
-               $this->getCity()->equals($address->getCity())             &&
-               $this->getRegion()->equals($address->getRegion())         &&
-               $this->getPostalCode()->equals($address->getPostalCode()) &&
-               $this->getCountry()->equals($address->getCountry())
+        return $this->getName()->sameValueAs($address->getName())             &&
+               $this->getStreet()->sameValueAs($address->getStreet())         &&
+               $this->getDistrict()->sameValueAs($address->getDistrict())     &&
+               $this->getCity()->sameValueAs($address->getCity())             &&
+               $this->getRegion()->sameValueAs($address->getRegion())         &&
+               $this->getPostalCode()->sameValueAs($address->getPostalCode()) &&
+               $this->getCountry()->sameValueAs($address->getCountry())
         ;
     }
 

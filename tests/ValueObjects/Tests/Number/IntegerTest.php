@@ -14,18 +14,18 @@ class IntegerTest extends TestCase
         $this->assertSame(5, $integer->toNative());
     }
 
-    public function testEquals()
+    public function testSameValueAs()
     {
         $integer1 = new Integer(3);
         $integer2 = new Integer(3);
         $integer3 = new Integer(45);
 
-        $this->assertTrue($integer1->equals($integer2));
-        $this->assertTrue($integer2->equals($integer1));
-        $this->assertFalse($integer1->equals($integer3));
+        $this->assertTrue($integer1->sameValueAs($integer2));
+        $this->assertTrue($integer2->sameValueAs($integer1));
+        $this->assertFalse($integer1->sameValueAs($integer3));
 
         $mock = $this->getMock('ValueObjects\ValueObjectInterface');
-        $this->assertFalse($integer1->equals($mock));
+        $this->assertFalse($integer1->sameValueAs($mock));
     }
 
     public function testToString()
@@ -52,6 +52,6 @@ class IntegerTest extends TestCase
         $nativeReal = new Real(5);
         $real       = $integer->toReal();
 
-        $this->assertTrue($real->equals($nativeReal));
+        $this->assertTrue($real->sameValueAs($nativeReal));
     }
 }

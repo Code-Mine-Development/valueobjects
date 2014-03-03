@@ -94,13 +94,13 @@ class Time implements ValueObjectInterface
      * @param  ValueObjectInterface $time
      * @return bool
      */
-    public function equals(ValueObjectInterface $time)
+    public function sameValueAs(ValueObjectInterface $time)
     {
-        if (false === Util::classEquals($this, $time)) {
+        if (false === Util::classsameValueAs($this, $time)) {
             return false;
         }
 
-        return $this->getHour()->equals($time->getHour()) && $this->getMinute()->equals($time->getMinute()) && $this->getSecond()->equals($time->getSecond());
+        return $this->getHour()->sameValueAs($time->getHour()) && $this->getMinute()->sameValueAs($time->getMinute()) && $this->getSecond()->sameValueAs($time->getSecond());
     }
 
     /**

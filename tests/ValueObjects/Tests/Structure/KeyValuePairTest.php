@@ -19,7 +19,7 @@ class KeyValuePairTest extends TestCase
     public function testFromNative()
     {
         $fromNativePair  = KeyValuePair::fromNative('key', 'value');
-        $this->assertTrue($this->keyValuePair->equals($fromNativePair));
+        $this->assertTrue($this->keyValuePair->sameValueAs($fromNativePair));
     }
 
     /** @expectedException \BadMethodCallException */
@@ -28,17 +28,17 @@ class KeyValuePairTest extends TestCase
         KeyValuePair::fromNative('key', 'value', 'invalid');
     }
 
-    public function testEquals()
+    public function testSameValueAs()
     {
         $keyValuePair2 = new KeyValuePair(new String('key'), new String('value'));
         $keyValuePair3 = new KeyValuePair(new String('foo'), new String('bar'));
 
-        $this->assertTrue($this->keyValuePair->equals($keyValuePair2));
-        $this->assertTrue($keyValuePair2->equals($this->keyValuePair));
-        $this->assertFalse($this->keyValuePair->equals($keyValuePair3));
+        $this->assertTrue($this->keyValuePair->sameValueAs($keyValuePair2));
+        $this->assertTrue($keyValuePair2->sameValueAs($this->keyValuePair));
+        $this->assertFalse($this->keyValuePair->sameValueAs($keyValuePair3));
 
         $mock = $this->getMock('ValueObjects\ValueObjectInterface');
-        $this->assertFalse($this->keyValuePair->equals($mock));
+        $this->assertFalse($this->keyValuePair->sameValueAs($mock));
     }
 
     public function testGetKey()

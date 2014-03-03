@@ -54,13 +54,13 @@ class Money implements ValueObjectInterface
      * @param  ValueObjectInterface $money
      * @return bool
      */
-    public function equals(ValueObjectInterface $money)
+    public function sameValueAs(ValueObjectInterface $money)
     {
-        if (false === Util::classEquals($this, $money)) {
+        if (false === Util::classsameValueAs($this, $money)) {
             return false;
         }
 
-        return $this->getAmount()->equals($money->getAmount()) && $this->getCurrency()->equals($money->getCurrency());
+        return $this->getAmount()->sameValueAs($money->getAmount()) && $this->getCurrency()->sameValueAs($money->getCurrency());
     }
 
     /**

@@ -24,13 +24,13 @@ class CoordinateTest extends TestCase
 
     public function testNullConstructorEllipsoid()
     {
-        $this->assertTrue($this->coordinate->getEllipsoid()->equals(Ellipsoid::WGS84()));
+        $this->assertTrue($this->coordinate->getEllipsoid()->sameValueAs(Ellipsoid::WGS84()));
     }
 
     public function testFromNative()
     {
         $fromNativeCoordinate = Coordinate::fromNative(40.829137, 16.555838, 'WGS84');
-        $this->assertTrue($this->coordinate->equals($fromNativeCoordinate));
+        $this->assertTrue($this->coordinate->sameValueAs($fromNativeCoordinate));
     }
 
     /** @expectedException \BadMethodCallException */
@@ -39,7 +39,7 @@ class CoordinateTest extends TestCase
         Coordinate::fromNative(40.829137);
     }
 
-    public function testEquals()
+    public function testSameValueAs()
     {
         $coordinate2 = new Coordinate(
             new Latitude(40.829137),
@@ -51,48 +51,48 @@ class CoordinateTest extends TestCase
             Ellipsoid::WGS60()
         );
 
-        $this->assertTrue($this->coordinate->equals($coordinate2));
-        $this->assertTrue($coordinate2->equals($this->coordinate));
-        $this->assertFalse($this->coordinate->equals($coordinate3));
+        $this->assertTrue($this->coordinate->sameValueAs($coordinate2));
+        $this->assertTrue($coordinate2->sameValueAs($this->coordinate));
+        $this->assertFalse($this->coordinate->sameValueAs($coordinate3));
 
         $mock = $this->getMock('ValueObjects\ValueObjectInterface');
-        $this->assertFalse($this->coordinate->equals($mock));
+        $this->assertFalse($this->coordinate->sameValueAs($mock));
     }
 
     public function getLatitude()
     {
         $latitude = new Latitude(40.829137);
-        $this->assertTrue($this->coordinate->getLatitude()->equals($latitude));
+        $this->assertTrue($this->coordinate->getLatitude()->sameValueAs($latitude));
     }
 
     public function getLongitude()
     {
         $longitude = new Longitude(16.555838);
-        $this->assertTrue($this->coordinate->getLongitude()->equals($longitude));
+        $this->assertTrue($this->coordinate->getLongitude()->sameValueAs($longitude));
     }
 
     public function getEllipsoid()
     {
         $ellipsoid = Ellipsoid::WGS84();
-        $this->assertTrue($this->coordinate->getEllipsoid()->equals($ellipsoid));
+        $this->assertTrue($this->coordinate->getEllipsoid()->sameValueAs($ellipsoid));
     }
 
     public function testToDegreesMinutesSeconds()
     {
         $dms = new String('40°49′45″N, 16°33′21″E');
-        $this->assertTrue($this->coordinate->toDegreesMinutesSeconds()->equals($dms));
+        $this->assertTrue($this->coordinate->toDegreesMinutesSeconds()->sameValueAs($dms));
     }
 
     public function testToDecimalMinutes()
     {
         $dm = new String('40 49.74822N, 16 33.35028E');
-        $this->assertTrue($this->coordinate->toDecimalMinutes()->equals($dm));
+        $this->assertTrue($this->coordinate->toDecimalMinutes()->sameValueAs($dm));
     }
 
     public function testToUniversalTransverseMercator()
     {
         $utm = new String('33T 631188 4520953');
-        $this->assertTrue($this->coordinate->toUniversalTransverseMercator()->equals($utm));
+        $this->assertTrue($this->coordinate->toUniversalTransverseMercator()->sameValueAs($utm));
     }
 
     public function testDistanceFrom()

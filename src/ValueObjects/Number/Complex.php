@@ -66,14 +66,14 @@ class Complex implements ValueObjectInterface, NumberInterface
         $this->im   = $im;
     }
 
-    public function equals(ValueObjectInterface $complex)
+    public function sameValueAs(ValueObjectInterface $complex)
     {
-        if (false === Util::classEquals($this, $complex)) {
+        if (false === Util::classsameValueAs($this, $complex)) {
             return false;
         }
 
-        return $this->getReal()->equals($complex->getReal()) &&
-               $this->getIm()->equals($complex->getIm());
+        return $this->getReal()->sameValueAs($complex->getReal()) &&
+               $this->getIm()->sameValueAs($complex->getIm());
     }
 
     /**

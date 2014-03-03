@@ -59,16 +59,16 @@ class Collection implements ValueObjectInterface
      * @param  ValueObjectInterface $collection
      * @return bool
      */
-    public function equals(ValueObjectInterface $collection)
+    public function sameValueAs(ValueObjectInterface $collection)
     {
-        if (false === Util::classEquals($this, $collection) || false === $this->count()->equals($collection->count())) {
+        if (false === Util::classsameValueAs($this, $collection) || false === $this->count()->sameValueAs($collection->count())) {
             return false;
         }
 
         $arrayCollection = $collection->toArray();
 
         foreach ($this->items as $index => $item) {
-            if (!isset($arrayCollection[$index]) || false === $item->equals($arrayCollection[$index])) {
+            if (!isset($arrayCollection[$index]) || false === $item->sameValueAs($arrayCollection[$index])) {
                 return false;
             }
         }
@@ -95,7 +95,7 @@ class Collection implements ValueObjectInterface
     public function contains(ValueObjectInterface $object)
     {
         foreach ($this->items as $item) {
-            if ($item->equals($object)) {
+            if ($item->sameValueAs($object)) {
                 return true;
             }
         }

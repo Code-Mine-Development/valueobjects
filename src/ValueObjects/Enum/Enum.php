@@ -30,14 +30,14 @@ abstract class Enum extends BaseEnum implements ValueObjectInterface
     }
 
     /**
-     * Tells whether two Enum objects are equals by comparing their values
+     * Tells whether two Enum objects are sameValueAs by comparing their values
      *
      * @param  Enum $enum
      * @return bool
      */
-    public function equals(ValueObjectInterface $enum)
+    public function sameValueAs(ValueObjectInterface $enum)
     {
-        if (false === Util::classEquals($this, $enum)) {
+        if (false === Util::classsameValueAs($this, $enum)) {
             return false;
         }
 

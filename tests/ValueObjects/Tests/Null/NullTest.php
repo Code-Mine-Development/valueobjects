@@ -13,12 +13,12 @@ class NullTest extends TestCase
         Null::fromNative();
     }
 
-    public function testEquals()
+    public function testSameValueAs()
     {
         $null1 = new Null();
         $null2 = new Null();
 
-        $this->assertTrue($null1->equals($null2));
+        $this->assertTrue($null1->sameValueAs($null2));
     }
 
     public function testCreate()

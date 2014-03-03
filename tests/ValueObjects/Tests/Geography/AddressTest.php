@@ -30,7 +30,7 @@ class AddressTest extends TestCase
     public function testFromNative()
     {
         $fromNativeAddress = Address::fromNative('Nicolò Pignatelli', 'via Manara', '3', '', 'Altamura', 'BARI', '70022', 'IT');
-        $this->assertTrue($this->address->equals($fromNativeAddress));
+        $this->assertTrue($this->address->sameValueAs($fromNativeAddress));
     }
 
     /** @expectedException \BadMethodCallException */
@@ -39,7 +39,7 @@ class AddressTest extends TestCase
         Address::fromNative('invalid');
     }
 
-    public function testEquals()
+    public function testSameValueAs()
     {
         $address2 = new Address(
             new String('Nicolò Pignatelli'),
@@ -61,54 +61,54 @@ class AddressTest extends TestCase
             new Country(CountryCode::IT())
         );
 
-        $this->assertTrue($this->address->equals($address2));
-        $this->assertTrue($address2->equals($this->address));
-        $this->assertFalse($this->address->equals($address3));
+        $this->assertTrue($this->address->sameValueAs($address2));
+        $this->assertTrue($address2->sameValueAs($this->address));
+        $this->assertFalse($this->address->sameValueAs($address3));
 
         $mock = $this->getMock('ValueObjects\ValueObjectInterface');
-        $this->assertFalse($this->address->equals($mock));
+        $this->assertFalse($this->address->sameValueAs($mock));
     }
 
     public function testGetName()
     {
         $name = new String('Nicolò Pignatelli');
-        $this->assertTrue($this->address->getName()->equals($name));
+        $this->assertTrue($this->address->getName()->sameValueAs($name));
     }
 
     public function testGetStreet()
     {
         $street = new Street(new String('via Manara'), new String('3'));
-        $this->assertTrue($this->address->getStreet()->equals($street));
+        $this->assertTrue($this->address->getStreet()->sameValueAs($street));
     }
 
     public function testGetDistrict()
     {
         $district = new String('');
-        $this->assertTrue($this->address->getDistrict()->equals($district));
+        $this->assertTrue($this->address->getDistrict()->sameValueAs($district));
     }
 
     public function testGetCity()
     {
         $city = new String('Altamura');
-        $this->assertTrue($this->address->getCity()->equals($city));
+        $this->assertTrue($this->address->getCity()->sameValueAs($city));
     }
 
     public function testGetRegion()
     {
         $region = new String('BARI');
-        $this->assertTrue($this->address->getRegion()->equals($region));
+        $this->assertTrue($this->address->getRegion()->sameValueAs($region));
     }
 
     public function testGetPostalCode()
     {
         $code = new String('70022');
-        $this->assertTrue($this->address->getPostalCode()->equals($code));
+        $this->assertTrue($this->address->getPostalCode()->sameValueAs($code));
     }
 
     public function testGetCountry()
     {
         $country = new Country(CountryCode::IT());
-        $this->assertTrue($this->address->getCountry()->equals($country));
+        $this->assertTrue($this->address->getCountry()->sameValueAs($country));
     }
 
     public function testToString()

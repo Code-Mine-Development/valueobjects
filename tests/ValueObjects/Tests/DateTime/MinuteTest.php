@@ -12,7 +12,7 @@ class MinuteTest extends TestCase
         $fromNativeMinute  = Minute::fromNative(11);
         $constructedMinute = new Minute(11);
 
-        $this->assertTrue($fromNativeMinute->equals($constructedMinute));
+        $this->assertTrue($fromNativeMinute->sameValueAs($constructedMinute));
     }
 
     public function testNow()

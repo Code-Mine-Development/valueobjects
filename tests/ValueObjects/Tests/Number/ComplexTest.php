@@ -20,7 +20,7 @@ class ComplexTest extends TestCase
     {
         $fromNativeComplex = Complex::fromNative(2.05, 3.2);
 
-        $this->assertTrue($fromNativeComplex->equals($this->complex));
+        $this->assertTrue($fromNativeComplex->sameValueAs($this->complex));
     }
 
     public function testFromPolar()
@@ -32,8 +32,8 @@ class ComplexTest extends TestCase
         $nativeModulus  = $this->complex->getModulus();
         $nativeArgument = $this->complex->getArgument();
 
-        $this->assertTrue($nativeModulus->equals($fromPolar->getModulus()));
-        $this->assertTrue($nativeArgument->equals($fromPolar->getArgument()));
+        $this->assertTrue($nativeModulus->sameValueAs($fromPolar->getModulus()));
+        $this->assertTrue($nativeArgument->sameValueAs($fromPolar->getArgument()));
     }
 
     public function testToNative()
@@ -45,28 +45,28 @@ class ComplexTest extends TestCase
     {
         $real = new Real(2.05);
 
-        $this->assertTrue($real->equals($this->complex->getReal()));
+        $this->assertTrue($real->sameValueAs($this->complex->getReal()));
     }
 
     public function testGetIm()
     {
         $im = new Real(3.2);
 
-        $this->assertTrue($im->equals($this->complex->getIm()));
+        $this->assertTrue($im->sameValueAs($this->complex->getIm()));
     }
 
     public function testGetModulus()
     {
         $mod = new Real(3.800328933132);
 
-        $this->assertTrue($mod->equals($this->complex->getModulus()));
+        $this->assertTrue($mod->sameValueAs($this->complex->getModulus()));
     }
 
     public function testGetArgument()
     {
         $arg = new Real(1.0010398733119);
 
-        $this->assertTrue($arg->equals($this->complex->getArgument()));
+        $this->assertTrue($arg->sameValueAs($this->complex->getArgument()));
     }
 
     public function testToString()

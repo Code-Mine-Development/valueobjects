@@ -37,6 +37,6 @@ class QueryStringTest extends TestCase
         );
         $expectedDictionary = Dictionary::fromNative($array);
 
-        $this->assertTrue($expectedDictionary->equals($dictionary));
+        $this->assertTrue($expectedDictionary->sameValueAs($dictionary));
     }
 }

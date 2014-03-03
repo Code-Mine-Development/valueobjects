@@ -84,25 +84,25 @@ class Url implements ValueObjectInterface
     }
 
     /**
-     * Tells whether two Url are equals by comparing their components
+     * Tells whether two Url are sameValueAs by comparing their components
      *
      * @param  ValueObjectInterface $url
      * @return bool
      */
-    public function equals(ValueObjectInterface $url)
+    public function sameValueAs(ValueObjectInterface $url)
     {
-        if (false === Util::classEquals($this, $url)) {
+        if (false === Util::classsameValueAs($this, $url)) {
             return false;
         }
 
-        return $this->getScheme()->equals($url->getScheme()) &&
-               $this->getUser()->equals($url->getUser()) &&
-               $this->getPassword()->equals($url->getPassword()) &&
-               $this->getDomain()->equals($url->getDomain()) &&
-               $this->getPath()->equals($url->getPath()) &&
-               $this->getPort()->equals($url->getPort()) &&
-               $this->getQueryString()->equals($url->getQueryString()) &&
-               $this->getFragmentIdentifier()->equals($url->getFragmentIdentifier())
+        return $this->getScheme()->sameValueAs($url->getScheme()) &&
+               $this->getUser()->sameValueAs($url->getUser()) &&
+               $this->getPassword()->sameValueAs($url->getPassword()) &&
+               $this->getDomain()->sameValueAs($url->getDomain()) &&
+               $this->getPath()->sameValueAs($url->getPath()) &&
+               $this->getPort()->sameValueAs($url->getPort()) &&
+               $this->getQueryString()->sameValueAs($url->getQueryString()) &&
+               $this->getFragmentIdentifier()->sameValueAs($url->getFragmentIdentifier())
         ;
     }
 
@@ -203,7 +203,7 @@ class Url implements ValueObjectInterface
         }
 
         $port = '';
-        if (false == NullPortNumber::create()->equals($this->getPort())) {
+        if (false == NullPortNumber::create()->sameValueAs($this->getPort())) {
             $port = \sprintf(':%d', $this->getPort()->toNative());
         }
 
