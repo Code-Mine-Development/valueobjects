@@ -13,7 +13,7 @@ Documentation
 
 - [Introduction](http://nicolopignatelli.github.io/valueobjects/index.html)
 - [Installation](http://nicolopignatelli.github.io/valueobjects/installation.html)
-- [API reference](http://nicolopignatelli.github.io/valueobjects/api/)
+- [API reference](http://nicolopignatelli.github.io/valueobjects/api/2.x/)
 - [About](http://nicolopignatelli.github.io/valueobjects/about.html)
 
 
@@ -26,7 +26,7 @@ See [CONTRIBUTING](/CONTRIBUTING.md) file.
 License
 -------
 
-Valueobjects is released under the MIT License. See the bundled [LICENSE](/LICENSE) file for
+ValueObjects is released under the MIT License. See the bundled [LICENSE](/LICENSE) file for
 details.
 
 
