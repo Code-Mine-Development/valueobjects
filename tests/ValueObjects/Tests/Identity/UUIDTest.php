@@ -7,6 +7,13 @@ use ValueObjects\Tests\TestCase;
 
 class UUIDTest extends TestCase
 {
+    public function testGenerateAsString()
+    {
+        $uuidString = UUID::generateAsString();
+
+        $this->assertRegexp('/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/', $uuidString);
+    }
+
     public function testFromNative()
     {
         $uuid1 = new UUID();

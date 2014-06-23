@@ -26,6 +26,19 @@ class UUID extends String
         return $uuid;
     }
 
+    /**
+     * Generate a new UUID string
+     *
+     * @return string
+     */
+    public static function generateAsString()
+    {
+        $uuid       = new static();
+        $uuidString = $uuid->toNative();
+
+        return $uuidString;
+    }
+
     public function __construct($value = null)
     {
         $uuid_str = BaseUuid::uuid4();
