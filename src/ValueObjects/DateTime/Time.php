@@ -32,7 +32,7 @@ class Time implements ValueObjectInterface
         $minute = new Minute($args[1]);
         $second = new Second($args[2]);
 
-        return new self($hour, $minute, $second);
+        return new static($hour, $minute, $second);
     }
 
     /**
@@ -47,7 +47,7 @@ class Time implements ValueObjectInterface
         $minute = \intval($time->format('i'));
         $second = \intval($time->format('s'));
 
-        return self::fromNative($hour, $minute, $second);
+        return static::fromNative($hour, $minute, $second);
     }
 
     /**
@@ -57,7 +57,7 @@ class Time implements ValueObjectInterface
      */
     public static function now()
     {
-        $time = new self(Hour::now(), Minute::now(), Second::now());
+        $time = new static(Hour::now(), Minute::now(), Second::now());
 
         return $time;
     }
@@ -69,7 +69,7 @@ class Time implements ValueObjectInterface
      */
     public static function zero()
     {
-        $time = new self(new Hour(0), new Minute(0), new Second(0));
+        $time = new static(new Hour(0), new Minute(0), new Second(0));
 
         return $time;
     }

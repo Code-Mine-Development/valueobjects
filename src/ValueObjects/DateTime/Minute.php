@@ -21,7 +21,7 @@ class Minute extends Natural
     {
         $value = func_get_arg(0);
 
-        return new self($value);
+        return new static($value);
     }
 
     /**
@@ -54,6 +54,6 @@ class Minute extends Natural
         $now    = new \DateTime('now');
         $minute = \intval($now->format('i'));
 
-        return new self($minute);
+        return new static($minute);
     }
 }

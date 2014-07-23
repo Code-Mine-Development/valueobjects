@@ -40,6 +40,6 @@ class Second extends Natural
         $now    = new \DateTime('now');
         $second = \intval($now->format('s'));
 
-        return new self($second);
+        return new static($second);
     }
 }

@@ -31,7 +31,7 @@ class DateTime implements ValueObjectInterface
         $date = Date::fromNative($args[0], $args[1], $args[2]);
         $time = Time::fromNative($args[3], $args[4], $args[5]);
 
-        return new self($date, $time);
+        return new static($date, $time);
     }
 
     /**
@@ -45,7 +45,7 @@ class DateTime implements ValueObjectInterface
         $date = Date::fromNativeDateTime($date_time);
         $time = Time::fromNativeDateTime($date_time);
 
-        return new self($date, $time);
+        return new static($date, $time);
     }
 
     /**
@@ -55,7 +55,7 @@ class DateTime implements ValueObjectInterface
      */
     public static function now()
     {
-        $dateTime = new self(Date::now(), Time::now());
+        $dateTime = new static(Date::now(), Time::now());
 
         return $dateTime;
     }

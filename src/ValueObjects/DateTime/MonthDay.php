@@ -40,6 +40,6 @@ class MonthDay extends Natural
         $now      = new \DateTime('now');
         $monthDay = \intval($now->format('j'));
 
-        return new self($monthDay);
+        return new static($monthDay);
     }
 }

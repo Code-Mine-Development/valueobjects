@@ -33,7 +33,7 @@ class Date implements ValueObjectInterface
         $month = Month::fromNative($args[1]);
         $day   = new MonthDay($args[2]);
 
-        return new self($year, $month, $day);
+        return new static($year, $month, $day);
     }
 
     /**
@@ -48,7 +48,7 @@ class Date implements ValueObjectInterface
         $month = Month::fromNativeDateTime($date);
         $day   = \intval($date->format('d'));
 
-        return new self(new Year($year), $month, new MonthDay($day));
+        return new static(new Year($year), $month, new MonthDay($day));
     }
 
     /**
@@ -58,7 +58,7 @@ class Date implements ValueObjectInterface
      */
     public static function now()
     {
-        $date = new self(Year::now(), Month::now(), MonthDay::now());
+        $date = new static(Year::now(), Month::now(), MonthDay::now());
 
         return $date;
     }

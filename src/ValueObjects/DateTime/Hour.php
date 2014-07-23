@@ -20,7 +20,7 @@ class Hour extends Natural
     {
         $value = func_get_arg(0);
 
-        return new self($value);
+        return new static($value);
     }
 
     /**
@@ -53,6 +53,6 @@ class Hour extends Natural
         $now  = new \DateTime('now');
         $hour = \intval($now->format('G'));
 
-        return new self($hour);
+        return new static($hour);
     }
 }
