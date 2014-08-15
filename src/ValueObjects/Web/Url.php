@@ -42,19 +42,21 @@ class Url implements ValueObjectInterface
     {
         $urlString = \func_get_arg(0);
 
+        $user        = \parse_url($urlString, PHP_URL_USER);
+        $pass        = \parse_url($urlString, PHP_URL_PASS);
         $host        = \parse_url($urlString, PHP_URL_HOST);
-        $queryString = \sprintf('?%s', \parse_url($urlString, PHP_URL_QUERY));
-        $fragmentId  = \sprintf('#%s', \parse_url($urlString, PHP_URL_FRAGMENT));
+        $queryString = \parse_url($urlString, PHP_URL_QUERY);
+        $fragmentId  = \parse_url($urlString, PHP_URL_FRAGMENT);
         $port        = \parse_url($urlString, PHP_URL_PORT);
 
         $scheme     = new SchemeName(\parse_url($urlString, PHP_URL_SCHEME));
-        $user       = new String(\parse_url($urlString, PHP_URL_USER));
-        $pass       = new String(\parse_url($urlString, PHP_URL_PASS));
+        $user       = $user ? new String($user) : new String('');
+        $pass       = $pass ? new String($pass) : new String('');
         $domain     = Domain::specifyType($host);
         $path       = new Path(\parse_url($urlString, PHP_URL_PATH));
         $portNumber = $port ? new PortNumber($port) : new NullPortNumber();
-        $query      = new QueryString($queryString);
-        $fragment   = new FragmentIdentifier($fragmentId);
+        $query      = $queryString ? new QueryString(\sprintf('?%s', $queryString)) : new NullQueryString();
+        $fragment   = $fragmentId ? new FragmentIdentifier(\sprintf('#%s', $fragmentId)) : new NullFragmentIdentifier();
 
         return new self($scheme, $user, $pass, $domain, $portNumber, $path, $query, $fragment);
     }
