@@ -6,7 +6,7 @@ use ValueObjects\Exception\InvalidNativeArgumentException;
 use ValueObjects\String\String;
 use ValueObjects\Structure\Dictionary;
 
-class QueryString extends String
+class QueryString extends String implements QueryStringInterface
 {
     /**
      * Returns a new QueryString

@@ -38,6 +38,26 @@ class UrlTest extends TestCase
         $fromNativeUrl   = Url::fromNative($nativeUrlString);
 
         $this->assertTrue($this->url->sameValueAs($fromNativeUrl));
+
+        $nativeUrlString = 'http://www.test.com';
+        $fromNativeUrl   = Url::fromNative($nativeUrlString);
+
+        $this->assertSame($nativeUrlString, $fromNativeUrl->__toString());
+
+        $nativeUrlString = 'http://www.test.com/bar';
+        $fromNativeUrl   = Url::fromNative($nativeUrlString);
+
+        $this->assertSame($nativeUrlString, $fromNativeUrl->__toString());
+
+        $nativeUrlString = 'http://www.test.com/?querystring';
+        $fromNativeUrl   = Url::fromNative($nativeUrlString);
+
+        $this->assertSame($nativeUrlString, $fromNativeUrl->__toString());
+
+        $nativeUrlString = 'http://www.test.com/#fragmentidentifier';
+        $fromNativeUrl   = Url::fromNative($nativeUrlString);
+
+        $this->assertSame($nativeUrlString, $fromNativeUrl->__toString());
     }
 
     public function testSameValueAs()
@@ -127,6 +147,7 @@ class UrlTest extends TestCase
 
     public function testAuthlessUrlToString()
     {
+        $nativeUrlString = 'http://foo.com:80/bar?querystring#fragmentidentifier';
         $authlessUrl = new Url(
             new SchemeName('http'),
             new String(''),
@@ -137,7 +158,10 @@ class UrlTest extends TestCase
             new QueryString('?querystring'),
             new FragmentIdentifier('#fragmentidentifier')
         );
-        $this->assertSame('http://foo.com:80/bar?querystring#fragmentidentifier', $authlessUrl->__toString());
+        $this->assertSame($nativeUrlString, $authlessUrl->__toString());
+
+        $fromNativeUrl = Url::fromNative($nativeUrlString);
+        $this->assertSame($nativeUrlString, Url::fromNative($authlessUrl)->__toString());
     }
 
     public function testNullPortUrlToString()

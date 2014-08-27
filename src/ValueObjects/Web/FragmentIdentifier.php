@@ -5,7 +5,7 @@ namespace ValueObjects\Web;
 use ValueObjects\Exception\InvalidNativeArgumentException;
 use ValueObjects\String\String;
 
-class FragmentIdentifier extends String
+class FragmentIdentifier extends String implements FragmentIdentifierInterface
 {
     /**
      * Returns a new FragmentIdentifier

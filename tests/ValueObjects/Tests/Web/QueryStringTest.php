@@ -5,6 +5,7 @@ namespace ValueObjects\Tests\Web;
 use ValueObjects\Structure\Dictionary;
 use ValueObjects\Tests\TestCase;
 use ValueObjects\Web\QueryString;
+use ValueObjects\Web\NullQueryString;
 
 class QueryStringTest extends TestCase
 {
@@ -13,6 +14,16 @@ class QueryStringTest extends TestCase
         $query = new QueryString('?foo=bar');
 
         $this->assertInstanceOf('ValueObjects\Web\QueryString', $query);
+    }
+
+    public function testEmptyQueryString()
+    {
+        $query = new NullQueryString();
+
+        $this->assertInstanceOf('ValueObjects\Web\QueryString', $query);
+
+        $dictionary = $query->toDictionary();
+        $this->assertInstanceOf('ValueObjects\Structure\Dictionary', $dictionary);
     }
 
     /** @expectedException ValueObjects\Exception\InvalidNativeArgumentException */
