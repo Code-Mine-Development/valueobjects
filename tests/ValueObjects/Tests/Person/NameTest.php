@@ -42,6 +42,13 @@ class NameTest extends TestCase
         $this->assertEquals('foo bar baz', $this->name->getFullName());
     }
 
+    public function testEmptyFullName()
+    {
+        $name = new Name(new String(''), new String(''), new String(''));
+
+        $this->assertEquals('', $name->getFullName());
+    }
+
     public function testSameValueAs()
     {
         $name2 = new Name(new String('foo'), new String('bar'), new String('baz'));

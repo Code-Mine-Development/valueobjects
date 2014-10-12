@@ -99,7 +99,11 @@ class Name implements ValueObjectInterface
      */
     public function getFullName()
     {
-        $fullName = new String($this->firstName . ' ' . $this->middleName . ' ' . $this->lastName);
+        $fullNameString = $this->firstName .
+            ($this->middleName->isEmpty() ? '' : ' ' . $this->middleName) .
+            ($this->lastName->isEmpty() ? '' : ' ' . $this->lastName);
+
+        $fullName = new String($fullNameString);
 
         return $fullName;
     }
@@ -126,6 +130,6 @@ class Name implements ValueObjectInterface
      */
     public function __toString()
     {
-        return strval($this->getFullName());
+        return \strval($this->getFullName());
     }
 }
