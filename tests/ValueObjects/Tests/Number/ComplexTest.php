@@ -23,6 +23,12 @@ class ComplexTest extends TestCase
         $this->assertTrue($fromNativeComplex->sameValueAs($this->complex));
     }
 
+    public function testFromNativeWithWrongNumberOfArgsThrowsError()
+    {
+        $this->setExpectedException('BadMethodCallException');
+        $fromNativeComplex = Complex::fromNative(2.05);
+    }
+
     public function testFromPolar()
     {
         $mod = new Real(3.800328933132);
@@ -73,5 +79,10 @@ class ComplexTest extends TestCase
     {
         $complex = new Complex(new Real(2.034), new Real(-1.4));
         $this->assertEquals('2.034 - 1.4i', $complex->__toString());
+    }
+
+    public function testNotSameValue()
+    {
+        $this->assertFalse($this->complex->sameValueAs(new Real(2.035)));
     }
 }
