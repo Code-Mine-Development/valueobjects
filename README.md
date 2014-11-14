@@ -6,7 +6,7 @@ ValueObjects
 [![Code Coverage](https://scrutinizer-ci.com/g/nicolopignatelli/valueobjects/badges/coverage.png?s=59dd4a142412a9dcd989870610f1c9f89c19cf48)](https://scrutinizer-ci.com/g/nicolopignatelli/valueobjects/)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/246a2da6-ffdb-4730-9216-647fb7aac383/mini.png)](https://insight.sensiolabs.com/projects/246a2da6-ffdb-4730-9216-647fb7aac383)
 
-A PHP 5.3+ library/collection of classes aimed to help developers with domain driven development and the use of immutable objects.
+A PHP library/collection of classes aimed to help developers using and undestanding immutable objects.
 
 Documentation
 -------------
