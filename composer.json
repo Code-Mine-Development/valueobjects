@@ -27,7 +27,10 @@
         "bin-dir": "bin"
     },
     "autoload": {
-        "psr-0": { "ValueObjects": "src/" }
+        "psr-4": {"ValueObjects\\": "src"}
+    },
+    "autoload-dev": {
+        "psr-4": { "ValueObjects\\Tests\\": "tests/" }
     },
     "extra": {
         "branch-alias": {
