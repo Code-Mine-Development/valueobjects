@@ -196,16 +196,16 @@ class Url implements ValueObjectInterface
     public function __toString()
     {
         $userPass = '';
-        if (false == $this->getUser()->isEmpty()) {
+        if (false === $this->getUser()->isEmpty()) {
             $userPass = \sprintf('%s@', $this->getUser());
 
-            if (false == $this->getPassword()->isEmpty()) {
+            if (false === $this->getPassword()->isEmpty()) {
                 $userPass = \sprintf('%s:%s@', $this->getUser(), $this->getPassword());
             }
         }
 
         $port = '';
-        if (false == NullPortNumber::create()->sameValueAs($this->getPort())) {
+        if (false === NullPortNumber::create()->sameValueAs($this->getPort())) {
             $port = \sprintf(':%d', $this->getPort()->toNative());
         }
 

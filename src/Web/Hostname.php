@@ -16,7 +16,7 @@ class Hostname extends Domain
     {
         $validator = new Validator(array('allow' => Validator::ALLOW_DNS | Validator::ALLOW_LOCAL));
 
-        if (false == $validator->isValid($value)) {
+        if (false === $validator->isValid($value)) {
             throw new InvalidNativeArgumentException($value, array('string (valid hostname)'));
         }
 
