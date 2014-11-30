@@ -43,10 +43,10 @@ class UUID extends String
     {
         $uuid_str = BaseUuid::uuid4();
 
-        if (null != $value) {
+        if (null !== $value) {
             $pattern = '/'.BaseUuid::VALID_PATTERN.'/';
 
-            if (false == \preg_match($pattern, $value)) {
+            if (! \preg_match($pattern, $value)) {
                 throw new InvalidNativeArgumentException($value, array('UUID string'));
             }
 

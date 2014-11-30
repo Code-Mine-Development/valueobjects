@@ -72,7 +72,7 @@ class Real implements ValueObjectInterface, NumberInterface
      */
     public function toInteger(RoundingMode $rounding_mode = null)
     {
-        if (null == $rounding_mode) {
+        if (null === $rounding_mode) {
             $rounding_mode = RoundingMode::HALF_UP();
         }
 
