@@ -21,7 +21,7 @@ class DateTime implements ValueObjectInterface
      * @param  int      $day
      * @param  int      $hour
      * @param  int      $minute
-     * @param int @second
+     * @param  int      $second
      * @return DateTime
      */
     public static function fromNative()
@@ -61,7 +61,7 @@ class DateTime implements ValueObjectInterface
     }
 
     /**
-     * Rerturns a new DateTime object
+     * Returns a new DateTime object
      *
      * @param Date $date
      * @param Time $time
@@ -95,7 +95,7 @@ class DateTime implements ValueObjectInterface
     /**
      * Returns date from current DateTime
      *
-     * @return Time
+     * @return Date
      */
     public function getDate()
     {
