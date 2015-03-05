@@ -89,7 +89,7 @@ class Coordinate implements ValueObjectInterface
      */
     public function getLatitude()
     {
-        return $this->latitude;
+        return clone $this->latitude;
     }
 
     /**
@@ -99,7 +99,7 @@ class Coordinate implements ValueObjectInterface
      */
     public function getLongitude()
     {
-        return $this->longitude;
+        return clone $this->longitude;
     }
 
     /**

@@ -109,7 +109,7 @@ class Date implements ValueObjectInterface
      */
     public function getYear()
     {
-        return $this->year;
+        return clone $this->year;
     }
 
     /**
@@ -129,7 +129,7 @@ class Date implements ValueObjectInterface
      */
     public function getDay()
     {
-        return $this->day;
+        return clone $this->day;
     }
 
     /**

@@ -82,7 +82,7 @@ class Money implements ValueObjectInterface
      */
     public function getCurrency()
     {
-        return $this->currency;
+        return clone $this->currency;
     }
 
     /**

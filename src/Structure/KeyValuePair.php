@@ -17,8 +17,8 @@ class KeyValuePair implements ValueObjectInterface
     /**
      * Returns a KeyValuePair from native PHP arguments evaluated as strings
      *
-     * @param  string                    $key
-     * @param  string                    $value
+     * @param string $key
+     * @param string $value
      * @return self
      * @throws \InvalidArgumentException
      */
@@ -72,7 +72,7 @@ class KeyValuePair implements ValueObjectInterface
      */
     public function getKey()
     {
-        return $this->key;
+        return clone $this->key;
     }
 
     /**
@@ -82,7 +82,7 @@ class KeyValuePair implements ValueObjectInterface
      */
     public function getValue()
     {
-        return $this->value;
+        return clone $this->value;
     }
 
     /**

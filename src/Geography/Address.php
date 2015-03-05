@@ -47,14 +47,14 @@ class Address implements ValueObjectInterface
     /**
      * Returns a new Address from native PHP arguments
      *
-     * @param  string                  $name
-     * @param  string                  $street_name
-     * @param  string                  $street_number
-     * @param  string                  $district
-     * @param  string                  $city
-     * @param  string                  $region
-     * @param  string                  $postal_code
-     * @param  string                  $country_code
+     * @param string $name
+     * @param string $street_name
+     * @param string $street_number
+     * @param string $district
+     * @param string $city
+     * @param string $region
+     * @param string $postal_code
+     * @param string $country_code
      * @return self
      * @throws \BadMethodCallException
      */
@@ -128,7 +128,7 @@ class Address implements ValueObjectInterface
      */
     public function getName()
     {
-        return $this->name;
+        return clone $this->name;
     }
 
     /**
@@ -138,7 +138,7 @@ class Address implements ValueObjectInterface
      */
     public function getStreet()
     {
-        return $this->street;
+        return clone $this->street;
     }
 
     /**
@@ -148,7 +148,7 @@ class Address implements ValueObjectInterface
      */
     public function getDistrict()
     {
-        return $this->district;
+        return clone $this->district;
     }
 
     /**
@@ -158,7 +158,7 @@ class Address implements ValueObjectInterface
      */
     public function getCity()
     {
-        return $this->city;
+        return clone $this->city;
     }
 
     /**
@@ -168,7 +168,7 @@ class Address implements ValueObjectInterface
      */
     public function getRegion()
     {
-        return $this->region;
+        return clone $this->region;
     }
 
     /**
@@ -178,7 +178,7 @@ class Address implements ValueObjectInterface
      */
     public function getPostalCode()
     {
-        return $this->postalCode;
+        return clone $this->postalCode;
     }
 
     /**
@@ -188,7 +188,7 @@ class Address implements ValueObjectInterface
      */
     public function getCountry()
     {
-        return $this->country;
+        return clone $this->country;
     }
 
     /**

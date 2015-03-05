@@ -96,7 +96,7 @@ class Complex implements ValueObjectInterface, NumberInterface
      */
     public function getReal()
     {
-        return $this->real;
+        return clone $this->real;
     }
 
     /**
@@ -106,7 +106,7 @@ class Complex implements ValueObjectInterface, NumberInterface
      */
     public function getIm()
     {
-        return $this->im;
+        return clone $this->im;
     }
 
     /**

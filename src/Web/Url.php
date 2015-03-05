@@ -115,7 +115,7 @@ class Url implements ValueObjectInterface
      */
     public function getDomain()
     {
-        return $this->domain;
+        return clone $this->domain;
     }
 
     /**
@@ -125,7 +125,7 @@ class Url implements ValueObjectInterface
      */
     public function getFragmentIdentifier()
     {
-        return $this->fragmentIdentifier;
+        return clone $this->fragmentIdentifier;
     }
 
     /**
@@ -135,7 +135,7 @@ class Url implements ValueObjectInterface
      */
     public function getPassword()
     {
-        return $this->password;
+        return clone $this->password;
     }
 
     /**
@@ -145,7 +145,7 @@ class Url implements ValueObjectInterface
      */
     public function getPath()
     {
-        return $this->path;
+        return clone $this->path;
     }
 
     /**
@@ -155,7 +155,7 @@ class Url implements ValueObjectInterface
      */
     public function getPort()
     {
-        return $this->port;
+        return clone $this->port;
     }
 
     /**
@@ -165,7 +165,7 @@ class Url implements ValueObjectInterface
      */
     public function getQueryString()
     {
-        return $this->queryString;
+        return clone $this->queryString;
     }
 
     /**
@@ -175,7 +175,7 @@ class Url implements ValueObjectInterface
      */
     public function getScheme()
     {
-        return $this->scheme;
+        return clone $this->scheme;
     }
 
     /**
@@ -185,7 +185,7 @@ class Url implements ValueObjectInterface
      */
     public function getUser()
     {
-        return $this->user;
+        return clone $this->user;
     }
 
     /**

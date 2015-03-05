@@ -99,7 +99,7 @@ class DateTime implements ValueObjectInterface
      */
     public function getDate()
     {
-        return $this->date;
+        return clone $this->date;
     }
 
     /**
@@ -109,7 +109,7 @@ class DateTime implements ValueObjectInterface
      */
     public function getTime()
     {
-        return $this->time;
+        return clone $this->time;
     }
 
     /**

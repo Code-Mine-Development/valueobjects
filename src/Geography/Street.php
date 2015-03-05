@@ -26,9 +26,9 @@ class Street implements ValueObjectInterface
     /**
      * Returns a new Street from native PHP string name and number.
      *
-     * @param  string                    $name
-     * @param  string                    $number
-     * @param  string                    $elements
+     * @param string $name
+     * @param string $number
+     * @param string $elements
      * @return Street
      * @throws \BadFunctionCallException
      */
@@ -99,7 +99,7 @@ class Street implements ValueObjectInterface
      */
     public function getName()
     {
-        return $this->name;
+        return clone $this->name;
     }
 
     /**
@@ -109,7 +109,7 @@ class Street implements ValueObjectInterface
      */
     public function getNumber()
     {
-        return $this->number;
+        return clone $this->number;
     }
 
     /**
@@ -118,7 +118,7 @@ class Street implements ValueObjectInterface
      */
     public function getElements()
     {
-        return $this->elements;
+        return clone $this->elements;
     }
 
     /**
