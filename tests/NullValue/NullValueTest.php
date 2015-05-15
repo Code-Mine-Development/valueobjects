@@ -1,36 +1,36 @@
 <?php
 
-namespace ValueObjects\Tests\Null;
+namespace ValueObjects\Tests\NullValue;
 
 use ValueObjects\Tests\TestCase;
-use ValueObjects\Null\Null;
+use ValueObjects\NullValue\NullValue;
 
-class NullTest extends TestCase
+class NullValueTest extends TestCase
 {
     /** @expectedException \BadMethodCallException */
     public function testFromNative()
     {
-        Null::fromNative();
+        NullValue::fromNative();
     }
 
     public function testSameValueAs()
     {
-        $null1 = new Null();
-        $null2 = new Null();
+        $null1 = new NullValue();
+        $null2 = new NullValue();
 
         $this->assertTrue($null1->sameValueAs($null2));
     }
 
     public function testCreate()
     {
-        $null = Null::create();
+        $null = NullValue::create();
 
-        $this->assertInstanceOf('ValueObjects\Null\Null', $null);
+        $this->assertInstanceOf('ValueObjects\NullValue\NullValue', $null);
     }
 
     public function testToString()
     {
-        $foo = new Null();
+        $foo = new NullValue();
         $this->assertSame('', $foo->__toString());
     }
 }
