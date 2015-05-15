@@ -2,16 +2,16 @@
 
 namespace ValueObjects\Geography;
 
-use ValueObjects\String\String;
+use ValueObjects\StringLiteral\StringLiteral;
 use ValueObjects\Util\Util;
 use ValueObjects\ValueObjectInterface;
 
 class Street implements ValueObjectInterface
 {
-    /** @var String */
+    /** @var StringLiteral */
     protected $name;
 
-    /** @var String */
+    /** @var StringLiteral */
     protected $number;
 
     /** @var String Building, floor and unit */
@@ -45,10 +45,10 @@ class Street implements ValueObjectInterface
         $elementsString = isset($args[2]) ? $args[2] : null;
         $formatString   = isset($args[3]) ? $args[3] : null;
 
-        $name     = new String($nameString);
-        $number   = new String($numberString);
-        $elements = $elementsString ? new String($elementsString) : null;
-        $format   = $formatString ? new String($formatString) : null;
+        $name     = new StringLiteral($nameString);
+        $number   = new StringLiteral($numberString);
+        $elements = $elementsString ? new StringLiteral($elementsString) : null;
+        $format   = $formatString ? new StringLiteral($formatString) : null;
 
         return new self($name, $number, $elements, $format);
     }
@@ -59,18 +59,18 @@ class Street implements ValueObjectInterface
      * @param String $name
      * @param String $number
      */
-    public function __construct(String $name, String $number, String $elements = null, String $format = null)
+    public function __construct(StringLiteral $name, StringLiteral $number, StringLiteral $elements = null, StringLiteral $format = null)
     {
         $this->name     = $name;
         $this->number   = $number;
 
         if ($elements === null) {
-            $elements = new String('');
+            $elements = new StringLiteral('');
         }
         $this->elements = $elements;
 
         if ($format === null) {
-            $format = new String('%number% %name%');
+            $format = new StringLiteral('%number% %name%');
         }
         $this->format   = $format;
     }
@@ -122,7 +122,7 @@ class Street implements ValueObjectInterface
     }
 
     /**
-     * Returns a string representation of the String in the format defined in the constructor
+     * Returns a string representation of the StringLiteral in the format defined in the constructor
      *
      * @return string
      */

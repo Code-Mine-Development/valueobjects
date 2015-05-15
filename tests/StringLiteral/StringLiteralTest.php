@@ -3,29 +3,29 @@
 namespace ValueObjects\Tests\String;
 
 use ValueObjects\Tests\TestCase;
-use ValueObjects\String\String;
+use ValueObjects\StringLiteral\StringLiteral;
 
-class StringTest extends TestCase
+class StringLiteralTest extends TestCase
 {
     public function testFromNative()
     {
-        $string = String::fromNative('foo');
-        $constructedString = new String('foo');
+        $string = StringLiteral::fromNative('foo');
+        $constructedString = new StringLiteral('foo');
 
         $this->assertTrue($string->sameValueAs($constructedString));
     }
 
     public function testToNative()
     {
-        $string = new String('foo');
+        $string = new StringLiteral('foo');
         $this->assertEquals('foo', $string->toNative());
     }
 
     public function testSameValueAs()
     {
-        $foo1 = new String('foo');
-        $foo2 = new String('foo');
-        $bar = new String('bar');
+        $foo1 = new StringLiteral('foo');
+        $foo2 = new StringLiteral('foo');
+        $bar = new StringLiteral('bar');
 
         $this->assertTrue($foo1->sameValueAs($foo2));
         $this->assertTrue($foo2->sameValueAs($foo1));
@@ -35,22 +35,22 @@ class StringTest extends TestCase
         $this->assertFalse($foo1->sameValueAs($mock));
     }
 
-    /** @expectedException ValueObjects\Exception\InvalidNativeArgumentException */
+    /** @expectedException \ValueObjects\Exception\InvalidNativeArgumentException */
     public function testInvalidNativeArgument()
     {
-        new String(12);
+        new StringLiteral(12);
     }
 
     public function testIsEmpty()
     {
-        $string = new String('');
+        $string = new StringLiteral('');
 
         $this->assertTrue($string->isEmpty());
     }
 
     public function testToString()
     {
-        $foo = new String('foo');
+        $foo = new StringLiteral('foo');
         $this->assertEquals('foo', $foo->__toString());
     }
 }

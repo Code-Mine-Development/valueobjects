@@ -6,7 +6,7 @@ use ValueObjects\Geography\Ellipsoid;
 use ValueObjects\Geography\Coordinate;
 use ValueObjects\Geography\Latitude;
 use ValueObjects\Geography\Longitude;
-use ValueObjects\String\String;
+use ValueObjects\StringLiteral\StringLiteral;
 use ValueObjects\Tests\TestCase;
 
 class CoordinateTest extends TestCase
@@ -79,19 +79,19 @@ class CoordinateTest extends TestCase
 
     public function testToDegreesMinutesSeconds()
     {
-        $dms = new String('40°49′45″N, 16°33′21″E');
+        $dms = new StringLiteral('40°49′45″N, 16°33′21″E');
         $this->assertTrue($this->coordinate->toDegreesMinutesSeconds()->sameValueAs($dms));
     }
 
     public function testToDecimalMinutes()
     {
-        $dm = new String('40 49.74822N, 16 33.35028E');
+        $dm = new StringLiteral('40 49.74822N, 16 33.35028E');
         $this->assertTrue($this->coordinate->toDecimalMinutes()->sameValueAs($dm));
     }
 
     public function testToUniversalTransverseMercator()
     {
-        $utm = new String('33T 631188 4520953');
+        $utm = new StringLiteral('33T 631188 4520953');
         $this->assertTrue($this->coordinate->toUniversalTransverseMercator()->sameValueAs($utm));
     }
 

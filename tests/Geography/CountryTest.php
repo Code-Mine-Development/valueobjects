@@ -4,7 +4,7 @@ namespace ValueObjects\Tests\Geography;
 
 use ValueObjects\Geography\Country;
 use ValueObjects\Geography\CountryCode;
-use ValueObjects\String\String;
+use ValueObjects\StringLiteral\StringLiteral;
 use ValueObjects\Tests\TestCase;
 
 class CountryTest extends TestCase
@@ -40,7 +40,7 @@ class CountryTest extends TestCase
     public function testGetName()
     {
         $italy = new Country(CountryCode::IT());
-        $name  = new String('Italy');
+        $name  = new StringLiteral('Italy');
         $this->assertTrue($italy->getName()->sameValueAs($name));
     }
 

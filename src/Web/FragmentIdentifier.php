@@ -3,9 +3,9 @@
 namespace ValueObjects\Web;
 
 use ValueObjects\Exception\InvalidNativeArgumentException;
-use ValueObjects\String\String;
+use ValueObjects\StringLiteral\StringLiteral;
 
-class FragmentIdentifier extends String implements FragmentIdentifierInterface
+class FragmentIdentifier extends StringLiteral implements FragmentIdentifierInterface
 {
     /**
      * Returns a new FragmentIdentifier

@@ -3,10 +3,10 @@
 namespace ValueObjects\Web;
 
 use ValueObjects\Exception\InvalidNativeArgumentException;
-use ValueObjects\String\String;
+use ValueObjects\StringLiteral\StringLiteral;
 use ValueObjects\Structure\Dictionary;
 
-class QueryString extends String implements QueryStringInterface
+class QueryString extends StringLiteral implements QueryStringInterface
 {
     /**
      * Returns a new QueryString

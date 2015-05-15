@@ -2,7 +2,7 @@
 
 namespace ValueObjects\Person;
 
-use ValueObjects\String\String;
+use ValueObjects\StringLiteral\StringLiteral;
 use ValueObjects\Util\Util;
 use ValueObjects\ValueObjectInterface;
 
@@ -11,21 +11,21 @@ class Name implements ValueObjectInterface
     /**
      * First name
      *
-     * @var \ValueObjects\String\String
+     * @var \ValueObjects\StringLiteral\StringLiteral
      */
     private $firstName;
 
     /**
      * Middle name
      *
-     * @var \ValueObjects\String\String
+     * @var \ValueObjects\StringLiteral\StringLiteral
      */
     private $middleName;
 
     /**
      * Last name
      *
-     * @var \ValueObjects\String\String
+     * @var \ValueObjects\StringLiteral\StringLiteral
      */
     private $lastName;
 
@@ -41,9 +41,9 @@ class Name implements ValueObjectInterface
     {
         $args = func_get_args();
 
-        $firstName  = new String($args[0]);
-        $middleName = new String($args[1]);
-        $lastName   = new String($args[2]);
+        $firstName  = new StringLiteral($args[0]);
+        $middleName = new StringLiteral($args[1]);
+        $lastName   = new StringLiteral($args[2]);
 
         return new self($firstName, $middleName, $lastName);
     }
@@ -55,7 +55,7 @@ class Name implements ValueObjectInterface
      * @param String $middle_name
      * @param String $last_name
      */
-    public function __construct(String $first_name, String $middle_name, String $last_name)
+    public function __construct(StringLiteral $first_name, StringLiteral $middle_name, StringLiteral $last_name)
     {
         $this->firstName  = $first_name;
         $this->middleName = $middle_name;
@@ -103,7 +103,7 @@ class Name implements ValueObjectInterface
             ($this->middleName->isEmpty() ? '' : ' ' . $this->middleName) .
             ($this->lastName->isEmpty() ? '' : ' ' . $this->lastName);
 
-        $fullName = new String($fullNameString);
+        $fullName = new StringLiteral($fullNameString);
 
         return $fullName;
     }

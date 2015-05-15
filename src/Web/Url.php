@@ -2,7 +2,7 @@
 
 namespace ValueObjects\Web;
 
-use ValueObjects\String\String;
+use ValueObjects\StringLiteral\StringLiteral;
 use ValueObjects\Util\Util;
 use ValueObjects\ValueObjectInterface;
 
@@ -11,10 +11,10 @@ class Url implements ValueObjectInterface
     /** @var SchemeName */
     protected $scheme;
 
-    /** @var String */
+    /** @var StringLiteral */
     protected $user;
 
-    /** @var String */
+    /** @var StringLiteral */
     protected $password;
 
     /** @var Domain */
@@ -50,8 +50,8 @@ class Url implements ValueObjectInterface
         $port        = \parse_url($urlString, PHP_URL_PORT);
 
         $scheme     = new SchemeName(\parse_url($urlString, PHP_URL_SCHEME));
-        $user       = $user ? new String($user) : new String('');
-        $pass       = $pass ? new String($pass) : new String('');
+        $user       = $user ? new StringLiteral($user) : new StringLiteral('');
+        $pass       = $pass ? new StringLiteral($pass) : new StringLiteral('');
         $domain     = Domain::specifyType($host);
         $path       = new Path(\parse_url($urlString, PHP_URL_PATH));
         $portNumber = $port ? new PortNumber($port) : new NullPortNumber();
@@ -73,7 +73,7 @@ class Url implements ValueObjectInterface
      * @param QueryString         $query
      * @param FragmentIdentifier  $fragment
      */
-    public function __construct(SchemeName $scheme, String $user, String $password, Domain $domain, PortNumberInterface $port, Path $path, QueryString $query, FragmentIdentifier $fragment)
+    public function __construct(SchemeName $scheme, StringLiteral $user, StringLiteral $password, Domain $domain, PortNumberInterface $port, Path $path, QueryString $query, FragmentIdentifier $fragment)
     {
         $this->scheme             = $scheme;
         $this->user               = $user;

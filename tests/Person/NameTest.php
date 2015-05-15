@@ -4,7 +4,7 @@ namespace ValueObjects\Tests\String;
 
 use ValueObjects\Person\Name;
 use ValueObjects\Tests\TestCase;
-use ValueObjects\String\String;
+use ValueObjects\StringLiteral\StringLiteral;
 
 class NameTest extends TestCase
 {
@@ -12,7 +12,7 @@ class NameTest extends TestCase
 
     public function setup()
     {
-        $this->name = new Name(new String('foo'), new String('bar'), new String('baz'));
+        $this->name = new Name(new StringLiteral('foo'), new StringLiteral('bar'), new StringLiteral('baz'));
     }
 
     public function testFromNative()
@@ -44,15 +44,15 @@ class NameTest extends TestCase
 
     public function testEmptyFullName()
     {
-        $name = new Name(new String(''), new String(''), new String(''));
+        $name = new Name(new StringLiteral(''), new StringLiteral(''), new StringLiteral(''));
 
         $this->assertEquals('', $name->getFullName());
     }
 
     public function testSameValueAs()
     {
-        $name2 = new Name(new String('foo'), new String('bar'), new String('baz'));
-        $name3 = new Name(new String('foo'), new String(''), new String('baz'));
+        $name2 = new Name(new StringLiteral('foo'), new StringLiteral('bar'), new StringLiteral('baz'));
+        $name3 = new Name(new StringLiteral('foo'), new StringLiteral(''), new StringLiteral('baz'));
 
         $this->assertTrue($this->name->sameValueAs($name2));
         $this->assertTrue($name2->sameValueAs($this->name));

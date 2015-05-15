@@ -4,7 +4,7 @@ namespace ValueObjects\Geography;
 
 use ValueObjects\Util\Util;
 use ValueObjects\ValueObjectInterface;
-use ValueObjects\String\String;
+use ValueObjects\StringLiteral\StringLiteral;
 
 class Address implements ValueObjectInterface
 {
@@ -66,12 +66,12 @@ class Address implements ValueObjectInterface
             throw new \BadMethodCallException('You must provide exactly 8 arguments: 1) addressee name, 2) street name, 3) street number, 4) district, 5) city, 6) region, 7) postal code, 8) country code.');
         }
 
-        $name       = new String($args[0]);
-        $street     = new Street(new String($args[1]), new String($args[2]));
-        $district   = new String($args[3]);
-        $city       = new String($args[4]);
-        $region     = new String($args[5]);
-        $postalCode = new String($args[6]);
+        $name       = new StringLiteral($args[0]);
+        $street     = new Street(new StringLiteral($args[1]), new StringLiteral($args[2]));
+        $district   = new StringLiteral($args[3]);
+        $city       = new StringLiteral($args[4]);
+        $region     = new StringLiteral($args[5]);
+        $postalCode = new StringLiteral($args[6]);
         $country    = Country::fromNative($args[7]);
 
         return new self($name, $street, $district, $city, $region, $postalCode, $country);
@@ -88,7 +88,7 @@ class Address implements ValueObjectInterface
      * @param String  $postalCode
      * @param Country $country
      */
-    public function __construct(String $name, Street $street, String $district, String $city, String $region, String $postalCode, Country $country)
+    public function __construct(StringLiteral $name, Street $street, StringLiteral $district, StringLiteral $city, StringLiteral $region, StringLiteral $postalCode, Country $country)
     {
         $this->name       = $name;
         $this->street     = $street;

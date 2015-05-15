@@ -14,7 +14,7 @@ use ValueObjects\Tests\TestCase;
 use ValueObjects\DateTime\DateTime;
 use ValueObjects\DateTime\DateTimeWithTimeZone;
 use ValueObjects\DateTime\TimeZone;
-use ValueObjects\String\String;
+use ValueObjects\StringLiteral\StringLiteral;
 
 class DateTimeWithTimeZoneTest extends TestCase
 {
@@ -26,7 +26,7 @@ class DateTimeWithTimeZoneTest extends TestCase
                 new Date(new Year(2013), Month::DECEMBER(), new MonthDay(21)),
                 new Time(new Hour(10), new Minute(20), new Second(34))
             ),
-            new TimeZone(new String('Europe/Madrid'))
+            new TimeZone(new StringLiteral('Europe/Madrid'))
         );
 
         $this->assertTrue($fromNativeDateTimeWithTz->sameValueAs($constructedDateTimeWithTz));
@@ -40,7 +40,7 @@ class DateTimeWithTimeZoneTest extends TestCase
 
         $date = new Date(new Year(2013), Month::DECEMBER(), new MonthDay(6));
         $time = new Time(new Hour(20), new Minute(50), new Second(10));
-        $timezone = new TimeZone(new String('Europe/Madrid'));
+        $timezone = new TimeZone(new StringLiteral('Europe/Madrid'));
         $constructedDateTimeWithTz = new DateTimeWithTimeZone(new DateTime($date, $time), $timezone);
 
         $this->assertTrue($dateTimeWithTzFromNative->sameValueAs($constructedDateTimeWithTz));
@@ -56,11 +56,11 @@ class DateTimeWithTimeZoneTest extends TestCase
     {
         $date = new Date(new Year(2013), Month::DECEMBER(), new MonthDay(3));
         $time = new Time(new Hour(20), new Minute(50), new Second(10));
-        $timeZone = new TimeZone(new String('Europe/Madrid'));
+        $timeZone = new TimeZone(new StringLiteral('Europe/Madrid'));
 
         $date3 = new Date(new Year(2013), Month::DECEMBER(), new MonthDay(3));
         $time3 = new Time(new Hour(20), new Minute(50), new Second(10));
-        $timeZone3 = new TimeZone(new String('Europe/London'));
+        $timeZone3 = new TimeZone(new StringLiteral('Europe/London'));
 
         $dateTimeWithTz1 = new DateTimeWithTimeZone(new DateTime($date, $time), $timeZone);
         $dateTimeWithTz2 = new DateTimeWithTimeZone(new DateTime($date, $time), $timeZone);
@@ -78,11 +78,11 @@ class DateTimeWithTimeZoneTest extends TestCase
     {
         $date1 = new Date(new Year(2013), Month::DECEMBER(), new MonthDay(3));
         $time1 = new Time(new Hour(20), new Minute(50), new Second(10));
-        $timeZone1 = new TimeZone(new String('Europe/Madrid'));
+        $timeZone1 = new TimeZone(new StringLiteral('Europe/Madrid'));
 
         $date2 = new Date(new Year(2013), Month::DECEMBER(), new MonthDay(3));
         $time2 = new Time(new Hour(19), new Minute(50), new Second(10));
-        $timeZone2 = new TimeZone(new String('Europe/London'));
+        $timeZone2 = new TimeZone(new StringLiteral('Europe/London'));
 
         $dateTimeWithTz1 = new DateTimeWithTimeZone(new DateTime($date1, $time1), $timeZone1);
         $dateTimeWithTz2 = new DateTimeWithTimeZone(new DateTime($date2, $time2), $timeZone2);
@@ -99,7 +99,7 @@ class DateTimeWithTimeZoneTest extends TestCase
         $date = new Date(new Year(2013), Month::DECEMBER(), new MonthDay(3));
         $time = new Time(new Hour(20), new Minute(50), new Second(10));
         $dateTime = new DateTime($date, $time);
-        $timeZone = new TimeZone(new String('Europe/Madrid'));
+        $timeZone = new TimeZone(new StringLiteral('Europe/Madrid'));
         $dateTimeWithTz = new DateTimeWithTimeZone($dateTime, $timeZone);
 
         $this->assertTrue($dateTime->sameValueAs($dateTimeWithTz->getDateTime()));
@@ -110,7 +110,7 @@ class DateTimeWithTimeZoneTest extends TestCase
         $date = new Date(new Year(2013), Month::DECEMBER(), new MonthDay(3));
         $time = new Time(new Hour(20), new Minute(50), new Second(10));
         $dateTime = new DateTime($date, $time);
-        $timeZone = new TimeZone(new String('Europe/Madrid'));
+        $timeZone = new TimeZone(new StringLiteral('Europe/Madrid'));
         $dateTimeWithTz = new DateTimeWithTimeZone($dateTime, $timeZone);
 
         $this->assertTrue($timeZone->sameValueAs($dateTimeWithTz->getTimeZone()));
@@ -121,7 +121,7 @@ class DateTimeWithTimeZoneTest extends TestCase
         $date           = new Date(new Year(2013), Month::DECEMBER(), new MonthDay(3));
         $time           = new Time(new Hour(20), new Minute(50), new Second(10));
         $dateTime       = new DateTime($date, $time);
-        $timeZone       = new TimeZone(new String('Europe/Madrid'));
+        $timeZone       = new TimeZone(new StringLiteral('Europe/Madrid'));
         $dateTimeWithTz = new DateTimeWithTimeZone($dateTime, $timeZone);
         $nativeDateTime = \DateTime::createFromFormat('Y-n-j H:i:s e', '2013-12-3 20:50:10 Europe/Madrid');
 
@@ -133,7 +133,7 @@ class DateTimeWithTimeZoneTest extends TestCase
         $date           = new Date(new Year(2013), Month::DECEMBER(), new MonthDay(3));
         $time           = new Time(new Hour(20), new Minute(50), new Second(10));
         $dateTime       = new DateTime($date, $time);
-        $timeZone       = new TimeZone(new String('Europe/Madrid'));
+        $timeZone       = new TimeZone(new StringLiteral('Europe/Madrid'));
         $dateTimeWithTz = new DateTimeWithTimeZone($dateTime, $timeZone);
 
         $this->assertEquals('2013-12-3 20:50:10 Europe/Madrid', $dateTimeWithTz->__toString());

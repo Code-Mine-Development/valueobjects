@@ -1,22 +1,22 @@
 <?php
 
-namespace ValueObjects\Null;
+namespace ValueObjects\NullValue;
 
 use ValueObjects\Util\Util;
 use ValueObjects\ValueObjectInterface;
 
-class Null implements ValueObjectInterface
+class NullValue implements ValueObjectInterface
 {
     /**
      * @throws \BadMethodCallException
      */
     public static function fromNative()
     {
-        throw new \BadMethodCallException('Cannot create a Null object via this method.');
+        throw new \BadMethodCallException('Cannot create a NullValue object via this method.');
     }
 
     /**
-     * Returns a new Null object
+     * Returns a new NullValue object
      *
      * @return static
      */
@@ -26,7 +26,7 @@ class Null implements ValueObjectInterface
     }
 
     /**
-     * Tells whether two objects are both Null
+     * Tells whether two objects are both NullValue
      * @param  ValueObjectInterface $null
      * @return bool
      */
@@ -36,7 +36,7 @@ class Null implements ValueObjectInterface
     }
 
     /**
-     * Returns a string representation of the Null object
+     * Returns a string representation of the NullValue object
      *
      * @return string
      */

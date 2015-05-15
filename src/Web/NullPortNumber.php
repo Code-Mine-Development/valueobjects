@@ -2,8 +2,8 @@
 
 namespace ValueObjects\Web;
 
-use ValueObjects\Null\Null;
+use ValueObjects\NullValue\NullValue;
 
-class NullPortNumber extends Null implements PortNumberInterface
+class NullPortNumber extends NullValue implements PortNumberInterface
 {
 }

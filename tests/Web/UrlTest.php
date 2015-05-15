@@ -2,7 +2,7 @@
 
 namespace ValueObjects\Tests\Web;
 
-use ValueObjects\String\String;
+use ValueObjects\StringLiteral\StringLiteral;
 use ValueObjects\Tests\TestCase;
 use ValueObjects\Web\FragmentIdentifier;
 use ValueObjects\Web\NullPortNumber;
@@ -22,8 +22,8 @@ class UrlTest extends TestCase
     {
         $this->url = new Url(
             new SchemeName('http'),
-            new String('user'),
-            new String('pass'),
+            new StringLiteral('user'),
+            new StringLiteral('pass'),
             new Hostname('foo.com'),
             new PortNumber(80),
             new Path('/bar'),
@@ -64,8 +64,8 @@ class UrlTest extends TestCase
     {
         $url2 = new Url(
             new SchemeName('http'),
-            new String('user'),
-            new String('pass'),
+            new StringLiteral('user'),
+            new StringLiteral('pass'),
             new Hostname('foo.com'),
             new PortNumber(80),
             new Path('/bar'),
@@ -75,8 +75,8 @@ class UrlTest extends TestCase
 
         $url3 = new Url(
             new SchemeName('git+ssh'),
-            new String(''),
-            new String(''),
+            new StringLiteral(''),
+            new StringLiteral(''),
             new Hostname('github.com'),
             new NullPortNumber(),
             new Path('/nicolopignatelli/valueobjects'),
@@ -106,7 +106,7 @@ class UrlTest extends TestCase
 
     public function testGetPassword()
     {
-        $password = new String('pass');
+        $password = new StringLiteral('pass');
         $this->assertTrue($this->url->getPassword()->sameValueAs($password));
     }
 
@@ -136,7 +136,7 @@ class UrlTest extends TestCase
 
     public function testGetUser()
     {
-        $user = new String('user');
+        $user = new StringLiteral('user');
         $this->assertTrue($this->url->getUser()->sameValueAs($user));
     }
 
@@ -150,8 +150,8 @@ class UrlTest extends TestCase
         $nativeUrlString = 'http://foo.com:80/bar?querystring#fragmentidentifier';
         $authlessUrl = new Url(
             new SchemeName('http'),
-            new String(''),
-            new String(''),
+            new StringLiteral(''),
+            new StringLiteral(''),
             new Hostname('foo.com'),
             new PortNumber(80),
             new Path('/bar'),
@@ -168,8 +168,8 @@ class UrlTest extends TestCase
     {
         $nullPortUrl = new Url(
             new SchemeName('http'),
-            new String('user'),
-            new String(''),
+            new StringLiteral('user'),
+            new StringLiteral(''),
             new Hostname('foo.com'),
             new NullPortNumber(),
             new Path('/bar'),

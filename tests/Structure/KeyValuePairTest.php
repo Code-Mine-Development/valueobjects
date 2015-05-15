@@ -2,7 +2,7 @@
 
 namespace ValueObjects\Tests\Structure;
 
-use ValueObjects\String\String;
+use ValueObjects\StringLiteral\StringLiteral;
 use ValueObjects\Structure\KeyValuePair;
 use ValueObjects\Tests\TestCase;
 
@@ -13,7 +13,7 @@ class KeyValuePairTest extends TestCase
 
     public function setup()
     {
-        $this->keyValuePair = new KeyValuePair(new String('key'), new String('value'));
+        $this->keyValuePair = new KeyValuePair(new StringLiteral('key'), new StringLiteral('value'));
     }
 
     public function testFromNative()
@@ -30,8 +30,8 @@ class KeyValuePairTest extends TestCase
 
     public function testSameValueAs()
     {
-        $keyValuePair2 = new KeyValuePair(new String('key'), new String('value'));
-        $keyValuePair3 = new KeyValuePair(new String('foo'), new String('bar'));
+        $keyValuePair2 = new KeyValuePair(new StringLiteral('key'), new StringLiteral('value'));
+        $keyValuePair3 = new KeyValuePair(new StringLiteral('foo'), new StringLiteral('bar'));
 
         $this->assertTrue($this->keyValuePair->sameValueAs($keyValuePair2));
         $this->assertTrue($keyValuePair2->sameValueAs($this->keyValuePair));

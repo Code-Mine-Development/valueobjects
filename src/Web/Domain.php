@@ -2,9 +2,9 @@
 
 namespace ValueObjects\Web;
 
-use ValueObjects\String\String;
+use ValueObjects\StringLiteral\StringLiteral;
 
-abstract class Domain extends String
+abstract class Domain extends StringLiteral
 {
     /**
      * Returns a Hostname or a IPAddress object depending on passed value

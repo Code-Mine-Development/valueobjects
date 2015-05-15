@@ -4,7 +4,7 @@ namespace ValueObjects\Structure;
 
 use ValueObjects\Util\Util;
 use ValueObjects\Number\Natural;
-use ValueObjects\String\String;
+use ValueObjects\StringLiteral\StringLiteral;
 use ValueObjects\ValueObjectInterface;
 
 class Collection implements ValueObjectInterface
@@ -27,7 +27,7 @@ class Collection implements ValueObjectInterface
             if ($item instanceof \Traversable || \is_array($item)) {
                 $items[] = static::fromNative($item);
             } else {
-                $items[] = new String(\strval($item));
+                $items[] = new StringLiteral(\strval($item));
             }
         }
 

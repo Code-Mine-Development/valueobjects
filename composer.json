@@ -14,7 +14,7 @@
     ],
     "require": {
         "php": ">=5.3.3",
-        "rhumsaa/uuid": "~2.5",
+        "ramsey/uuid": "~2.5",
         "mathiasverraes/money": "~1.2",
         "marc-mabe/php-enum": "~1.0",
         "zendframework/zend-validator": "~2.2",
@@ -34,7 +34,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "2.4.x-dev"
+            "dev-master": "3.0.x-dev"
         }
     }
 }

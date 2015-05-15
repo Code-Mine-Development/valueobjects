@@ -3,12 +3,12 @@
 namespace ValueObjects\Identity;
 
 use ValueObjects\Exception\InvalidNativeArgumentException;
-use ValueObjects\String\String;
+use ValueObjects\StringLiteral\StringLiteral;
 use ValueObjects\Util\Util;
 use ValueObjects\ValueObjectInterface;
 use Rhumsaa\Uuid\Uuid as BaseUuid;
 
-class UUID extends String
+class UUID extends StringLiteral
 {
     /** @var BaseUuid */
     protected $value;

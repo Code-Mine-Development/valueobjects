@@ -3,7 +3,7 @@
 namespace ValueObjects\Tests\DateTime;
 
 use ValueObjects\Tests\TestCase;
-use ValueObjects\String\String;
+use ValueObjects\StringLiteral\StringLiteral;
 use ValueObjects\DateTime\TimeZone;
 
 class TimeZoneTest extends TestCase
@@ -11,7 +11,7 @@ class TimeZoneTest extends TestCase
     public function testFromNative()
     {
         $fromNativeTimeZone  = TimeZone::fromNative('Europe/Madrid');
-        $constructedTimeZone = new TimeZone(new String('Europe/Madrid'));
+        $constructedTimeZone = new TimeZone(new StringLiteral('Europe/Madrid'));
 
         $this->assertTrue($fromNativeTimeZone->sameValueAs($constructedTimeZone));
     }
@@ -21,7 +21,7 @@ class TimeZoneTest extends TestCase
         $nativeTimeZone = new \DateTimeZone('Europe/Madrid');
         $timeZoneFromNative = TimeZone::fromNativeDateTimeZone($nativeTimeZone);
 
-        $constructedTimeZone = new TimeZone(new String('Europe/Madrid'));
+        $constructedTimeZone = new TimeZone(new StringLiteral('Europe/Madrid'));
 
         $this->assertTrue($timeZoneFromNative->sameValueAs($constructedTimeZone));
     }
@@ -34,9 +34,9 @@ class TimeZoneTest extends TestCase
 
     public function testSameValueAs()
     {
-        $timeZone1 = new TimeZone(new String('Europe/Madrid'));
-        $timeZone2 = new TimeZone(new String('Europe/Madrid'));
-        $timeZone3 = new TimeZone(new String('Europe/Berlin'));
+        $timeZone1 = new TimeZone(new StringLiteral('Europe/Madrid'));
+        $timeZone2 = new TimeZone(new StringLiteral('Europe/Madrid'));
+        $timeZone3 = new TimeZone(new StringLiteral('Europe/Berlin'));
 
         $this->assertTrue($timeZone1->sameValueAs($timeZone2));
         $this->assertTrue($timeZone2->sameValueAs($timeZone1));
@@ -48,7 +48,7 @@ class TimeZoneTest extends TestCase
 
     public function testGetName()
     {
-        $name = new String('Europe/Madrid');
+        $name = new StringLiteral('Europe/Madrid');
         $timeZone = new TimeZone($name);
 
         $this->assertTrue($name->sameValueAs($timeZone->getName()));
@@ -57,14 +57,14 @@ class TimeZoneTest extends TestCase
     public function testToNativeDateTimeZone()
     {
         $nativeTimeZone = new \DateTimeZone('Europe/Madrid');
-        $timeZone = new TimeZone(new String('Europe/Madrid'));
+        $timeZone = new TimeZone(new StringLiteral('Europe/Madrid'));
 
         $this->assertEquals($nativeTimeZone, $timeZone->toNativeDateTimeZone());
     }
 
     public function testToString()
     {
-        $timeZone = new TimeZone(new String('Europe/Madrid'));
+        $timeZone = new TimeZone(new StringLiteral('Europe/Madrid'));
 
         $this->assertEquals('Europe/Madrid', $timeZone->__toString());
     }
@@ -74,6 +74,6 @@ class TimeZoneTest extends TestCase
      */
     public function testExceptionOnInvalidTimeZoneName()
     {
-        $timeZone = new TimeZone(new String('Mars/Phobos'));
+        $timeZone = new TimeZone(new StringLiteral('Mars/Phobos'));
     }
 }
