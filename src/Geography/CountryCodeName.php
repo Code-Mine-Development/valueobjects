@@ -2,7 +2,7 @@
 
 namespace ValueObjects\Geography;
 
-use ValueObjects\String\String;
+use ValueObjects\StringLiteral\StringLiteral;
 
 class CountryCodeName
 {
@@ -264,6 +264,6 @@ class CountryCodeName
         $codeValue = $code->toNative();
         $name      = self::$names[$codeValue];
 
-        return new String($name);
+        return new StringLiteral($name);
     }
 }

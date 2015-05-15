@@ -5,7 +5,7 @@ namespace ValueObjects\Geography;
 use League\Geotools\Convert\Convert;
 use League\Geotools\Distance\Distance;
 use ValueObjects\Number\Real;
-use ValueObjects\String\String;
+use ValueObjects\StringLiteral\StringLiteral;
 use ValueObjects\Util\Util;
 use ValueObjects\ValueObjectInterface;
 use League\Geotools\Coordinate\Coordinate as BaseCoordinate;
@@ -123,7 +123,7 @@ class Coordinate implements ValueObjectInterface
         $convert    = new Convert($coordinate);
         $dms        = $convert->toDegreesMinutesSeconds();
 
-        return new String($dms);
+        return new StringLiteral($dms);
     }
 
     /**
@@ -137,7 +137,7 @@ class Coordinate implements ValueObjectInterface
         $convert    = new Convert($coordinate);
         $dm         = $convert->toDecimalMinutes();
 
-        return new String($dm);
+        return new StringLiteral($dm);
     }
 
     /**
@@ -151,7 +151,7 @@ class Coordinate implements ValueObjectInterface
         $convert    = new Convert($coordinate);
         $utm        = $convert->toUniversalTransverseMercator();
 
-        return new String($utm);
+        return new StringLiteral($utm);
     }
 
     /**

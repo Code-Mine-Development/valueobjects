@@ -3,7 +3,7 @@
 namespace ValueObjects\Tests\Geography;
 
 use ValueObjects\Geography\Street;
-use ValueObjects\String\String;
+use ValueObjects\StringLiteral\StringLiteral;
 use ValueObjects\Tests\TestCase;
 
 class StreetTest extends TestCase
@@ -12,7 +12,7 @@ class StreetTest extends TestCase
 
     public function setup()
     {
-        $this->street = new Street(new String('Abbey Rd'), new String('3'), new String('Building A'), new String('%number% %name%, %elements%'));
+        $this->street = new Street(new StringLiteral('Abbey Rd'), new StringLiteral('3'), new StringLiteral('Building A'), new StringLiteral('%number% %name%, %elements%'));
     }
 
     public function testFromNative()
@@ -29,8 +29,8 @@ class StreetTest extends TestCase
 
     public function testSameValueAs()
     {
-        $street2 = new Street(new String('Abbey Rd'), new String('3'), new String('Building A'));
-        $street3 = new Street(new String('Orchard Road'), new String(''));
+        $street2 = new Street(new StringLiteral('Abbey Rd'), new StringLiteral('3'), new StringLiteral('Building A'));
+        $street3 = new Street(new StringLiteral('Orchard Road'), new StringLiteral(''));
 
         $this->assertTrue($this->street->sameValueAs($street2));
         $this->assertTrue($street2->sameValueAs($this->street));
@@ -42,19 +42,19 @@ class StreetTest extends TestCase
 
     public function testGetName()
     {
-        $name = new String('Abbey Rd');
+        $name = new StringLiteral('Abbey Rd');
         $this->assertTrue($this->street->getName()->sameValueAs($name));
     }
 
     public function testGetNumber()
     {
-        $number = new String('3');
+        $number = new StringLiteral('3');
         $this->assertTrue($this->street->getNumber()->sameValueAs($number));
     }
 
     public function testGetElements()
     {
-        $elements = new String('Building A');
+        $elements = new StringLiteral('Building A');
         $this->assertTrue($this->street->getElements()->sameValueAs($elements));
     }
 

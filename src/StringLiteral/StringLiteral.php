@@ -1,20 +1,20 @@
 <?php
 
-namespace ValueObjects\String;
+namespace ValueObjects\StringLiteral;
 
 use ValueObjects\Exception\InvalidNativeArgumentException;
 use ValueObjects\Util\Util;
 use ValueObjects\ValueObjectInterface;
 
-class String implements ValueObjectInterface
+class StringLiteral implements ValueObjectInterface
 {
     protected $value;
 
     /**
-     * Returns a String object given a PHP native string as parameter.
+     * Returns a StringLiteral object given a PHP native string as parameter.
      *
      * @param  string $value
-     * @return String
+     * @return StringLiteral
      */
     public static function fromNative()
     {
@@ -24,7 +24,7 @@ class String implements ValueObjectInterface
     }
 
     /**
-     * Returns a String object given a PHP native string as parameter.
+     * Returns a StringLiteral object given a PHP native string as parameter.
      *
      * @param string $value
      */
@@ -48,22 +48,22 @@ class String implements ValueObjectInterface
     }
 
     /**
-     * Tells whether two strings are equal by comparing their values
+     * Tells whether two string literals are equal by comparing their values
      *
-     * @param  ValueObjectInterface $string
+     * @param  ValueObjectInterface $stringLiteral
      * @return bool
      */
-    public function sameValueAs(ValueObjectInterface $string)
+    public function sameValueAs(ValueObjectInterface $stringLiteral)
     {
-        if (false === Util::classEquals($this, $string)) {
+        if (false === Util::classEquals($this, $stringLiteral)) {
             return false;
         }
 
-        return $this->toNative() === $string->toNative();
+        return $this->toNative() === $stringLiteral->toNative();
     }
 
     /**
-     * Tells whether the String is empty
+     * Tells whether the StringLiteral is empty
      *
      * @return bool
      */

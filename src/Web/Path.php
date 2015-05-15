@@ -3,9 +3,9 @@
 namespace ValueObjects\Web;
 
 use ValueObjects\Exception\InvalidNativeArgumentException;
-use ValueObjects\String\String;
+use ValueObjects\StringLiteral\StringLiteral;
 
-class Path extends String
+class Path extends StringLiteral
 {
     public function __construct($value)
     {

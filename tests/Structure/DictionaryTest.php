@@ -3,7 +3,7 @@
 namespace ValueObjects\Tests\Structure;
 
 use ValueObjects\Number\Integer;
-use ValueObjects\String\String;
+use ValueObjects\StringLiteral\StringLiteral;
 use ValueObjects\Structure\Collection;
 use ValueObjects\Structure\Dictionary;
 use ValueObjects\Structure\KeyValuePair;
@@ -17,9 +17,9 @@ class DictionaryTest extends TestCase
     public function setup()
     {
         $array = \SplFixedArray::fromArray(array(
-            new KeyValuePair(new Integer(0), new String('zero')),
-            new KeyValuePair(new Integer(1), new String('one')),
-            new KeyValuePair(new Integer(2), new String('two')),
+            new KeyValuePair(new Integer(0), new StringLiteral('zero')),
+            new KeyValuePair(new Integer(1), new StringLiteral('one')),
+            new KeyValuePair(new Integer(2), new StringLiteral('two')),
         ));
 
         $this->dictionary = new Dictionary($array);
@@ -28,9 +28,9 @@ class DictionaryTest extends TestCase
     public function testFromNative()
     {
         $constructedArray = \SplFixedArray::fromArray(array(
-            new KeyValuePair(new String('0'), new String('zero')),
-            new KeyValuePair(new String('1'), new String('one')),
-            new KeyValuePair(new String('2'), new String('two')),
+            new KeyValuePair(new StringLiteral('0'), new StringLiteral('zero')),
+            new KeyValuePair(new StringLiteral('1'), new StringLiteral('one')),
+            new KeyValuePair(new StringLiteral('2'), new StringLiteral('two')),
         ));
 
         $fromNativeArray = \SplFixedArray::fromArray(array(
@@ -68,9 +68,9 @@ class DictionaryTest extends TestCase
     public function testValues()
     {
         $array = \SplFixedArray::fromArray(array(
-            new String('zero'),
-            new String('one'),
-            new String('two')
+            new StringLiteral('zero'),
+            new StringLiteral('one'),
+            new StringLiteral('two')
         ));
         $values = new Collection($array);
 
@@ -88,8 +88,8 @@ class DictionaryTest extends TestCase
 
     public function testContainsValue()
     {
-        $one = new String('one');
-        $ten = new String('ten');
+        $one = new StringLiteral('one');
+        $ten = new StringLiteral('ten');
 
         $this->assertTrue($this->dictionary->containsValue($one));
         $this->assertFalse($this->dictionary->containsValue($ten));

@@ -4,7 +4,7 @@ namespace ValueObjects\Tests\Structure;
 
 use ValueObjects\Number\Integer;
 use ValueObjects\Number\Natural;
-use ValueObjects\String\String;
+use ValueObjects\StringLiteral\StringLiteral;
 use ValueObjects\Structure\Collection;
 use ValueObjects\Tests\TestCase;
 
@@ -16,8 +16,8 @@ class CollectionTest extends TestCase
     public function setup()
     {
         $array = new \SplFixedArray(3);
-        $array->offsetSet(0, new String('one'));
-        $array->offsetSet(1, new String('two'));
+        $array->offsetSet(0, new StringLiteral('one'));
+        $array->offsetSet(1, new StringLiteral('two'));
         $array->offsetSet(2, new Integer(3));
 
         $this->collection = new Collection($array);
@@ -42,13 +42,13 @@ class CollectionTest extends TestCase
 
         $innerArray = new Collection(
             \SplFixedArray::fromArray(array(
-                    new String('1'),
-                    new String('2')
+                    new StringLiteral('1'),
+                    new StringLiteral('2')
             ))
         );
         $array = \SplFixedArray::fromArray(array(
-            new String('one'),
-            new String('two'),
+            new StringLiteral('one'),
+            new StringLiteral('two'),
             $innerArray
         ));
         $constructedCollection = new Collection($array);
@@ -59,8 +59,8 @@ class CollectionTest extends TestCase
     public function testSameValueAs()
     {
         $array = \SplFixedArray::fromArray(array(
-            new String('one'),
-            new String('two'),
+            new StringLiteral('one'),
+            new StringLiteral('two'),
             new Integer(3)
         ));
         $collection2 = new Collection($array);
@@ -89,8 +89,8 @@ class CollectionTest extends TestCase
 
     public function testContains()
     {
-        $one = new String('one');
-        $ten = new String('ten');
+        $one = new StringLiteral('one');
+        $ten = new StringLiteral('ten');
 
         $this->assertTrue($this->collection->contains($one));
         $this->assertFalse($this->collection->contains($ten));
@@ -99,8 +99,8 @@ class CollectionTest extends TestCase
     public function testToArray()
     {
         $array = array(
-            new String('one'),
-            new String('two'),
+            new StringLiteral('one'),
+            new StringLiteral('two'),
             new Integer(3)
         );
 

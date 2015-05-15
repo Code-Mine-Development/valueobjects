@@ -6,7 +6,7 @@ use ValueObjects\Geography\Address;
 use ValueObjects\Geography\Country;
 use ValueObjects\Geography\CountryCode;
 use ValueObjects\Geography\Street;
-use ValueObjects\String\String;
+use ValueObjects\StringLiteral\StringLiteral;
 use ValueObjects\Tests\TestCase;
 
 class AddressTest extends TestCase
@@ -17,12 +17,12 @@ class AddressTest extends TestCase
     public function setup()
     {
         $this->address = new Address(
-            new String('Nicolò Pignatelli'),
-            new Street(new String('via Manara'), new String('3')),
-            new String(''),
-            new String('Altamura'),
-            new String('BARI'),
-            new String('70022'),
+            new StringLiteral('Nicolò Pignatelli'),
+            new Street(new StringLiteral('via Manara'), new StringLiteral('3')),
+            new StringLiteral(''),
+            new StringLiteral('Altamura'),
+            new StringLiteral('BARI'),
+            new StringLiteral('70022'),
             new Country(CountryCode::IT())
         );
     }
@@ -42,22 +42,22 @@ class AddressTest extends TestCase
     public function testSameValueAs()
     {
         $address2 = new Address(
-            new String('Nicolò Pignatelli'),
-            new Street(new String('via Manara'), new String('3')),
-            new String(''),
-            new String('Altamura'),
-            new String('BARI'),
-            new String('70022'),
+            new StringLiteral('Nicolò Pignatelli'),
+            new Street(new StringLiteral('via Manara'), new StringLiteral('3')),
+            new StringLiteral(''),
+            new StringLiteral('Altamura'),
+            new StringLiteral('BARI'),
+            new StringLiteral('70022'),
             new Country(CountryCode::IT())
         );
 
         $address3 = new Address(
-            new String('Nicolò Pignatelli'),
-            new Street(new String('SP159'), new String('km 4')),
-            new String(''),
-            new String('Altamura'),
-            new String('BARI'),
-            new String('70022'),
+            new StringLiteral('Nicolò Pignatelli'),
+            new Street(new StringLiteral('SP159'), new StringLiteral('km 4')),
+            new StringLiteral(''),
+            new StringLiteral('Altamura'),
+            new StringLiteral('BARI'),
+            new StringLiteral('70022'),
             new Country(CountryCode::IT())
         );
 
@@ -71,37 +71,37 @@ class AddressTest extends TestCase
 
     public function testGetName()
     {
-        $name = new String('Nicolò Pignatelli');
+        $name = new StringLiteral('Nicolò Pignatelli');
         $this->assertTrue($this->address->getName()->sameValueAs($name));
     }
 
     public function testGetStreet()
     {
-        $street = new Street(new String('via Manara'), new String('3'));
+        $street = new Street(new StringLiteral('via Manara'), new StringLiteral('3'));
         $this->assertTrue($this->address->getStreet()->sameValueAs($street));
     }
 
     public function testGetDistrict()
     {
-        $district = new String('');
+        $district = new StringLiteral('');
         $this->assertTrue($this->address->getDistrict()->sameValueAs($district));
     }
 
     public function testGetCity()
     {
-        $city = new String('Altamura');
+        $city = new StringLiteral('Altamura');
         $this->assertTrue($this->address->getCity()->sameValueAs($city));
     }
 
     public function testGetRegion()
     {
-        $region = new String('BARI');
+        $region = new StringLiteral('BARI');
         $this->assertTrue($this->address->getRegion()->sameValueAs($region));
     }
 
     public function testGetPostalCode()
     {
-        $code = new String('70022');
+        $code = new StringLiteral('70022');
         $this->assertTrue($this->address->getPostalCode()->sameValueAs($code));
     }
 

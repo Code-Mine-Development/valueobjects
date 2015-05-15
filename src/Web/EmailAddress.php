@@ -3,9 +3,9 @@
 namespace ValueObjects\Web;
 
 use ValueObjects\Exception\InvalidNativeArgumentException;
-use ValueObjects\String\String;
+use ValueObjects\StringLiteral\StringLiteral;
 
-class EmailAddress extends String
+class EmailAddress extends StringLiteral
 {
     /**
      * Returns an EmailAddress object given a PHP native string as parameter.
@@ -31,7 +31,7 @@ class EmailAddress extends String
     public function getLocalPart()
     {
         $parts = explode('@', $this->toNative());
-        $localPart = new String($parts[0]);
+        $localPart = new StringLiteral($parts[0]);
 
         return $localPart;
     }

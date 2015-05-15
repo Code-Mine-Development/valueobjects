@@ -2,7 +2,7 @@
 
 namespace ValueObjects\Structure;
 
-use ValueObjects\String\String;
+use ValueObjects\StringLiteral\StringLiteral;
 use ValueObjects\Util\Util;
 use ValueObjects\ValueObjectInterface;
 
@@ -32,8 +32,8 @@ class KeyValuePair implements ValueObjectInterface
 
         $keyString   = \strval($args[0]);
         $valueString = \strval($args[1]);
-        $key   = new String($keyString);
-        $value = new String($valueString);
+        $key   = new StringLiteral($keyString);
+        $value = new StringLiteral($valueString);
 
         return new self($key, $value);
     }

@@ -3,9 +3,9 @@
 namespace ValueObjects\Web;
 
 use ValueObjects\Exception\InvalidNativeArgumentException;
-use ValueObjects\String\String;
+use ValueObjects\StringLiteral\StringLiteral;
 
-class SchemeName extends String
+class SchemeName extends StringLiteral
 {
     /**
      * Returns a SchemeName

@@ -3,13 +3,13 @@
 namespace ValueObjects\DateTime;
 
 use ValueObjects\DateTime\Exception\InvalidTimeZoneException;
-use ValueObjects\String\String;
+use ValueObjects\StringLiteral\StringLiteral;
 use ValueObjects\Util\Util;
 use ValueObjects\ValueObjectInterface;
 
 class TimeZone implements ValueObjectInterface
 {
-    /** @var String */
+    /** @var StringLiteral */
     protected $name;
 
     /**
@@ -22,7 +22,7 @@ class TimeZone implements ValueObjectInterface
     {
         $args = func_get_args();
 
-        $name = new String($args[0]);
+        $name = new StringLiteral($args[0]);
 
         return new static($name);
     }
@@ -45,15 +45,16 @@ class TimeZone implements ValueObjectInterface
      */
     public static function fromDefault()
     {
-        return new static(new String(date_default_timezone_get()));
+        return new static(new StringLiteral(date_default_timezone_get()));
     }
 
     /**
      * Returns a new TimeZone object
      *
-     * @parm String $name
+     * @param StringLiteral $name
+     * @throws InvalidTimeZoneException
      */
-    public function __construct(String $name)
+    public function __construct(StringLiteral $name)
     {
         if (!in_array($name->toNative(), timezone_identifiers_list())) {
             throw new InvalidTimeZoneException($name);

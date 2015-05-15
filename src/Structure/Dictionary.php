@@ -2,7 +2,7 @@
 
 namespace ValueObjects\Structure;
 
-use ValueObjects\String\String;
+use ValueObjects\StringLiteral\StringLiteral;
 use ValueObjects\ValueObjectInterface;
 
 class Dictionary extends Collection
@@ -19,12 +19,12 @@ class Dictionary extends Collection
         $keyValuePairs = array();
 
         foreach ($array as $arrayKey => $arrayValue) {
-            $key = new String(\strval($arrayKey));
+            $key = new StringLiteral(\strval($arrayKey));
 
             if ($arrayValue instanceof \Traversable || \is_array($arrayValue)) {
                 $value = Collection::fromNative($arrayValue);
             } else {
-                $value = new String(\strval($arrayValue));
+                $value = new StringLiteral(\strval($arrayValue));
             }
 
             $keyValuePairs[] = new KeyValuePair($key, $value);
