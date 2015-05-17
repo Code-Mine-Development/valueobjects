@@ -47,7 +47,6 @@ class TimeTest extends TestCase
         $time3 = new Time(new Hour(20), new Minute(1), new Second(10));
 
         $this->assertTrue($time1->sameValueAs($time2));
-        $this->assertTrue($time2->sameValueAs($time1));
         $this->assertFalse($time1->sameValueAs($time3));
 
         $mock = $this->getMock('ValueObjects\ValueObjectInterface');

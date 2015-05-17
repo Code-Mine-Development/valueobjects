@@ -67,7 +67,6 @@ class DateTimeWithTimeZoneTest extends TestCase
         $dateTimeWithTz3 = new DateTimeWithTimeZone(new DateTime($date3, $time3), $timeZone3);
 
         $this->assertTrue($dateTimeWithTz1->sameValueAs($dateTimeWithTz2));
-        $this->assertTrue($dateTimeWithTz2->sameValueAs($dateTimeWithTz1));
         $this->assertFalse($dateTimeWithTz1->sameValueAs($dateTimeWithTz3));
 
         $mock = $this->getMock('ValueObjects\ValueObjectInterface');

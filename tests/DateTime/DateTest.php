@@ -47,7 +47,6 @@ class DateTest extends TestCase
         $date3 = new Date(new Year(2013), Month::DECEMBER(), new MonthDay(5));
 
         $this->assertTrue($date1->sameValueAs($date2));
-        $this->assertTrue($date2->sameValueAs($date1));
         $this->assertFalse($date1->sameValueAs($date3));
 
         $mock = $this->getMock('ValueObjects\ValueObjectInterface');
