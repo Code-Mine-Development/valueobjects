@@ -29,7 +29,6 @@ class UUIDTest extends TestCase
         $uuid3 = new UUID();
 
         $this->assertTrue($uuid1->sameValueAs($uuid2));
-        $this->assertTrue($uuid2->sameValueAs($uuid1));
         $this->assertFalse($uuid1->sameValueAs($uuid3));
 
         $mock = $this->getMock('ValueObjects\ValueObjectInterface');

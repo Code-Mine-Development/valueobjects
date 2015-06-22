@@ -39,7 +39,6 @@ class TimeZoneTest extends TestCase
         $timeZone3 = new TimeZone(new StringLiteral('Europe/Berlin'));
 
         $this->assertTrue($timeZone1->sameValueAs($timeZone2));
-        $this->assertTrue($timeZone2->sameValueAs($timeZone1));
         $this->assertFalse($timeZone1->sameValueAs($timeZone3));
 
         $mock = $this->getMock('ValueObjects\ValueObjectInterface');

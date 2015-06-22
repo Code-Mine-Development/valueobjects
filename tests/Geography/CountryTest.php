@@ -24,7 +24,6 @@ class CountryTest extends TestCase
         $country3 = new Country(CountryCode::US());
 
         $this->assertTrue($country1->sameValueAs($country2));
-        $this->assertTrue($country2->sameValueAs($country1));
         $this->assertFalse($country1->sameValueAs($country3));
 
         $mock = $this->getMock('ValueObjects\ValueObjectInterface');

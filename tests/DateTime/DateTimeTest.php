@@ -65,7 +65,6 @@ class DateTimeTest extends TestCase
         $dateTime3 = new DateTime($date3, $time3);
 
         $this->assertTrue($dateTime1->sameValueAs($dateTime2));
-        $this->assertTrue($dateTime2->sameValueAs($dateTime1));
         $this->assertFalse($dateTime1->sameValueAs($dateTime3));
 
         $mock = $this->getMock('ValueObjects\ValueObjectInterface');
