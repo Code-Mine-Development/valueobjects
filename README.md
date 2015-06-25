@@ -10,7 +10,7 @@ A PHP library/collection of classes aimed to help developers using and undestand
 
 Should I use this library?
 ------------------
-Although fully tested and maintained, ValueObjects has been developed mainly for educational purposes. Therefore, it is advisable to use it in small projects or to force yourself on thinking in terms of immutable objects and their interaction.
+Although fully tested and maintained, ValueObjects has been developed mainly for educational purposes. Therefore, it can be used in small projects and to force yourself on thinking in terms of immutable objects and their interaction.
 
 When approaching a project using Domain Driven Design, I would suggest to write your own Value Objects in a way they will reflect 100% your domain objects, without using any library or class designed to solve a general problem more than your specific one.
 
