@@ -38,8 +38,8 @@ class Money implements ValueObjectInterface
     /**
      * Returns a Money object
      *
-     * @param Integer  $amount   Amount expressed in the smallest units of $currency (e.g. cents)
-     * @param Currency $currency Currency of the money object
+     * @param \ValueObjects\Number\Integer $amount   Amount expressed in the smallest units of $currency (e.g. cents)
+     * @param Currency                     $currency Currency of the money object
      */
     public function __construct(Integer $amount, Currency $currency)
     {
@@ -66,7 +66,7 @@ class Money implements ValueObjectInterface
     /**
      * Returns money amount
      *
-     * @return Integer
+     * @return \ValueObjects\Number\Integer
      */
     public function getAmount()
     {
@@ -89,7 +89,7 @@ class Money implements ValueObjectInterface
      * Add an integer quantity to the amount and returns a new Money object.
      * Use a negative quantity for subtraction.
      *
-     * @param  Integer $quantity Quantity to add
+     * @param  \ValueObjects\Number\Integer $quantity Quantity to add
      * @return Money
      */
     public function add(Integer $quantity)
