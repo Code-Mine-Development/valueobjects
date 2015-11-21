@@ -6,7 +6,7 @@ use ValueObjects\Exception\InvalidNativeArgumentException;
 use ValueObjects\StringLiteral\StringLiteral;
 use ValueObjects\Util\Util;
 use ValueObjects\ValueObjectInterface;
-use Rhumsaa\Uuid\Uuid as BaseUuid;
+use Ramsey\Uuid\Uuid as BaseUuid;
 
 class UUID extends StringLiteral
 {
