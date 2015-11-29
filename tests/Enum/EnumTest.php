@@ -3,7 +3,6 @@
 namespace ValueObjects\Tests\Enum;
 
 use ValueObjects\Tests\TestCase;
-use ValueObjects\Enum\Enum;
 
 class EnumTest extends TestCase
 {
