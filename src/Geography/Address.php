@@ -10,7 +10,7 @@ class Address implements ValueObjectInterface
 {
     /**
      * Name of the addressee (natural person or company)
-     * @var String
+     * @var StringLiteral
      */
     protected $name;
 
@@ -19,25 +19,25 @@ class Address implements ValueObjectInterface
 
     /**
      * District/City area
-     * @var String
+     * @var StringLiteral
      */
     protected $district;
 
     /**
      * City/Town/Village
-     * @var String
+     * @var StringLiteral
      */
     protected $city;
 
     /**
      * Region/County/State
-     * @var String
+     * @var StringLiteral
      */
     protected $region;
 
     /**
      * Postal code/P.O. Box/ZIP code
-     * @var String
+     * @var StringLiteral
      */
     protected $postalCode;
 
@@ -80,12 +80,12 @@ class Address implements ValueObjectInterface
     /**
      * Returns a new Address object
      *
-     * @param String  $name
-     * @param Street  $street
-     * @param String  $district
-     * @param String  $city
-     * @param String  $region
-     * @param String  $postalCode
+     * @param StringLiteral $name
+     * @param Street        $street
+     * @param StringLiteral $district
+     * @param StringLiteral $city
+     * @param StringLiteral $region
+     * @param StringLiteral $postalCode
      * @param Country $country
      */
     public function __construct(StringLiteral $name, Street $street, StringLiteral $district, StringLiteral $city, StringLiteral $region, StringLiteral $postalCode, Country $country)
@@ -124,7 +124,7 @@ class Address implements ValueObjectInterface
     /**
      * Returns addressee name
      *
-     * @return String
+     * @return StringLiteral
      */
     public function getName()
     {
@@ -144,7 +144,7 @@ class Address implements ValueObjectInterface
     /**
      * Returns district
      *
-     * @return String
+     * @return StringLiteral
      */
     public function getDistrict()
     {
@@ -154,7 +154,7 @@ class Address implements ValueObjectInterface
     /**
      * Returns city
      *
-     * @return String
+     * @return StringLiteral
      */
     public function getCity()
     {
@@ -164,7 +164,7 @@ class Address implements ValueObjectInterface
     /**
      * Returns region
      *
-     * @return String
+     * @return StringLiteral
      */
     public function getRegion()
     {
@@ -174,7 +174,7 @@ class Address implements ValueObjectInterface
     /**
      * Returns postal code
      *
-     * @return String
+     * @return StringLiteral
      */
     public function getPostalCode()
     {

@@ -63,7 +63,7 @@ class Country implements ValueObjectInterface
     /**
      * Returns country name
      *
-     * @return String
+     * @return StringLiteral
      */
     public function getName()
     {
