@@ -1,6 +1,6 @@
 <?php
 
-namespace ValueObjects\Tests\String;
+namespace ValueObjects\Tests\Person;
 
 use ValueObjects\Person\Name;
 use ValueObjects\Tests\TestCase;
