@@ -88,7 +88,7 @@ class Street implements ValueObjectInterface
 
         return $this->getName()->sameValueAs($street->getName()) &&
                $this->getNumber()->sameValueAs($street->getNumber()) &&
-               $this->getElements()->sameValueAs($street->getElements());
+               $this->getElements()->sameValueAs($street->getElements())
         ;
     }
 
