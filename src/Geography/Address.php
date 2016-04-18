@@ -74,7 +74,7 @@ class Address implements ValueObjectInterface
         $postalCode = new StringLiteral($args[6]);
         $country    = Country::fromNative($args[7]);
 
-        return new self($name, $street, $district, $city, $region, $postalCode, $country);
+        return new static($name, $street, $district, $city, $region, $postalCode, $country);
     }
 
     /**

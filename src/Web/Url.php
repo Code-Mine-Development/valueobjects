@@ -58,7 +58,7 @@ class Url implements ValueObjectInterface
         $query      = $queryString ? new QueryString(\sprintf('?%s', $queryString)) : new NullQueryString();
         $fragment   = $fragmentId ? new FragmentIdentifier(\sprintf('#%s', $fragmentId)) : new NullFragmentIdentifier();
 
-        return new self($scheme, $user, $pass, $domain, $portNumber, $path, $query, $fragment);
+        return new static($scheme, $user, $pass, $domain, $portNumber, $path, $query, $fragment);
     }
 
     /**

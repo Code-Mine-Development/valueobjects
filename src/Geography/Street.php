@@ -50,7 +50,7 @@ class Street implements ValueObjectInterface
         $elements = $elementsString ? new StringLiteral($elementsString) : null;
         $format   = $formatString ? new StringLiteral($formatString) : null;
 
-        return new self($name, $number, $elements, $format);
+        return new static($name, $number, $elements, $format);
     }
 
     /**
