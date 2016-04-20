@@ -216,7 +216,17 @@ class Url implements ValueObjectInterface
 
     function jsonSerialize()
     {
-        return (string) $this;
+        return [
+            'url' => (string) $this,
+            'scheme' => $this->getScheme(),
+            'user' => $this->getUser(),
+            'password' => $this->getPassword(),
+            'domain' => $this->getDomain(),
+            'port' => $this->getPort(),
+            'path' => $this->getPath(),
+            'query' => $this->getQueryString(),
+            'fragment' => $this->getFragmentIdentifier()
+        ];
     }
 
 
