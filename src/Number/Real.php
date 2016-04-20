@@ -107,4 +107,9 @@ class Real implements ValueObjectInterface, NumberInterface
     {
         return \strval($this->toNative());
     }
+
+    static public function pi()
+    {
+        return self::fromNative(M_PI);
+    }
 }
