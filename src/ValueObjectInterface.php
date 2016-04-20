@@ -2,7 +2,7 @@
 
 namespace ValueObjects;
 
-interface ValueObjectInterface
+interface ValueObjectInterface extends \JsonSerializable
 {
     /**
      * Returns a object taking PHP native value(s) as argument(s).

@@ -212,4 +212,15 @@ class Coordinate implements ValueObjectInterface
 
         return $coordinate;
     }
+
+    function jsonSerialize()
+    {
+        return [
+            'latitude' => $this->getLatitude(),
+            'longitude' => $this->getLongitude(),
+            'ellipsoid' => $this->getEllipsoid(),
+        ];
+    }
+
+
 }

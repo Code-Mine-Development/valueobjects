@@ -67,4 +67,11 @@ class Currency implements ValueObjectInterface
     {
         return $this->getCode()->toNative();
     }
+
+    function jsonSerialize()
+    {
+        return $this->code;
+    }
+
+
 }

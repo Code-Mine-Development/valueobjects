@@ -142,4 +142,11 @@ class DateTime implements ValueObjectInterface
     {
         return \sprintf('%s %s', $this->getDate(), $this->getTime());
     }
+
+    function jsonSerialize()
+    {
+        return $this->toNativeDateTime();
+    }
+
+
 }

@@ -132,4 +132,18 @@ class Name implements ValueObjectInterface
     {
         return \strval($this->getFullName());
     }
+
+    function jsonSerialize()
+    {
+        return [
+            'parts' => [
+                'first' => $this->getFirstName(),
+                'middle' => $this->getMiddleName(),
+                'last' => $this->getLastName()
+            ],
+            'full' => (string) $this
+        ];
+    }
+
+
 }

@@ -53,4 +53,13 @@ abstract class Enum extends BaseEnum implements ValueObjectInterface
     {
         return \strval($this->toNative());
     }
+
+
+    function jsonSerialize()
+    {
+        return [
+            'current' => $this->getValue(),
+            'available' => $this->getConstants()
+        ];
+    }
 }

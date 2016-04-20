@@ -160,4 +160,14 @@ class Time implements ValueObjectInterface
     {
         return $this->toNativeDateTime()->format('G:i:s');
     }
+
+
+    function jsonSerialize()
+    {
+        return [
+            'hour' => $this->hour,
+            'minute' => $this->minute,
+            'second' => $this->second
+        ];
+    }
 }

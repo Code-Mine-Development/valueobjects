@@ -213,4 +213,11 @@ class Url implements ValueObjectInterface
 
         return $urlString;
     }
+
+    function jsonSerialize()
+    {
+        return (string) $this;
+    }
+
+
 }
