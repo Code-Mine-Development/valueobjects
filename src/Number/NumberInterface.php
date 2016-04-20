@@ -138,4 +138,10 @@ interface NumberInterface
      * @return NumberInterface
      */
     public function digits();
+
+    /**
+     * @return NumberInterface
+     */
+    public function inverse();
+
 }
