@@ -144,4 +144,16 @@ interface NumberInterface
      */
     public function inverse();
 
+    public function increment();
+
+    public function decrement();
+
+    public function by10();
+
+    public function by100();
+
+    public function scientific();
+    
+    public static function zero();
+
 }
