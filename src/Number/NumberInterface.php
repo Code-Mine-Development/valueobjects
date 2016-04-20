@@ -156,4 +156,5 @@ interface NumberInterface
     
     public static function zero();
 
+    public static function random($min = NULL, $max = NULL);
 }
