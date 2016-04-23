@@ -115,7 +115,7 @@ class Coordinate implements ValueObjectInterface
     /**
      * Returns a degrees/minutes/seconds representation of the coordinate
      *
-     * @return String
+     * @return StringLiteral
      */
     public function toDegreesMinutesSeconds()
     {
@@ -129,7 +129,7 @@ class Coordinate implements ValueObjectInterface
     /**
      * Returns a decimal minutes representation of the coordinate
      *
-     * @return String
+     * @return StringLiteral
      */
     public function toDecimalMinutes()
     {
@@ -143,7 +143,7 @@ class Coordinate implements ValueObjectInterface
     /**
      * Returns a Universal Transverse Mercator projection representation of the coordinate in meters
      *
-     * @return String
+     * @return StringLiteral
      */
     public function toUniversalTransverseMercator()
     {

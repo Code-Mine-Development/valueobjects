@@ -65,8 +65,8 @@ class Url implements ValueObjectInterface
      * Returns a new Url object
      *
      * @param SchemeName          $scheme
-     * @param String              $user
-     * @param String              $password
+     * @param StringLiteral       $user
+     * @param StringLiteral       $password
      * @param Domain              $domain
      * @param Path                $path
      * @param PortNumberInterface $port
@@ -131,7 +131,7 @@ class Url implements ValueObjectInterface
     /**
      * Returns the password part of the Url
      *
-     * @return String
+     * @return StringLiteral
      */
     public function getPassword()
     {
@@ -181,7 +181,7 @@ class Url implements ValueObjectInterface
     /**
      * Returns the user part of the Url
      *
-     * @return String
+     * @return StringLiteral
      */
     public function getUser()
     {
