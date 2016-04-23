@@ -95,7 +95,7 @@ class Money implements ValueObjectInterface
     public function add(Integer $quantity)
     {
         $amount = new Integer($this->getAmount()->toNative() + $quantity->toNative());
-        $result = new self($amount, $this->getCurrency());
+        $result = new static($amount, $this->getCurrency());
 
         return $result;
     }
@@ -116,7 +116,7 @@ class Money implements ValueObjectInterface
 
         $amount        = $this->getAmount()->toNative() * $multiplier->toNative();
         $roundedAmount = new Integer(round($amount, 0, $rounding_mode->toNative()));
-        $result        = new self($roundedAmount, $this->getCurrency());
+        $result        = new static($roundedAmount, $this->getCurrency());
 
         return $result;
     }

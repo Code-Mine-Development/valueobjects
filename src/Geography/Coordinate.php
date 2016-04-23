@@ -43,7 +43,7 @@ class Coordinate implements ValueObjectInterface
         $nativeEllipsoid = isset($args[2]) ? $args[2] : null;
         $ellipsoid = Ellipsoid::fromNative($nativeEllipsoid);
 
-        return new self($latitude, $longitude, $ellipsoid);
+        return new static($latitude, $longitude, $ellipsoid);
     }
 
     /**
@@ -119,7 +119,7 @@ class Coordinate implements ValueObjectInterface
      */
     public function toDegreesMinutesSeconds()
     {
-        $coordinate = self::getBaseCoordinate($this);
+        $coordinate = static::getBaseCoordinate($this);
         $convert    = new Convert($coordinate);
         $dms        = $convert->toDegreesMinutesSeconds();
 
@@ -133,7 +133,7 @@ class Coordinate implements ValueObjectInterface
      */
     public function toDecimalMinutes()
     {
-        $coordinate = self::getBaseCoordinate($this);
+        $coordinate = static::getBaseCoordinate($this);
         $convert    = new Convert($coordinate);
         $dm         = $convert->toDecimalMinutes();
 
@@ -147,7 +147,7 @@ class Coordinate implements ValueObjectInterface
      */
     public function toUniversalTransverseMercator()
     {
-        $coordinate = self::getBaseCoordinate($this);
+        $coordinate = static::getBaseCoordinate($this);
         $convert    = new Convert($coordinate);
         $utm        = $convert->toUniversalTransverseMercator();
 
@@ -172,8 +172,8 @@ class Coordinate implements ValueObjectInterface
             $formula = DistanceFormula::FLAT();
         }
 
-        $baseThis       = self::getBaseCoordinate($this);
-        $baseCoordinate = self::getBaseCoordinate($coordinate);
+        $baseThis       = static::getBaseCoordinate($this);
+        $baseCoordinate = static::getBaseCoordinate($coordinate);
 
         $distance = new Distance();
         $distance

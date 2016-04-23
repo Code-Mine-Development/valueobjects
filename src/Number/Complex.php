@@ -31,7 +31,7 @@ class Complex implements ValueObjectInterface, NumberInterface
 
         $real    = Real::fromNative($args[0]);
         $im      = Real::fromNative($args[1]);
-        $complex = new self($real, $im);
+        $complex = new static($real, $im);
 
         return $complex;
     }
@@ -49,7 +49,7 @@ class Complex implements ValueObjectInterface, NumberInterface
         $imValue   = $modulus->toNative() * \sin($argument->toNative());
         $real      = new Real($realValue);
         $im        = new Real($imValue);
-        $complex   = new self($real, $im);
+        $complex   = new static($real, $im);
 
         return $complex;
     }

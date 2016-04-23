@@ -45,7 +45,7 @@ class Name implements ValueObjectInterface
         $middleName = new StringLiteral($args[1]);
         $lastName   = new StringLiteral($args[2]);
 
-        return new self($firstName, $middleName, $lastName);
+        return new static($firstName, $middleName, $lastName);
     }
 
     /**
