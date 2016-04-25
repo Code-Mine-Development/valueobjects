@@ -96,4 +96,11 @@ class KeyValuePair implements ValueObjectInterface
 
         return $string;
     }
+
+    function jsonSerialize()
+    {
+        return [$this->getKey(), $this->getValue()];
+    }
+
+
 }

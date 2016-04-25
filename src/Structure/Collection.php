@@ -124,4 +124,11 @@ class Collection implements ValueObjectInterface
 
         return $string;
     }
+
+    function jsonSerialize()
+    {
+        return $this->toArray();
+    }
+
+
 }

@@ -376,4 +376,14 @@ class Real implements NumberInterface, MathAwareInterface
     }
 
 
+
+    /**
+     * @return float
+     */
+    function jsonSerialize()
+    {
+        return $this->toNative();
+    }
+
+
 }

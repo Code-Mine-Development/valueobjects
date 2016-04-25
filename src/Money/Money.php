@@ -130,4 +130,14 @@ class Money implements ValueObjectInterface
     {
         return \sprintf('%s %d', $this->getCurrency()->getCode(), $this->getAmount()->toNative());
     }
+
+    function jsonSerialize()
+    {
+        return [
+            'amount' => $this->getAmount(),
+            'currency' => $this->getCurrency()
+        ];
+    }
+
+
 }

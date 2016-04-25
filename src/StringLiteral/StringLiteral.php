@@ -81,4 +81,10 @@ class StringLiteral implements ValueObjectInterface
     {
         return $this->toNative();
     }
+
+    function jsonSerialize()
+    {
+        return (string) $this;
+    }
+
 }

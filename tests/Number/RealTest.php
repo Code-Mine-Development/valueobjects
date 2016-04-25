@@ -10,6 +10,17 @@ use ValueObjects\Number\Natural;
 
 class RealTest extends TestCase
 {
+    public function testJsonSerialize()
+    {
+        $dataForJson = [
+            'real' => new Real(3)
+        ];
+
+        $json = json_encode($dataForJson);
+
+        $this->assertSame('{"real":3}', $json);
+    }
+    
     public function testFromNative()
     {
         $fromNativeReal  = Real::fromNative(.056);
