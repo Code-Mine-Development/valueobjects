@@ -45,15 +45,15 @@ class Name implements ValueObjectInterface
         $middleName = new StringLiteral($args[1]);
         $lastName   = new StringLiteral($args[2]);
 
-        return new self($firstName, $middleName, $lastName);
+        return new static($firstName, $middleName, $lastName);
     }
 
     /**
      * Returns a Name object
      *
-     * @param String $first_name
-     * @param String $middle_name
-     * @param String $last_name
+     * @param StringLiteral $first_name
+     * @param StringLiteral $middle_name
+     * @param StringLiteral $last_name
      */
     public function __construct(StringLiteral $first_name, StringLiteral $middle_name, StringLiteral $last_name)
     {
@@ -65,7 +65,7 @@ class Name implements ValueObjectInterface
     /**
      * Returns the first name
      *
-     * @return String
+     * @return StringLiteral
      */
     public function getFirstName()
     {
@@ -75,7 +75,7 @@ class Name implements ValueObjectInterface
     /**
      * Returns the middle name
      *
-     * @return String
+     * @return StringLiteral
      */
     public function getMiddleName()
     {
@@ -85,7 +85,7 @@ class Name implements ValueObjectInterface
     /**
      * Returns the last name
      *
-     * @return String
+     * @return StringLiteral
      */
     public function getLastName()
     {
@@ -95,7 +95,7 @@ class Name implements ValueObjectInterface
     /**
      * Returns the full name
      *
-     * @return String
+     * @return StringLiteral
      */
     public function getFullName()
     {

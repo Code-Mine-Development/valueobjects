@@ -26,7 +26,7 @@ class EmailAddress extends StringLiteral
     /**
      * Returns the local part of the email address
      *
-     * @return String
+     * @return StringLiteral
      */
     public function getLocalPart()
     {

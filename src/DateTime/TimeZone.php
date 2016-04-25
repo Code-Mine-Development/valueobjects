@@ -91,7 +91,7 @@ class TimeZone implements ValueObjectInterface
     /**
      * Returns timezone name
      *
-     * @return String
+     * @return StringLiteral
      */
     public function getName()
     {

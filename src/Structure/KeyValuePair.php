@@ -35,7 +35,7 @@ class KeyValuePair implements ValueObjectInterface
         $key   = new StringLiteral($keyString);
         $value = new StringLiteral($valueString);
 
-        return new self($key, $value);
+        return new static($key, $value);
     }
 
     /**

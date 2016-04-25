@@ -20,7 +20,7 @@ class Country implements ValueObjectInterface
     {
         $codeString = \func_get_arg(0);
         $code       = CountryCode::getByName($codeString);
-        $country    = new self($code);
+        $country    = new static($code);
 
         return $country;
     }
@@ -63,7 +63,7 @@ class Country implements ValueObjectInterface
     /**
      * Returns country name
      *
-     * @return String
+     * @return StringLiteral
      */
     public function getName()
     {

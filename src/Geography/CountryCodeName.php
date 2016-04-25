@@ -257,7 +257,7 @@ class CountryCodeName
      * Returns country name
      *
      * @param  CountryCode $code
-     * @return String
+     * @return StringLiteral
      */
     public static function getName(CountryCode $code)
     {

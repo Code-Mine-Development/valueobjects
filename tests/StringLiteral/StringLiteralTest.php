@@ -1,6 +1,6 @@
 <?php
 
-namespace ValueObjects\Tests\String;
+namespace ValueObjects\Tests\StringLiteral;
 
 use ValueObjects\Tests\TestCase;
 use ValueObjects\StringLiteral\StringLiteral;

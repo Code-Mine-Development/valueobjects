@@ -42,10 +42,5 @@
     "psr-4": {
       "ValueObjects\\Tests\\": "tests/"
     }
-  },
-  "extra": {
-    "branch-alias": {
-      "dev-master": "3.0.x-dev"
-    }
   }
 }
