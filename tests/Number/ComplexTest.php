@@ -11,9 +11,22 @@ class ComplexTest extends TestCase
     /** @var Complex */
     private $complex;
 
+
+
     public function setup()
     {
         $this->complex = new Complex(new Real(2.05), new Real(3.2));
+    }
+
+    public function testJsonSerialize()
+    {
+        $dataForJson = [
+            'complex' => Complex::fromNative(2,3)
+        ];
+
+        $json = json_encode($dataForJson);
+
+        $this->assertSame('{"complex":{"real":2,"im":3}}', $json);
     }
 
     public function testFromNative()

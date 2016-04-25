@@ -150,6 +150,11 @@ class Date implements ValueObjectInterface
         return $date;
     }
 
+    function jsonSerialize()
+    {
+        return $this->toNativeDateTime();
+    }
+
     /**
      * Returns date as string in format Y-n-j
      *

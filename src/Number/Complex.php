@@ -151,4 +151,14 @@ class Complex implements ValueObjectInterface, NumberInterface
 
         return \preg_replace('/(\+|-)/', '$1 ', $string);
     }
+
+    function jsonSerialize()
+    {
+        return [
+            'real' => $this->getReal()->toNative(),
+            'im' => $this->getIm()->toNative()
+        ];
+    }
+
+
 }

@@ -107,4 +107,11 @@ class TimeZone implements ValueObjectInterface
     {
         return $this->getName()->__toString();
     }
+
+    function jsonSerialize()
+    {
+        return (string) $this;
+    }
+
+
 }

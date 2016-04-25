@@ -44,4 +44,11 @@ class NullValue implements ValueObjectInterface
     {
         return \strval(null);
     }
+
+    function jsonSerialize()
+    {
+        return null;
+    }
+
+
 }

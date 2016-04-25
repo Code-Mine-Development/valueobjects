@@ -55,4 +55,6 @@ class Hour extends Natural
 
         return new static($hour);
     }
+    
+    
 }

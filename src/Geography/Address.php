@@ -10,6 +10,7 @@ class Address implements ValueObjectInterface
 {
     /**
      * Name of the addressee (natural person or company)
+     *
      * @var String
      */
     protected $name;
@@ -19,24 +20,28 @@ class Address implements ValueObjectInterface
 
     /**
      * District/City area
+     *
      * @var String
      */
     protected $district;
 
     /**
      * City/Town/Village
+     *
      * @var String
      */
     protected $city;
 
     /**
      * Region/County/State
+     *
      * @var String
      */
     protected $region;
 
     /**
      * Postal code/P.O. Box/ZIP code
+     *
      * @var String
      */
     protected $postalCode;
@@ -55,6 +60,7 @@ class Address implements ValueObjectInterface
      * @param string $region
      * @param string $postal_code
      * @param string $country_code
+     *
      * @return self
      * @throws \BadMethodCallException
      */
@@ -66,13 +72,13 @@ class Address implements ValueObjectInterface
             throw new \BadMethodCallException('You must provide exactly 8 arguments: 1) addressee name, 2) street name, 3) street number, 4) district, 5) city, 6) region, 7) postal code, 8) country code.');
         }
 
-        $name       = new StringLiteral($args[0]);
-        $street     = new Street(new StringLiteral($args[1]), new StringLiteral($args[2]));
-        $district   = new StringLiteral($args[3]);
-        $city       = new StringLiteral($args[4]);
-        $region     = new StringLiteral($args[5]);
+        $name = new StringLiteral($args[0]);
+        $street = new Street(new StringLiteral($args[1]), new StringLiteral($args[2]));
+        $district = new StringLiteral($args[3]);
+        $city = new StringLiteral($args[4]);
+        $region = new StringLiteral($args[5]);
         $postalCode = new StringLiteral($args[6]);
-        $country    = Country::fromNative($args[7]);
+        $country = Country::fromNative($args[7]);
 
         return new self($name, $street, $district, $city, $region, $postalCode, $country);
     }
@@ -90,35 +96,35 @@ class Address implements ValueObjectInterface
      */
     public function __construct(StringLiteral $name, Street $street, StringLiteral $district, StringLiteral $city, StringLiteral $region, StringLiteral $postalCode, Country $country)
     {
-        $this->name       = $name;
-        $this->street     = $street;
-        $this->district   = $district;
-        $this->city       = $city;
-        $this->region     = $region;
+        $this->name = $name;
+        $this->street = $street;
+        $this->district = $district;
+        $this->city = $city;
+        $this->region = $region;
         $this->postalCode = $postalCode;
-        $this->country    = $country;
+        $this->country = $country;
     }
 
     /**
      * Tells whether two Address are equal
      *
      * @param  ValueObjectInterface $address
+     *
      * @return bool
      */
     public function sameValueAs(ValueObjectInterface $address)
     {
-        if (false === Util::classEquals($this, $address)) {
-            return false;
+        if (FALSE === Util::classEquals($this, $address)) {
+            return FALSE;
         }
 
-        return $this->getName()->sameValueAs($address->getName())             &&
-               $this->getStreet()->sameValueAs($address->getStreet())         &&
-               $this->getDistrict()->sameValueAs($address->getDistrict())     &&
-               $this->getCity()->sameValueAs($address->getCity())             &&
-               $this->getRegion()->sameValueAs($address->getRegion())         &&
-               $this->getPostalCode()->sameValueAs($address->getPostalCode()) &&
-               $this->getCountry()->sameValueAs($address->getCountry())
-        ;
+        return $this->getName()->sameValueAs($address->getName()) &&
+        $this->getStreet()->sameValueAs($address->getStreet()) &&
+        $this->getDistrict()->sameValueAs($address->getDistrict()) &&
+        $this->getCity()->sameValueAs($address->getCity()) &&
+        $this->getRegion()->sameValueAs($address->getRegion()) &&
+        $this->getPostalCode()->sameValueAs($address->getPostalCode()) &&
+        $this->getCountry()->sameValueAs($address->getCountry());
     }
 
     /**
@@ -209,4 +215,21 @@ ADDR;
 
         return $addressString;
     }
+
+    function jsonSerialize()
+    {
+        return [
+            'parts'     => [
+                'name'       => $this->getName(),
+                'street'     => $this->getStreet(),
+                'city'       => $this->getCity(),
+                'region'     => $this->getRegion(),
+                'postalCode' => $this->getPostalCode(),
+                'country'    => $this->getCountry(),
+            ],
+            'formatted' => (string)$this,
+        ];
+    }
+
+
 }

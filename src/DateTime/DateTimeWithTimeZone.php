@@ -151,6 +151,11 @@ class DateTimeWithTimeZone implements ValueObjectInterface
         return $dateTime;
     }
 
+    function jsonSerialize()
+    {
+        return $this->toNativeDateTime();
+    }
+
     /**
      * Returns DateTime as string in format "Y-n-j G:i:s e"
      *

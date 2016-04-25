@@ -82,4 +82,11 @@ class Country implements ValueObjectInterface
     {
         return $this->getName()->toNative();
     }
+
+    function jsonSerialize()
+    {
+        return (string) $this;
+    }
+
+
 }

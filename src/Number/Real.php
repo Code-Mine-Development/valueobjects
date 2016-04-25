@@ -107,4 +107,14 @@ class Real implements ValueObjectInterface, NumberInterface
     {
         return \strval($this->toNative());
     }
+
+    /**
+     * @return float
+     */
+    function jsonSerialize()
+    {
+        return $this->toNative();
+    }
+
+
 }
