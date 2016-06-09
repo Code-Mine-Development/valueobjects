@@ -125,7 +125,7 @@ class Real implements NumberInterface, MathAwareInterface
      */
     public function add(MathAwareInterface $number)
     {
-        return new static(bcadd($this, $number, 5));
+        return new static((float) bcadd($this, $number, 5));
     }
 
     /**
@@ -135,7 +135,7 @@ class Real implements NumberInterface, MathAwareInterface
      */
     public function subtract(MathAwareInterface $number)
     {
-        return new static(bcsub($this, $number, 5));
+        return new static((float) bcsub($this, $number, 5));
 
     }
 
@@ -146,7 +146,7 @@ class Real implements NumberInterface, MathAwareInterface
      */
     public function multiply(MathAwareInterface $number)
     {
-        return new static(bcmul($this, $number, 5));
+        return new static((float) bcmul($this, $number, 5));
 
     }
 
@@ -157,7 +157,7 @@ class Real implements NumberInterface, MathAwareInterface
      */
     public function divide(MathAwareInterface $number)
     {
-        return new static(bcdiv($this, $number, 5));
+        return new static((float) bcdiv($this, $number, 5));
 
 
     }
@@ -169,7 +169,7 @@ class Real implements NumberInterface, MathAwareInterface
      */
     public function toPower(MathAwareInterface $number)
     {
-        return new static(bcpow($this->toNative(), $number->toNative(), 5));
+        return new static((float) bcpow($this->toNative(), $number->toNative(), 5));
 
     }
 
@@ -178,7 +178,7 @@ class Real implements NumberInterface, MathAwareInterface
      */
     public function square()
     {
-        return new static(bcpow($this->toNative(), 2, 5));
+        return new static((float) bcpow($this->toNative(), 2, 5));
     }
 
     /**
@@ -186,7 +186,7 @@ class Real implements NumberInterface, MathAwareInterface
      */
     public function squareRoot()
     {
-        return new static(bcsqrt($this, 5));
+        return new static((float) bcsqrt($this, 5));
     }
 
 
@@ -195,7 +195,7 @@ class Real implements NumberInterface, MathAwareInterface
      */
     public function cube()
     {
-        return new static(bcpow($this->toNative(), 3, 5));
+        return new static((float) bcpow($this->toNative(), 3, 5));
 
     }
 
@@ -280,7 +280,7 @@ class Real implements NumberInterface, MathAwareInterface
      */
     public function modulo(MathAwareInterface $number)
     {
-        return new static(bcmod($this, $number));
+        return new static((float) bcmod($this, $number));
     }
 
     /**
