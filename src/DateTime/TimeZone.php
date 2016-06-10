@@ -9,115 +9,118 @@ use ValueObjects\ValueObjectInterface;
 
 class TimeZone implements ValueObjectInterface
 {
-	/** @var StringLiteral */
-	protected $name;
+    /** @var StringLiteral */
+    protected $name;
 
-	/**
-	 * Returns a new Time object from native timezone name
-	 *
-	 * @param  string $name
-	 *
-	 * @return self
-	 */
-	public static function fromNative()
-	{
-		$args = func_get_args();
+    /**
+     * Returns a new Time object from native timezone name
+     *
+     * @param  string $name
+     *
+     * @return self
+     */
+    public static function fromNative()
+    {
+        $args = func_get_args();
 
-		$name = new StringLiteral($args[0]);
+        $name = new StringLiteral($args[0]);
 
-		return new static($name);
-	}
+        return new static($name);
+    }
 
-	/**
-	 * Returns a new Time from a native PHP \DateTime
-	 *
-	 * @param  \DateTimeZone $timezone
-	 *
-	 * @return self
-	 */
-	public static function fromNativeDateTimeZone(\DateTimeZone $timezone)
-	{
-		return static::fromNative($timezone->getName());
-	}
+    /**
+     * Returns a new Time from a native PHP \DateTime
+     *
+     * @param  \DateTimeZone $timezone
+     *
+     * @return self
+     */
+    public static function fromNativeDateTimeZone(\DateTimeZone $timezone)
+    {
+        return static::fromNative($timezone->getName());
+    }
 
-	/**
-	 * Returns default TimeZone
-	 *
-	 * @return self
-	 */
-	public static function fromDefault()
-	{
-		return new static(new StringLiteral(date_default_timezone_get()));
-	}
+    /**
+     * Returns default TimeZone
+     *
+     * @return self
+     */
+    public static function fromDefault()
+    {
+        return new static(new StringLiteral(date_default_timezone_get()));
+    }
 
-	/**
-	 * Returns a new TimeZone object
-	 *
-	 * @param StringLiteral $name
-	 *
-	 * @throws InvalidTimeZoneException
-	 */
-	public function __construct(StringLiteral $name)
-	{
-		if (!in_array($name->toNative(), timezone_identifiers_list())
-			&& !preg_match('/[+-]\d{2}:?\d{2}/', $name->toNative())
-		) {
-			throw new InvalidTimeZoneException($name);
-		}
+    /**
+     * Returns a new TimeZone object
+     *
+     * @param StringLiteral $name
+     *
+     * @throws InvalidTimeZoneException
+     */
+    public function __construct(StringLiteral $name)
+    {
+        $availableTimezones   = timezone_identifiers_list();
+        $availableTimezones[] = 'Z';
 
-		$this->name = $name;
-	}
+        if (!in_array($name->toNative(), $availableTimezones)
+            && !preg_match('/[+-]\d{2}:?\d{2}/', $name->toNative())
+        ) {
+            throw new InvalidTimeZoneException($name);
+        }
 
-	/**
-	 * Returns a native PHP \DateTimeZone version of the current TimeZone.
-	 *
-	 * @return \DateTimeZone
-	 */
-	public function toNativeDateTimeZone()
-	{
-		return new \DateTimeZone($this->getName()->toNative());
-	}
+        $this->name = $name;
+    }
 
-	/**
-	 * Tells whether two DateTimeZone are equal by comparing their names
-	 *
-	 * @param  ValueObjectInterface $timezone
-	 *
-	 * @return bool
-	 */
-	public function sameValueAs(ValueObjectInterface $timezone)
-	{
-		if (FALSE === Util::classEquals($this, $timezone)) {
-			return FALSE;
-		}
+    /**
+     * Returns a native PHP \DateTimeZone version of the current TimeZone.
+     *
+     * @return \DateTimeZone
+     */
+    public function toNativeDateTimeZone()
+    {
+        return new \DateTimeZone($this->getName()->toNative());
+    }
 
-		return $this->getName()->sameValueAs($timezone->getName());
-	}
+    /**
+     * Tells whether two DateTimeZone are equal by comparing their names
+     *
+     * @param  ValueObjectInterface $timezone
+     *
+     * @return bool
+     */
+    public function sameValueAs(ValueObjectInterface $timezone)
+    {
+        if (FALSE === Util::classEquals($this, $timezone)) {
+            return FALSE;
+        }
 
-	/**
-	 * Returns timezone name
-	 *
-	 * @return StringLiteral
-	 */
-	public function getName()
-	{
-		return clone $this->name;
-	}
+        return $this->getName()->sameValueAs($timezone->getName());
+    }
 
-	/**
-	 * Returns timezone name as string
-	 *
-	 * @return string
-	 */
-	public function __toString()
-	{
-		return $this->getName()->__toString();
-	}
+    /**
+     * Returns timezone name
+     *
+     * @return StringLiteral
+     */
+    public function getName()
+    {
+        return clone $this->name;
+    }
 
-	function jsonSerialize()
-	{
-		return (string)$this;
-	}
+    /**
+     * Returns timezone name as string
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getName()->__toString();
+    }
+
+    function jsonSerialize()
+    {
+        return (string)$this;
+    }
 
 
 }
