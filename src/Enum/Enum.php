@@ -3,11 +3,15 @@
 namespace ValueObjects\Enum;
 
 use MabeEnum\Enum as BaseEnum;
+use MabeEnum\EnumSerializableTrait;
 use ValueObjects\Util\Util;
 use ValueObjects\ValueObjectInterface;
 
-abstract class Enum extends BaseEnum implements ValueObjectInterface
+abstract class Enum extends BaseEnum implements ValueObjectInterface, \Serializable
 {
+
+    use EnumSerializableTrait;
+
     /**
      * Returns a new Enum object from passed value matching argument
      *
