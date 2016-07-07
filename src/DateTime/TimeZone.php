@@ -16,6 +16,7 @@ class TimeZone implements ValueObjectInterface
      * Returns a new Time object from native timezone name
      *
      * @param  string $name
+     *
      * @return self
      */
     public static function fromNative()
@@ -31,6 +32,7 @@ class TimeZone implements ValueObjectInterface
      * Returns a new Time from a native PHP \DateTime
      *
      * @param  \DateTimeZone $timezone
+     *
      * @return self
      */
     public static function fromNativeDateTimeZone(\DateTimeZone $timezone)
@@ -52,11 +54,17 @@ class TimeZone implements ValueObjectInterface
      * Returns a new TimeZone object
      *
      * @param StringLiteral $name
+     *
      * @throws InvalidTimeZoneException
      */
     public function __construct(StringLiteral $name)
     {
-        if (!in_array($name->toNative(), timezone_identifiers_list())) {
+        $availableTimezones   = timezone_identifiers_list();
+        $availableTimezones[] = 'Z';
+
+        if (!in_array($name->toNative(), $availableTimezones)
+            && !preg_match('/[+-]\d{2}:?\d{2}/', $name->toNative())
+        ) {
             throw new InvalidTimeZoneException($name);
         }
 
@@ -77,12 +85,13 @@ class TimeZone implements ValueObjectInterface
      * Tells whether two DateTimeZone are equal by comparing their names
      *
      * @param  ValueObjectInterface $timezone
+     *
      * @return bool
      */
     public function sameValueAs(ValueObjectInterface $timezone)
     {
-        if (false === Util::classEquals($this, $timezone)) {
-            return false;
+        if (FALSE === Util::classEquals($this, $timezone)) {
+            return FALSE;
         }
 
         return $this->getName()->sameValueAs($timezone->getName());
@@ -110,7 +119,7 @@ class TimeZone implements ValueObjectInterface
 
     function jsonSerialize()
     {
-        return (string) $this;
+        return (string)$this;
     }
 
 
