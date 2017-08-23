@@ -20,7 +20,7 @@
     "php": ">=5.4",
     "ramsey/uuid": "~3.0",
     "mathiasverraes/money": "~1.2",
-    "marc-mabe/php-enum": "2.2.*",
+    "marc-mabe/php-enum": "^2.2",
     "zendframework/zend-validator": "~2.2",
     "league/geotools": "~0.7"
   },
