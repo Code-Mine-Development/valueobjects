@@ -19,7 +19,7 @@ class Country implements ValueObjectInterface
     public static function fromNative()
     {
         $codeString = \func_get_arg(0);
-        $code       = CountryCode::getByName($codeString);
+        $code       = CountryCode::get($codeString);
         $country    = new static($code);
 
         return $country;
