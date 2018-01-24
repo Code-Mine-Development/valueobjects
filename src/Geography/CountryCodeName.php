@@ -70,6 +70,7 @@ class CountryCodeName
         'DK' => 'Denmark',
         'DJ' => 'Djibouti',
         'DM' => 'Dominica',
+        'DO' => 'Dominican Republic',
         'DO_' => 'Dominican Republic',
         'EC' => 'Ecuador',
         'EG' => 'Egypt',
