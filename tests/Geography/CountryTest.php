@@ -48,4 +48,12 @@ class CountryTest extends TestCase
         $italy = new Country(CountryCode::IT());
         $this->assertSame('Italy', $italy->__toString());
     }
+
+    public function testFromNativeForCountryWithCodeAsReservedKeyword()
+    {
+        $fromNativeCountry  = Country::fromNative('DO');
+        $constructedCountry = new Country(CountryCode::DO_());
+
+        $this->assertTrue($constructedCountry->sameValueAs($fromNativeCountry));
+    }
 }
